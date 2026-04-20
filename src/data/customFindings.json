@@ -1,0 +1,35 @@
+[
+  {
+    "id": "cf-1",
+    "title": "Single Point of Failure — Office Manager Dependency",
+    "domainId": 7,
+    "severity": "High",
+    "consultant": "Daniela Reyes, Senior Legal Technology Consultant",
+    "date": "March 14, 2026",
+    "observation": "During the on-site assessment, it became clear that the office manager is the sole person who understands how to generate invoices, manage trust accounting entries, run reports, process payments, configure system settings, and onboard new users. When asked what would happen if she were unavailable for two weeks, she paused and said 'I honestly don't know. I don't think anyone else could do what I do.' There is no documentation of her workflows, no cross-trained backup, and no written procedures for any administrative function. During her last 3-day absence, no invoices went out and two client trust deposits sat unprocessed until she returned.",
+    "impact": "The firm's financial operations, system administration, and billing workflow depend entirely on one person. An unplanned absence would create an immediate operational crisis. Invoices would stop going out. Trust accounting would halt. New matters could not be properly configured. The firm's revenue cycle would freeze until she returned or a replacement was found and trained from scratch. This risk is compounded by the absence of written procedures, meaning a replacement would need to learn everything from scratch.",
+    "recommendation": "Immediately begin documenting Maria's workflows as step-by-step procedures stored in a shared location. Identify and cross-train at least one backup person on the three most critical functions: invoice generation, trust accounting, and payment processing. Consider creating task template lists in Clio that codify the billing and trust accounting workflows so that the process is embedded in the system rather than residing solely in one person's knowledge. This initiative should be completed within 60 days and treated as a business continuity priority."
+  },
+  {
+    "id": "cf-2",
+    "title": "Conflict Checking Relies on Attorney Memory",
+    "domainId": 2,
+    "severity": "High",
+    "consultant": "Daniela Reyes, Senior Legal Technology Consultant",
+    "date": "March 13, 2026",
+    "observation": "When asked to describe the firm's conflict check process for new matters, the managing partner responded: 'We're a small firm. We know our clients. If there's a conflict, we'd know.' Upon further questioning, no one at the firm runs Clio's global search to check new parties against existing contacts and matters before accepting representation. During the assessment, a live search was conducted on the firm's most recent new client. The search revealed that the new client's spouse was listed as an opposing party in a matter from two years ago. The managing partner had not identified this potential conflict before engagement.",
+    "impact": "Representing a client while having a conflict of interest is one of the most serious ethical violations a law firm can commit. It can result in disqualification from representation, bar discipline, malpractice claims, and loss of fees earned on the conflicted matter. The firm's current approach is inadequate for any firm with more than a handful of clients and matters. As the firm grows, the probability of an undetected conflict increases with every new matter. The near-miss identified during this assessment demonstrates that the current process has already failed.",
+    "recommendation": "Implement a mandatory conflict check procedure using Clio's global search before any new representation is accepted. The check should search the prospective client's name, the opposing party's name, and any related entities against all contacts, matters, and relationships in the system. Document the search results and the clearance decision in a note on the matter. Assign responsibility for performing and documenting the check to a specific role. This process should be non-negotiable and added to the new matter opening checklist as a gating step."
+  },
+  {
+    "id": "cf-3",
+    "title": "No Defined Communication Cadence Creates Client Anxiety",
+    "domainId": 5,
+    "severity": "Medium",
+    "consultant": "Daniela Reyes, Senior Legal Technology Consultant",
+    "date": "March 13, 2026",
+    "observation": "During the interview, the managing partner was asked what clients are told at engagement about how and when they will receive case updates. The answer was: 'We tell them to call if they have questions.' There is no defined communication cadence, no expectation-setting document or conversation about update frequency, and no proactive outreach schedule. The office manager shared that incoming phone calls from clients asking 'what's happening with my case' are the single most time-consuming interruption in her day, estimating 8 to 12 such calls per week. Two attorneys confirmed that they often delay returning these calls because they have nothing new to report.",
+    "impact": "Client satisfaction research in legal services consistently shows that communication frequency is a stronger predictor of client satisfaction than case outcome. Clients who feel informed are more likely to refer others, leave positive reviews, and return for future legal needs. The current reactive communication model costs the firm in two ways: direct administrative time handling inbound status calls estimated at 5 to 8 hours per week across the team, and indirect reputation impact from clients who feel neglected. The absence of a defined cadence also means there is no minimum standard.",
+    "recommendation": "Establish a standard communication cadence for all active matters: a brief status update at minimum every two weeks, and a substantive update within 48 hours of any case development. Set this expectation with clients at engagement, ideally in the engagement letter. Use Clio's calendar to create recurring bi-weekly client update events linked to each active matter. Configure task reminders to prompt attorneys when updates are due. Activate the client portal to give clients self-service access to case documents and status, reducing the volume of inbound status calls."
+  }
+]

@@ -1,0 +1,131 @@
+{
+  "metadata": {
+    "customer": "Brennan & Clark LLP",
+    "model": "Model B — Guided Assessment",
+    "consultant": "Daniela Reyes, Senior Legal Technology Consultant",
+    "duration": "4 days (March 11–14, 2026)",
+    "status": "Complete",
+    "interviews": 3
+  },
+  "activitySummary": {
+    "questionnaireSections": "22 of 22",
+    "interviewAnswered": 7,
+    "promoted": 7,
+    "annotations": 6,
+    "overrides": 2,
+    "customFindings": 3
+  },
+  "keyDecisions": [
+    {
+      "type": "Score Override",
+      "title": "Calendar & Deadlines downgraded from 2 to 1",
+      "rationale": "Confirmed missed deadline with no process change justifies the lowest maturity score."
+    },
+    {
+      "type": "Score Override",
+      "title": "License Utilization upgraded from 2 to 3",
+      "rationale": "Core platform usage is functional — the gap is in secondary features, not fundamentals."
+    },
+    {
+      "type": "Custom Finding",
+      "title": "Single Point of Failure — Office Manager Dependency",
+      "rationale": "No backup, no documentation, no cross-training for the person who runs all firm operations."
+    },
+    {
+      "type": "Custom Finding",
+      "title": "Conflict Checking Relies on Attorney Memory",
+      "rationale": "Live demonstration during assessment revealed an undetected near-miss conflict."
+    },
+    {
+      "type": "Custom Finding",
+      "title": "No Defined Communication Cadence",
+      "rationale": "8 to 12 weekly status calls consuming 5 to 8 hours of staff time — a structural client experience gap."
+    },
+    {
+      "type": "Recommendation",
+      "title": "Voice-to-text for senior partner",
+      "rationale": "Preserves preferred dictation workflow while eliminating the 3 to 5 day reconstruction lag costing $60K+ annually."
+    },
+    {
+      "type": "Recommendation",
+      "title": "Structured billing calendar",
+      "rationale": "Compresses the 12-day review bottleneck to 5 days by setting deadlines attorneys have never been given."
+    }
+  ],
+  "timeline": [
+    {
+      "day": 1,
+      "date": "March 11, 2026",
+      "title": "API Analysis & Questionnaire Review",
+      "activities": [
+        "Reviewed automated baseline findings from Clio API data",
+        "Analyzed questionnaire responses (22 sections completed by office manager)",
+        "Identified preliminary enrichment patterns across all 7 domains",
+        "Prepared interview questions based on data-questionnaire convergence",
+        "Flagged 5 findings for deeper investigation during stakeholder interviews"
+      ]
+    },
+    {
+      "day": 2,
+      "date": "March 12, 2026",
+      "title": "Stakeholder Interviews — Day 1",
+      "activities": [
+        "45-minute interview with Robert Brennan (Managing Partner)",
+        "30-minute interview with Maria Santos (Office Manager)",
+        "Observed live time entry, billing, and calendar workflows",
+        "Confirmed missed deadline details and manual calculation process",
+        "Demonstrated permission settings to office manager — immediate recognition of risk",
+        "Promoted 5 interview responses to finding annotations"
+      ]
+    },
+    {
+      "day": 3,
+      "date": "March 13, 2026",
+      "title": "Stakeholder Interviews — Day 2 & Analysis",
+      "activities": [
+        "30-minute interview with Andrea Torres (Paralegal)",
+        "Observed deadline calculation workflow using personal spreadsheet",
+        "Conducted live conflict check demonstration — identified near-miss",
+        "Created 3 custom findings based on interview observations",
+        "Wrote 6 annotations across findings 3.1, 3.3, 2.3, 7.1, 1.1, and 4.1",
+        "Drafted score override justifications for findings 2.3 and 6.2"
+      ]
+    },
+    {
+      "day": 4,
+      "date": "March 14, 2026",
+      "title": "Report Preparation & Delivery",
+      "activities": [
+        "Finalized all annotations and score overrides",
+        "Completed custom finding documentation with observation, impact, and recommendation",
+        "Built prioritized 4-phase improvement roadmap",
+        "Prepared executive summary and domain narratives",
+        "Delivered preliminary findings to managing partner in a 30-minute closing session"
+      ]
+    }
+  ],
+  "interviewLog": [
+    {
+      "stakeholder": "Robert Brennan",
+      "role": "Managing Partner",
+      "date": "March 12, 2026",
+      "duration": "45 minutes",
+      "keyTopics": "Utilization variance, Karen Clark workflow, billing bottleneck, missed deadline, adoption gap, revenue impact awareness"
+    },
+    {
+      "stakeholder": "Maria Santos",
+      "role": "Office Manager",
+      "date": "March 12, 2026",
+      "duration": "30 minutes",
+      "keyTopics": "Permission awareness, billing draft workflow, trust accounting process, single point of failure risk, client status calls"
+    },
+    {
+      "stakeholder": "Andrea Torres",
+      "role": "Paralegal",
+      "date": "March 13, 2026",
+      "duration": "30 minutes",
+      "keyTopics": "Deadline calculation process, court rules request history, calendar linking friction, document organization in Google Drive"
+    }
+  ],
+  "preEngagementBriefing": "Brennan & Clark LLP is a 4-attorney general practice firm in Tampa, Florida, operating on Clio Manage Essentials since 2019 (self-implemented). The firm added Clio Grow approximately 18 months ago but adoption appears partial. The Clio Efficiency Checklist score places them in the Basic Use tier (estimated 42 of 85 points), indicating functional setup with significant missed opportunities. Revenue is approximately $610,000 annually across 5 practice areas. The automated baseline reveals a 27% utilization rate (likely lower when adjusted for actual hours worked), a 38-day billing cycle with $127,000 in unbilled inventory, and an 80% admin access rate with no permission groups. The firm's questionnaire responses suggest awareness of gaps but limited bandwidth for improvement. Priority areas for investigation: the utilization variance across attorneys (8% to 41% range suggests individual workflow issues, not firm-wide problems), the billing cycle bottleneck (12-day draft aging suggests a review process problem), and the adoption gap (50x difference between most and least active users). The managing partner has expressed interest in getting more value from Clio and improving billing efficiency. Approach the engagement as a collaborative assessment, not an audit."
+}

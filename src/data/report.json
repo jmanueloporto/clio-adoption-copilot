@@ -1,0 +1,242 @@
+{
+  "executiveSummary": "Brennan & Clark LLP has operated on Clio Manage since 2019 with a self-implemented Essentials plan supporting 4 attorneys, 1 paralegal, and 1 office manager across five practice areas generating approximately $610,000 in annual revenue. This assessment evaluated the firm's use of Clio across 7 domains through a three-layer methodology combining automated API analysis, organizational context from a 22-section questionnaire, and advanced analysis from a 4-day on-site engagement conducted by Daniela Reyes, Senior Legal Technology Consultant.\n\nThe firm's overall maturity score is 2.3 out of 5.0 (Developing), indicating that core Clio functionality is in place but significant gaps exist in configuration, workflow design, and team adoption that are directly impacting revenue, compliance, and operational efficiency. The automated baseline produced a score of 2.31; organizational context adjusted this marginally to 2.30, confirming that the data-driven assessment closely reflects the firm's actual operational reality.\n\nThree findings warrant immediate attention. First, the firm's calendar and deadline management received the assessment's only score of 1 (Initial) after the consultant overrode the automated score based on a confirmed missed deadline within the past year and the absence of any process change following that incident. The firm continues to calculate deadlines manually using a paralegal's personal spreadsheet, creating ongoing malpractice exposure. Second, the firm's utilization rate, when adjusted for actual hours worked (50-hour weeks versus the assumed 40), drops from 27% to 22%, representing approximately $178,000 in annual uncaptured revenue. One attorney's near-inactive system usage accounts for an estimated $60,000 to $70,000 of this gap. Third, a live conflict check conducted during the assessment revealed a near-miss that the firm's current memory-based process had not detected, exposing a fundamental gap in ethical compliance.\n\nThe revenue impact of the assessment's findings is substantial and concentrated. Across utilization ($178,000 uncaptured), realization ($43,000 in write-offs), and collection ($89,000 outstanding), the firm has approximately $120,000 in recoverable annual revenue available through workflow improvements that do not require new clients, higher rates, or additional staff. The billing cycle averages 38 days with $127,000 in unbilled inventory, and the 12-day attorney review bottleneck is an unmanaged process gap that costs approximately $4,200 per month in delayed collections.\n\nThe firm's technology adoption shows a 50x gap between its most and least active users, driven by one-time initial training, no designated Clio champion, and inconsistent leadership use of the system. The office manager functions as a single point of failure for billing, trust accounting, system administration, and operational knowledge — with no documentation, no backup, and no cross-training. The firm's pattern of starting Clio features and abandoning them (matter stages, Grow intake forms, custom fields) predicts that any improvement initiative without structured change management will follow the same trajectory.\n\nDespite these gaps, the firm's foundation is sound. Core matter management, time tracking, and billing functions operate consistently for the majority of users. The firm's technology attitude is 'willing but cautious,' and the managing partner's stated priority — getting more value from the tools the firm already pays for — aligns precisely with the assessment's findings. The 20-item improvement roadmap that follows is organized into four phases prioritized by risk, revenue impact, and implementation complexity, designed to deliver measurable results within each phase while building toward sustained operational improvement.",
+  "scoreOverview": {
+    "baselineScore": 2.31,
+    "contextScore": 2.30,
+    "finalScore": 2.30,
+    "rating": "Developing",
+    "ratingDescription": "Core functionalities are in place, but there is room for strategic enhancements across most operational areas."
+  },
+  "domainSections": [
+    {
+      "domainId": 1,
+      "title": "Platform Configuration & Security",
+      "score": 2.0,
+      "isExpanded": false,
+      "collapsedSummary": "Over-permissioned environment with partial 2FA, no security policy, and 40% configuration completeness. The firm self-implemented without guidance and has not revisited permissions or configuration since initial setup.",
+      "narrative": null
+    },
+    {
+      "domainId": 2,
+      "title": "Matter & Contact Management",
+      "score": 2.0,
+      "isExpanded": true,
+      "collapsedSummary": "Significant data quality gaps with 22% stale matters, 32% missing practice areas, and a confirmed missed deadline overridden to score 1.",
+      "narrative": "Matter and Contact Management is the domain where automated data and organizational context diverge most significantly. The baseline score of 2.25 dropped to 2.0 after the questionnaire revealed that no individual owns matter data quality, the firm uses an informal and unenforced matter opening standard, and stale matter review happens only reactively. The most critical finding in this domain — and in the entire assessment — is Calendar and Deadline Management (Finding 2.3), which received the only consultant score override in the assessment: from Developing (2) to Initial (1). The override is based on a confirmed missed filing deadline within the past year, continued reliance on manual deadline calculation using a paralegal's personal spreadsheet, and the firm's own acknowledgment that nothing in the process changed after the incident. This combination of demonstrated failure and unchanged process represents active malpractice exposure that increases with every new matter opened.\n\nThe conflict check finding, identified through a live demonstration during the on-site assessment, revealed that the firm's memory-based approach has already failed to detect a potential conflict. This custom finding carries High severity and is the highest-priority remediation item alongside deadline management. Contact data quality scored higher at Defined (3), reflecting adequate but imperfect records — the 76% email completeness rate traces directly to email not being required at intake, a process gap rather than a data entry failure. Matter stages were configured for two practice areas but abandoned in favor of a spreadsheet, representing both wasted effort and a trust problem with the platform."
+    },
+    {
+      "domainId": 3,
+      "title": "Time Tracking, Billing & Payments",
+      "score": 2.17,
+      "isExpanded": true,
+      "collapsedSummary": "22% adjusted utilization rate with $178,000 uncaptured revenue, 38-day billing cycle with $127,000 unbilled inventory, and 82% collection rate with $89,000 outstanding.",
+      "narrative": "Time Tracking, Billing, and Payments is the highest-weighted domain in the assessment and the one with the most direct revenue impact. Every finding in this domain connects to a specific dollar amount of recoverable revenue, making it the domain where improvement produces the fastest and most measurable financial return.\n\nThe utilization finding (3.1) tells a story that gets worse with context. The automated baseline measured 27% utilization against a standard 40-hour week. The questionnaire revealed that attorneys work 50-hour weeks, dropping adjusted utilization to 22%. The consultant annotation confirmed that two attorneys regularly handle client calls from personal phones without logging time, and that flat-fee matters receive no time tracking at all. One attorney's resistance to direct system entry — preferring dictation to an assistant who reconstructs time 3 to 5 days later — accounts for an estimated $60,000 to $70,000 in annual uncaptured revenue from that single workflow gap.\n\nThe billing cycle finding (3.3) identified a 12-day attorney review bottleneck that the office manager has been silently absorbing rather than escalating. She generates drafts on the first of each month and then waits an average of 12 days for attorneys to review, sending reminder emails that go unheeded because no one has ever established a review deadline. The $127,000 in unbilled inventory represents 2.5 months of earned revenue the firm has not invoiced. The collection finding (3.5) reveals that Clio Payments — included in the firm's subscription at no additional cost — has never been activated, while the firm accepts only checks and bank transfers and follows up on overdue invoices informally at 30 to 60 days. The realization finding (3.4) shows one attorney writing off nearly half of billed time through unchecked discretionary discounting, accounting for 40% of the firm's $43,000 in annual write-offs."
+    },
+    {
+      "domainId": 4,
+      "title": "Document Management & Workflow Automation",
+      "score": 2.0,
+      "isExpanded": false,
+      "collapsedSummary": "Zero document templates in Clio despite 10 Word templates in use. Documents split between Clio and Google Drive. 34% of matters have tasks, 28% overdue rate. Recent missed obligation confirmed.",
+      "narrative": null
+    },
+    {
+      "domainId": 5,
+      "title": "Client Intake & Growth",
+      "score": 2.67,
+      "isExpanded": false,
+      "collapsedSummary": "31% conversion rate with ad hoc intake, abandoned Grow forms, and reactive client communication. No defined communication cadence creates 8-12 weekly status calls consuming 5-8 hours of staff time.",
+      "narrative": null
+    },
+    {
+      "domainId": 6,
+      "title": "Reporting, Analytics & Integrations",
+      "score": 2.5,
+      "isExpanded": false,
+      "collapsedSummary": "Firm tracks 2 of 7 key metrics using manual spreadsheets. License utilization at 35% of Essentials capabilities — upgraded from 2 to 3 by consultant based on functional core usage.",
+      "narrative": null
+    },
+    {
+      "domainId": 7,
+      "title": "Adoption, Training & Collaboration",
+      "score": 3.0,
+      "isExpanded": false,
+      "collapsedSummary": "50x adoption gap between most and least active users. Initial-only training, no Clio champion, inconsistent leadership use. Office manager is a single point of failure for all firm operations.",
+      "narrative": null
+    }
+  ],
+  "roadmap": [
+    {
+      "phase": 1,
+      "title": "Immediate (Days 1–30)",
+      "focus": "Risk Remediation",
+      "keyMetric": "Zero unmitigated compliance risks",
+      "items": [
+        {
+          "number": 1,
+          "title": "Implement conflict check procedure",
+          "description": "Create a written procedure requiring Clio global search before accepting any new representation. Assign responsibility to Andrea Torres. Add to new matter opening checklist as gating step.",
+          "findingRef": "Custom Finding 2",
+          "target": "100% of new matters have documented conflict checks within 30 days"
+        },
+        {
+          "number": 2,
+          "title": "Configure court rules and deadline automation",
+          "description": "Activate Clio Court Rules for Florida Bar. Replace the manual spreadsheet-based deadline calculation. Configure mandatory dual reminders on all deadline events.",
+          "findingRef": "Finding 2.3",
+          "target": "Zero manually calculated deadlines within 30 days"
+        },
+        {
+          "number": 3,
+          "title": "Restructure user permissions",
+          "description": "Reduce admin access to managing partner and office manager only. Create permission groups for attorney, paralegal, and administrative roles. Enforce firm-wide 2FA.",
+          "findingRef": "Finding 1.1",
+          "target": "Permission groups active, 2FA enforced for all users within 14 days"
+        },
+        {
+          "number": 4,
+          "title": "Activate Clio Payments",
+          "description": "Enable Clio Payments on the existing Essentials subscription. Add payment links to all invoice templates. Configure for credit card and eCheck acceptance.",
+          "findingRef": "Finding 3.5",
+          "target": "Online payment option on 100% of new invoices within 14 days"
+        },
+        {
+          "number": 5,
+          "title": "Begin office manager workflow documentation",
+          "description": "Start documenting Maria Santos' critical workflows: invoice generation, trust accounting, payment processing. Create step-by-step procedures stored in a shared location.",
+          "findingRef": "Custom Finding 1",
+          "target": "Top 3 critical workflows documented within 30 days"
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "title": "Short-Term (Days 31–90)",
+      "focus": "Revenue Recovery",
+      "keyMetric": "$40,000+ in annualized revenue improvement",
+      "items": [
+        {
+          "number": 6,
+          "title": "Implement time entry policy",
+          "description": "Create and communicate a written same-day time entry policy. Train all attorneys on timer usage. Establish weekly compliance monitoring via activity reports.",
+          "findingRef": "Finding 3.1",
+          "target": "Same-day entry rate from 22% to 60% within 60 days"
+        },
+        {
+          "number": 7,
+          "title": "Restructure billing workflow",
+          "description": "Implement structured billing calendar: drafts on the 1st, attorney review due by the 5th, office manager sends by the 7th. Configure Clio billing notifications at 48-hour and 72-hour intervals.",
+          "findingRef": "Finding 3.3",
+          "target": "Draft aging from 12 days to under 5 days within 60 days"
+        },
+        {
+          "number": 8,
+          "title": "Establish discount approval thresholds",
+          "description": "Create written policy requiring partner approval for discounts exceeding 10%. Review billing rates against market benchmarks. Address the 52% realization attorney directly with revenue impact data.",
+          "findingRef": "Finding 3.4",
+          "target": "Firm realization rate from 71% to 80% within 90 days"
+        },
+        {
+          "number": 9,
+          "title": "Build collections workflow",
+          "description": "Configure automated payment reminders at 15-day intervals. Create task template for collections escalation. Address the three clients representing 61% of 90+ day balances with partner-level conversations.",
+          "findingRef": "Finding 3.5",
+          "target": "Collection rate from 82% to 90% within 90 days"
+        },
+        {
+          "number": 10,
+          "title": "Activate client portal",
+          "description": "Enable Clio for Clients on all active client contacts. Send portal invitations. Upload key documents. Establish bi-weekly proactive update standard for all active matters.",
+          "findingRef": "Finding Q.2",
+          "target": "Portal active for 50% of active clients within 60 days"
+        }
+      ]
+    },
+    {
+      "phase": 3,
+      "title": "Medium-Term (Days 91–180)",
+      "focus": "Workflow Optimization",
+      "keyMetric": "200+ hours per year saved through automation",
+      "items": [
+        {
+          "number": 11,
+          "title": "Migrate document templates to Clio",
+          "description": "Convert the firm's 10 most-used Word templates into Clio document templates with merge fields for automatic population. Establish document categories and naming conventions.",
+          "findingRef": "Finding 4.1",
+          "target": "10 templates migrated, saving an estimated 5-10 hours per week"
+        },
+        {
+          "number": 12,
+          "title": "Build task template lists for all practice areas",
+          "description": "Create standardized task workflows for each of the firm's 5 practice areas. Include due date offsets, default assignees, and dependency chains. Apply to all new matters.",
+          "findingRef": "Finding 4.2",
+          "target": "100% of new matters have structured task lists within 120 days"
+        },
+        {
+          "number": 13,
+          "title": "Configure matter stages across all practice areas",
+          "description": "Redesign matter stage structure for all 5 practice areas based on actual case lifecycles. Assign stage update responsibility. Establish weekly review cadence. Retire the parallel spreadsheet.",
+          "findingRef": "Finding 2.4",
+          "target": "All practice areas with active stages, 80% progression rate within 120 days"
+        },
+        {
+          "number": 14,
+          "title": "Consolidate trust accounting into Clio",
+          "description": "Migrate trust accounting from the dual Clio-QuickBooks system to Clio as the primary trust ledger. Configure evergreen trust management for all retainer matters. Establish monthly reconciliation workflow.",
+          "findingRef": "Finding 3.6",
+          "target": "Single-system trust accounting with monthly reconciliation within 150 days"
+        },
+        {
+          "number": 15,
+          "title": "Install email add-on and reactivate Grow",
+          "description": "Deploy Gmail/Outlook add-on for all users. Train on one-click email archiving to matters. Reactivate Clio Grow intake forms with structured workflow and response time standards.",
+          "findingRef": "Findings 7.2, 5.1",
+          "target": "Email logging rate from 11% to 50%, Grow forms actively processing inquiries"
+        }
+      ]
+    },
+    {
+      "phase": 4,
+      "title": "Long-Term (Days 181–365)",
+      "focus": "Strategic Growth",
+      "keyMetric": "Sustained adoption with measurable performance improvement",
+      "items": [
+        {
+          "number": 16,
+          "title": "Deliver role-specific training program",
+          "description": "Conduct targeted training sessions for each role: attorneys (billing and matter management), paralegals (documents and calendar), office manager (reporting and administration). Designate a formal Clio champion.",
+          "findingRef": "Finding 7.1",
+          "target": "All users trained, champion designated, adoption scorecard established"
+        },
+        {
+          "number": 17,
+          "title": "Configure comprehensive reporting",
+          "description": "Set up automated monthly reports for all 7 key metrics: utilization, realization, collection, AR aging, revenue by practice area, matters opened/closed, and client acquisition cost. Schedule delivery to firm leadership.",
+          "findingRef": "Finding 6.1",
+          "target": "7 of 7 key metrics tracked with monthly automated delivery"
+        },
+        {
+          "number": 18,
+          "title": "Conduct matter hygiene cleanup",
+          "description": "Assign practice areas to the 45 unclassified matters. Review and close or reclassify the 31 stale matters. Resolve the 7 orphaned matters. Merge the 12 duplicate contacts. Establish ongoing data quality ownership.",
+          "findingRef": "Findings 2.1, 2.2",
+          "target": "95% practice area assignment, zero stale matters, zero orphaned matters"
+        },
+        {
+          "number": 19,
+          "title": "Address senior partner adoption",
+          "description": "Implement voice-to-text time entry solution for the senior partner. Frame as preserving her preferred dictation workflow while eliminating reconstruction lag. Track utilization improvement monthly.",
+          "findingRef": "Finding 7.1",
+          "target": "Senior partner utilization from 8% to 20% within 6 months"
+        },
+        {
+          "number": 20,
+          "title": "Evaluate subscription tier and advanced tools",
+          "description": "After 6 months of full Essentials activation, assess whether the firm's reporting and analytics needs justify upgrading to Advanced ($30/user/month additional). Evaluate Clio Draft for document generation and Clio Duo for AI-assisted workflows.",
+          "findingRef": "Finding 6.2",
+          "target": "Data-driven upgrade decision with clear ROI justification"
+        }
+      ]
+    }
+  ]
+}

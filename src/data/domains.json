@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "name": "Platform Configuration & Security",
+    "question": "Is Clio set up correctly and securely for the firm's needs?",
+    "description": "Covers user roles, permissions, 2FA, and platform configuration completeness including practice areas, custom fields, templates, activity categories, billing themes, and text snippets.",
+    "baselineWeight": 0.10,
+    "contextWeight": 0.10,
+    "baselineScore": 2.0,
+    "contextScore": 2.0,
+    "finalScore": 2.0,
+    "findingIds": ["1.1", "1.2"],
+    "apiCoverage": "Medium"
+  },
+  {
+    "id": 2,
+    "name": "Matter & Contact Management",
+    "question": "Is the firm's case and client data organized for efficient operations?",
+    "description": "Covers matter organization and hygiene, contact data quality, calendar utilization and deadline management, and matter stage and workflow structure.",
+    "baselineWeight": 0.18,
+    "contextWeight": 0.16,
+    "baselineScore": 2.25,
+    "contextScore": 2.0,
+    "finalScore": 2.0,
+    "findingIds": ["2.1", "2.2", "2.3", "2.4"],
+    "apiCoverage": "High"
+  },
+  {
+    "id": 3,
+    "name": "Time Tracking, Billing & Payments",
+    "question": "Is the firm capturing revenue accurately and getting paid efficiently?",
+    "description": "Covers utilization rate, time entry timeliness, billing cycle efficiency, realization rate, collection rate, and trust account activity. This is the highest-impact domain with the most direct revenue connection.",
+    "baselineWeight": 0.25,
+    "contextWeight": 0.20,
+    "baselineScore": 2.17,
+    "contextScore": 2.17,
+    "finalScore": 2.17,
+    "findingIds": ["3.1", "3.2", "3.3", "3.4", "3.5", "3.6"],
+    "apiCoverage": "High"
+  },
+  {
+    "id": 4,
+    "name": "Document Management & Workflow Automation",
+    "question": "Is the firm leveraging automation to reduce manual work and ensure consistency?",
+    "description": "Covers document management maturity and task management adoption including templates, automation, and structured workflows.",
+    "baselineWeight": 0.15,
+    "contextWeight": 0.16,
+    "baselineScore": 2.0,
+    "contextScore": 2.0,
+    "finalScore": 2.0,
+    "findingIds": ["4.1", "4.2"],
+    "apiCoverage": "Medium"
+  },
+  {
+    "id": 5,
+    "name": "Client Intake & Growth",
+    "question": "Is the firm systematically converting leads into clients?",
+    "description": "Covers intake pipeline health via Clio Grow, the Grow-to-Manage integration, and client experience and communication quality.",
+    "baselineWeight": 0.08,
+    "contextWeight": 0.14,
+    "baselineScore": 3.0,
+    "contextScore": 2.67,
+    "finalScore": 2.67,
+    "findingIds": ["5.1", "5.2", "Q.2"],
+    "apiCoverage": "Low-Medium"
+  },
+  {
+    "id": 6,
+    "name": "Reporting, Analytics & Integrations",
+    "question": "Is the firm using data to make decisions and connecting Clio to its broader ecosystem?",
+    "description": "Covers reporting utilization, license and feature utilization, and integration with third-party tools.",
+    "baselineWeight": 0.10,
+    "contextWeight": 0.12,
+    "baselineScore": 2.0,
+    "contextScore": 2.5,
+    "finalScore": 2.5,
+    "findingIds": ["6.1", "6.2"],
+    "apiCoverage": "Medium-Low"
+  },
+  {
+    "id": 7,
+    "name": "Adoption, Training & Collaboration",
+    "question": "Is the team fully trained, consistently using Clio, and collaborating effectively?",
+    "description": "Covers user adoption breadth and consistency, communication logging discipline, and firm technology culture and change readiness.",
+    "baselineWeight": 0.14,
+    "contextWeight": 0.12,
+    "baselineScore": 3.0,
+    "contextScore": 3.0,
+    "finalScore": 3.0,
+    "findingIds": ["7.1", "7.2", "Q.1"],
+    "apiCoverage": "Low-Medium"
+  }
+]

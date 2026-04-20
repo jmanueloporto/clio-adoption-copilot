@@ -1,0 +1,833 @@
+[
+  {
+    "id": "Q1.1",
+    "enrichesFinding": "1.1",
+    "title": "User Roles & Permissions",
+    "domainId": 1,
+    "isInteractive": false,
+    "questions": [
+      {
+        "qId": "Q1.1.1",
+        "text": "Is two-factor authentication (2FA/MFA) enabled for all users at your firm?",
+        "type": "single-select",
+        "options": ["Yes required for all", "Yes for some users", "No", "I don't know"],
+        "sampleAnswer": "Yes for some users"
+      },
+      {
+        "qId": "Q1.1.2",
+        "text": "Does your firm have a written information security or technology policy?",
+        "type": "single-select",
+        "options": ["Yes comprehensive", "Yes basic", "No", "Working on one"],
+        "sampleAnswer": "No"
+      },
+      {
+        "qId": "Q1.1.3",
+        "text": "When a team member leaves the firm, what happens to their Clio account?",
+        "type": "single-select",
+        "options": ["Immediately disabled and access revoked", "Disabled within a few days", "It depends on who handles it", "I'm not sure"],
+        "sampleAnswer": "It depends on who handles it"
+      },
+      {
+        "qId": "Q1.1.4",
+        "text": "Has your firm experienced any data security concerns or unauthorized access?",
+        "type": "single-select",
+        "options": ["Yes", "No", "Not that we're aware of"],
+        "sampleAnswer": "No"
+      }
+    ]
+  },
+  {
+    "id": "Q1.2",
+    "enrichesFinding": "1.2",
+    "title": "Platform Configuration Completeness",
+    "domainId": 1,
+    "isInteractive": false,
+    "questions": [
+      {
+        "qId": "Q1.2.1",
+        "text": "When your firm first set up Clio, did you work with a consultant or Clio's onboarding team?",
+        "type": "single-select",
+        "options": ["Professional consultant", "Clio onboarding team", "Set it up ourselves", "I wasn't involved in setup"],
+        "sampleAnswer": "Set it up ourselves"
+      },
+      {
+        "qId": "Q1.2.2",
+        "text": "Which of these Clio features are you aware exist but haven't set up?",
+        "type": "multi-select",
+        "options": ["Document templates", "Task template lists", "Custom billing themes", "Activity categories", "Document categories", "Text snippets", "Custom fields", "Expense categories", "None — we've explored all of them"],
+        "sampleAnswer": ["Document templates", "Task template lists"]
+      },
+      {
+        "qId": "Q1.2.3",
+        "text": "What is the biggest barrier to configuring features you haven't set up yet?",
+        "type": "single-select",
+        "options": ["Don't know how", "Don't have time", "Tried but it was too complicated", "Didn't know they existed", "We don't see the value"],
+        "sampleAnswer": "Don't have time"
+      },
+      {
+        "qId": "Q1.2.4",
+        "text": "If you could have one Clio feature fully configured and working tomorrow, what would it be?",
+        "type": "free-text",
+        "sampleAnswer": "Document automation — we waste hours rewriting the same letters"
+      }
+    ]
+  },
+  {
+    "id": "Q2.1",
+    "enrichesFinding": "2.1",
+    "title": "Matter Organization & Hygiene",
+    "domainId": 2,
+    "isInteractive": false,
+    "questions": [
+      {
+        "qId": "Q2.1.1",
+        "text": "Does your firm have a standard process for opening new matters?",
+        "type": "single-select",
+        "options": ["Written checklist or procedure", "Informal standard", "Each attorney handles it differently", "No standard"],
+        "sampleAnswer": "Informal standard"
+      },
+      {
+        "qId": "Q2.1.2",
+        "text": "How often does someone review open matters to close or archive completed cases?",
+        "type": "single-select",
+        "options": ["Monthly", "Quarterly", "Annually", "Only when it becomes a problem", "Never"],
+        "sampleAnswer": "Only when it becomes a problem"
+      },
+      {
+        "qId": "Q2.1.3",
+        "text": "Are matters categorized by practice area consistently?",
+        "type": "single-select",
+        "options": ["Always — it's required", "Usually but not enforced", "Sometimes", "Rarely"],
+        "sampleAnswer": "Usually but not enforced"
+      },
+      {
+        "qId": "Q2.1.4",
+        "text": "Who is responsible for maintaining matter data quality?",
+        "type": "single-select",
+        "options": ["A specific administrator", "Each attorney for their own", "Nobody has this responsibility"],
+        "sampleAnswer": "Nobody has this responsibility"
+      }
+    ]
+  },
+  {
+    "id": "Q2.2",
+    "enrichesFinding": "2.2",
+    "title": "Contact Data Quality",
+    "domainId": 2,
+    "isInteractive": false,
+    "questions": [
+      {
+        "qId": "Q2.2.1",
+        "text": "When a new client comes in, what information is required before a matter is opened?",
+        "type": "multi-select",
+        "options": ["Full name", "Email", "Phone", "Mailing address", "Date of birth", "Conflict check", "None specifically required"],
+        "sampleAnswer": ["Full name", "Phone"]
+      },
+      {
+        "qId": "Q2.2.2",
+        "text": "Who enters client contact information into Clio?",
+        "type": "single-select",
+        "options": ["Intake staff", "Paralegals", "Attorneys themselves", "Whoever is available", "It varies"],
+        "sampleAnswer": "Paralegals"
+      },
+      {
+        "qId": "Q2.2.3",
+        "text": "Has your firm ever run a contact deduplication or data cleanup?",
+        "type": "single-select",
+        "options": ["Yes within the last year", "Yes but more than a year ago", "Never"],
+        "sampleAnswer": "Never"
+      },
+      {
+        "qId": "Q2.2.4",
+        "text": "Do you use custom fields on contacts to track practice-specific information?",
+        "type": "single-select",
+        "options": ["Yes extensively", "A few fields", "We set them up but don't use them consistently", "No custom fields"],
+        "sampleAnswer": "We set them up but don't use them consistently"
+      }
+    ]
+  },
+  {
+    "id": "Q2.3",
+    "enrichesFinding": "2.3",
+    "title": "Calendar & Deadline Management",
+    "domainId": 2,
+    "isInteractive": true,
+    "questions": [
+      {
+        "qId": "Q2.3.1",
+        "text": "Where does your firm primarily manage its calendar?",
+        "type": "single-select",
+        "options": ["Clio calendar", "Google Calendar synced to Clio", "Outlook synced to Clio", "External calendar not synced", "Paper calendar", "Mix of systems"],
+        "sampleAnswer": "Google Calendar synced to Clio"
+      },
+      {
+        "qId": "Q2.3.2",
+        "text": "How are court dates and filing deadlines entered into the system?",
+        "type": "single-select",
+        "options": ["Manually by attorney", "Manually by paralegal/staff", "Court rules integration", "We don't have a systematic approach"],
+        "sampleAnswer": "Manually by paralegal/staff"
+      },
+      {
+        "qId": "Q2.3.3",
+        "text": "Does your firm use deadline calculation or court rules tools?",
+        "type": "single-select",
+        "options": ["Clio Court Rules", "Third-party tool", "We calculate manually", "I'm not aware of such tools"],
+        "sampleAnswer": "We calculate manually"
+      },
+      {
+        "qId": "Q2.3.4",
+        "text": "Has your firm ever missed a deadline due to a calendar or scheduling error?",
+        "type": "single-select",
+        "options": ["Yes within the last year", "Yes but not recently", "No", "I'm not sure"],
+        "sampleAnswer": "Yes within the last year"
+      }
+    ]
+  },
+  {
+    "id": "Q2.4",
+    "enrichesFinding": "2.4",
+    "title": "Matter Stage & Workflow Structure",
+    "domainId": 2,
+    "isInteractive": false,
+    "questions": [
+      {
+        "qId": "Q2.4.1",
+        "text": "Does your firm use Clio's matter stages (kanban board) to track case progress?",
+        "type": "single-select",
+        "options": ["Yes actively", "We set it up but don't maintain it", "We tried but stopped", "No, we're not familiar with it"],
+        "sampleAnswer": "We set it up but don't maintain it"
+      },
+      {
+        "qId": "Q2.4.2",
+        "text": "How does your firm currently track where a case stands in its lifecycle?",
+        "type": "single-select",
+        "options": ["Matter stages in Clio", "Spreadsheet or whiteboard", "Regular team meetings", "Each attorney tracks their own", "No systematic tracking"],
+        "sampleAnswer": "Spreadsheet or whiteboard"
+      },
+      {
+        "qId": "Q2.4.3",
+        "text": "Do your clients ask about case status? If so, how do you handle those inquiries?",
+        "type": "single-select",
+        "options": ["We proactively update clients", "We respond when asked", "It's a frequent source of client frustration", "Not applicable"],
+        "sampleAnswer": "We respond when asked"
+      },
+      {
+        "qId": "Q2.4.4",
+        "text": "Are paralegals or support staff involved in moving matters through workflow stages?",
+        "type": "single-select",
+        "options": ["Yes they drive most progression", "They assist but attorneys decide", "No, only attorneys manage matters"],
+        "sampleAnswer": "They assist but attorneys decide"
+      }
+    ]
+  },
+  {
+    "id": "Q3.1",
+    "enrichesFinding": "3.1",
+    "title": "Utilization Rate",
+    "domainId": 3,
+    "isInteractive": true,
+    "questions": [
+      {
+        "qId": "Q3.1.1",
+        "text": "How many hours per week does a typical attorney at your firm work?",
+        "type": "numeric",
+        "default": 45,
+        "sampleAnswer": 50
+      },
+      {
+        "qId": "Q3.1.2",
+        "text": "Does your firm have a formal time entry policy?",
+        "type": "single-select",
+        "options": ["Yes with written policy", "Yes informal expectation", "No"],
+        "sampleAnswer": "Yes informal expectation"
+      },
+      {
+        "qId": "Q3.1.3",
+        "text": "What is your firm's target utilization rate?",
+        "type": "single-select",
+        "options": ["We have a specific target", "We don't have a target", "I don't know what utilization rate means"],
+        "sampleAnswer": "We don't have a target"
+      },
+      {
+        "qId": "Q3.1.4",
+        "text": "Does your firm use any time capture tools beyond Clio's built-in timer?",
+        "type": "multi-select",
+        "options": ["No additional tools", "Third-party time mining software", "Dictation-based entry", "Mobile app for on-the-go entry"],
+        "sampleAnswer": ["No additional tools"]
+      },
+      {
+        "qId": "Q3.1.5",
+        "text": "Which of these best describes your firm's billing model?",
+        "type": "single-select",
+        "options": ["Primarily hourly", "Mix of hourly and flat fee", "Primarily flat fee", "Primarily contingency"],
+        "sampleAnswer": "Mix of hourly and flat fee",
+        "conditional": {
+          "triggerValues": ["Primarily flat fee", "Primarily contingency"],
+          "followUp": {
+            "qId": "Q3.1.5a",
+            "text": "Even though your firm does not bill primarily by the hour, do you track time for productivity analysis?",
+            "type": "single-select",
+            "options": ["Yes consistently", "Sometimes", "No"],
+            "sampleAnswer": null
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "Q3.2",
+    "enrichesFinding": "3.2",
+    "title": "Time Entry Timeliness",
+    "domainId": 3,
+    "isInteractive": false,
+    "questions": [
+      {
+        "qId": "Q3.2.1",
+        "text": "What is your firm's expected timeframe for logging time after work is performed?",
+        "type": "single-select",
+        "options": ["Same day", "Within 24 hours", "Within the week", "No specific expectation"],
+        "sampleAnswer": "Within 24 hours"
+      },
+      {
+        "qId": "Q3.2.2",
+        "text": "How does your firm typically enter time?",
+        "type": "multi-select",
+        "options": ["Clio timer in real-time", "Manual entry same day", "Batch entry at end of day", "Batch entry at end of week", "Reconstructing from calendar and notes"],
+        "sampleAnswer": ["Manual entry same day", "Batch entry at end of week"]
+      },
+      {
+        "qId": "Q3.2.3",
+        "text": "Does anyone at the firm review time entries for completeness before billing?",
+        "type": "single-select",
+        "options": ["Yes a specific person reviews", "Partners review their own", "No review process"],
+        "sampleAnswer": "No review process"
+      },
+      {
+        "qId": "Q3.2.4",
+        "text": "Do attorneys at your firm frequently work outside the office (court, client sites, remote)?",
+        "type": "single-select",
+        "options": ["Mostly in-office", "Frequently out of office", "Fully remote"],
+        "sampleAnswer": "Frequently out of office"
+      }
+    ]
+  },
+  {
+    "id": "Q3.3",
+    "enrichesFinding": "3.3",
+    "title": "Billing Cycle Efficiency",
+    "domainId": 3,
+    "isInteractive": false,
+    "questions": [
+      {
+        "qId": "Q3.3.1",
+        "text": "How often does your firm generate invoices?",
+        "type": "single-select",
+        "options": ["Weekly", "Bi-weekly", "Monthly", "Upon matter completion", "No regular schedule"],
+        "sampleAnswer": "Monthly"
+      },
+      {
+        "qId": "Q3.3.2",
+        "text": "Who is responsible for reviewing and finalizing invoices?",
+        "type": "single-select",
+        "options": ["Each attorney reviews their own", "A billing coordinator", "The managing partner", "No formal review"],
+        "sampleAnswer": "Each attorney reviews their own"
+      },
+      {
+        "qId": "Q3.3.3",
+        "text": "What is your target number of days from work performed to invoice sent?",
+        "type": "single-select",
+        "options": ["Under 15 days", "15 to 30 days", "30 to 60 days", "We don't have a target"],
+        "sampleAnswer": "We don't have a target"
+      },
+      {
+        "qId": "Q3.3.4",
+        "text": "What is the biggest bottleneck in your billing process?",
+        "type": "single-select",
+        "options": ["Attorney review delays", "Incomplete time entries", "Approval workflow", "Generating invoices is manual", "We don't have a significant bottleneck"],
+        "sampleAnswer": "Attorney review delays"
+      }
+    ]
+  },
+  {
+    "id": "Q3.4",
+    "enrichesFinding": "3.4",
+    "title": "Realization Rate",
+    "domainId": 3,
+    "isInteractive": false,
+    "questions": [
+      {
+        "qId": "Q3.4.1",
+        "text": "Does your firm have a formal policy on discounting or writing off time?",
+        "type": "single-select",
+        "options": ["Written policy with approval thresholds", "Informal guidelines", "At individual attorney discretion", "No policy"],
+        "sampleAnswer": "At individual attorney discretion"
+      },
+      {
+        "qId": "Q3.4.2",
+        "text": "What is the most common reason time is written off at your firm?",
+        "type": "single-select",
+        "options": ["Client disputes charges", "Attorney decides work took too long", "Block billing that underrepresents actual time", "Stale time entries that feel wrong to bill", "We rarely write off time"],
+        "sampleAnswer": "Attorney decides work took too long"
+      },
+      {
+        "qId": "Q3.4.3",
+        "text": "Do your clients receive fee estimates or budgets before work begins?",
+        "type": "single-select",
+        "options": ["Always", "For larger matters", "Rarely", "Never"],
+        "sampleAnswer": "Rarely"
+      },
+      {
+        "qId": "Q3.4.4",
+        "text": "Has your firm reviewed its billing rates in the last 12 months?",
+        "type": "single-select",
+        "options": ["Yes, adjusted", "Yes, kept the same", "No review conducted"],
+        "sampleAnswer": "No review conducted"
+      }
+    ]
+  },
+  {
+    "id": "Q3.5",
+    "enrichesFinding": "3.5",
+    "title": "Collection Rate",
+    "domainId": 3,
+    "isInteractive": false,
+    "questions": [
+      {
+        "qId": "Q3.5.1",
+        "text": "Is Clio Payments enabled for your firm?",
+        "type": "single-select",
+        "options": ["Yes, actively used", "Enabled but rarely used", "Not enabled", "I'm not sure"],
+        "sampleAnswer": "Not enabled"
+      },
+      {
+        "qId": "Q3.5.2",
+        "text": "What payment methods does your firm accept?",
+        "type": "multi-select",
+        "options": ["Check", "Bank transfer/ACH", "Credit card", "eCheck", "Online payment portal", "Payment plans"],
+        "sampleAnswer": ["Check", "Bank transfer/ACH"]
+      },
+      {
+        "qId": "Q3.5.3",
+        "text": "Does your firm have a formal collections process for overdue invoices?",
+        "type": "single-select",
+        "options": ["Written process with escalation steps", "Informal follow-up", "Ad hoc when someone notices", "No process"],
+        "sampleAnswer": "Informal follow-up"
+      },
+      {
+        "qId": "Q3.5.4",
+        "text": "At what point does your firm follow up on an unpaid invoice?",
+        "type": "single-select",
+        "options": ["Within 15 days", "15 to 30 days", "30 to 60 days", "Only when we notice it's overdue", "We don't follow up consistently"],
+        "sampleAnswer": "30 to 60 days"
+      }
+    ]
+  },
+  {
+    "id": "Q3.6",
+    "enrichesFinding": "3.6",
+    "title": "Trust Account Activity",
+    "domainId": 3,
+    "isInteractive": false,
+    "questions": [
+      {
+        "qId": "Q3.6.1",
+        "text": "Where does your firm manage trust/IOLTA accounting?",
+        "type": "single-select",
+        "options": ["Entirely in Clio", "Clio and QuickBooks in parallel", "QuickBooks only", "Other software", "Spreadsheets", "I'm not sure"],
+        "sampleAnswer": "Clio and QuickBooks in parallel",
+        "conditional": {
+          "triggerValues": ["Clio and QuickBooks in parallel"],
+          "followUp": {
+            "qId": "Q3.6.1a",
+            "text": "How would you describe the synchronization between Clio and QuickBooks for trust accounting?",
+            "type": "single-select",
+            "options": ["Works well", "Requires manual reconciliation", "Frequent issues", "We manage them independently"],
+            "sampleAnswer": "Requires manual reconciliation"
+          }
+        }
+      },
+      {
+        "qId": "Q3.6.2",
+        "text": "How frequently does your firm reconcile trust accounts?",
+        "type": "single-select",
+        "options": ["Monthly", "Quarterly", "Annually", "Only when audited", "We don't reconcile regularly"],
+        "sampleAnswer": "Monthly"
+      },
+      {
+        "qId": "Q3.6.3",
+        "text": "Has your firm ever been subject to a trust account audit or inquiry from the state bar?",
+        "type": "single-select",
+        "options": ["Yes", "No", "I don't know"],
+        "sampleAnswer": "No"
+      },
+      {
+        "qId": "Q3.6.4",
+        "text": "Does your firm use retainer agreements that require trust deposits?",
+        "type": "single-select",
+        "options": ["Yes for all or most matters", "Yes for some matter types", "Rarely", "Never"],
+        "sampleAnswer": "Yes for all or most matters"
+      }
+    ]
+  },
+  {
+    "id": "Q4.1",
+    "enrichesFinding": "4.1",
+    "title": "Document Management",
+    "domainId": 4,
+    "isInteractive": false,
+    "questions": [
+      {
+        "qId": "Q4.1.1",
+        "text": "Where does your firm primarily store case-related documents?",
+        "type": "single-select",
+        "options": ["Clio Documents", "Google Drive", "Dropbox", "Local/network drive", "Mix of locations", "No consistent location"],
+        "sampleAnswer": "Mix of locations"
+      },
+      {
+        "qId": "Q4.1.2",
+        "text": "Does your firm have document templates for commonly produced work product?",
+        "type": "single-select",
+        "options": ["Yes in Clio", "Yes in Word/other but not in Clio", "A few informal templates", "No templates"],
+        "sampleAnswer": "Yes in Word/other but not in Clio"
+      },
+      {
+        "qId": "Q4.1.3",
+        "text": "Approximately how many document types does your firm produce repeatedly (engagement letters, standard motions, correspondence, etc.)?",
+        "type": "single-select",
+        "options": ["1 to 5", "6 to 10", "11 to 15", "More than 15"],
+        "sampleAnswer": "6 to 10"
+      },
+      {
+        "qId": "Q4.1.4",
+        "text": "Is your firm aware of Clio Drive (desktop document sync) or Clio Launcher?",
+        "type": "single-select",
+        "options": ["Yes we use them", "Aware but haven't set up", "Not aware of these tools"],
+        "sampleAnswer": "Not aware of these tools"
+      }
+    ]
+  },
+  {
+    "id": "Q4.2",
+    "enrichesFinding": "4.2",
+    "title": "Task Management",
+    "domainId": 4,
+    "isInteractive": false,
+    "questions": [
+      {
+        "qId": "Q4.2.1",
+        "text": "How does your firm coordinate daily work across team members?",
+        "type": "multi-select",
+        "options": ["Clio tasks", "Email", "Verbal instructions", "Team meetings", "Shared spreadsheet or list", "Messaging app (Slack, Teams, etc.)"],
+        "sampleAnswer": ["Email", "Verbal instructions", "Team meetings"]
+      },
+      {
+        "qId": "Q4.2.2",
+        "text": "Does your firm have documented workflow checklists for standard case types?",
+        "type": "single-select",
+        "options": ["Yes in Clio task templates", "Yes on paper or in a document", "Informal — experienced staff know the steps", "No checklists"],
+        "sampleAnswer": "Informal — experienced staff know the steps"
+      },
+      {
+        "qId": "Q4.2.3",
+        "text": "Has your firm ever had a task or obligation fall through the cracks because responsibility was unclear?",
+        "type": "single-select",
+        "options": ["Yes recently", "Yes but not recently", "No", "I'm not sure"],
+        "sampleAnswer": "Yes recently"
+      },
+      {
+        "qId": "Q4.2.4",
+        "text": "How does your firm handle recurring tasks (annual filings, periodic reviews, etc.)?",
+        "type": "single-select",
+        "options": ["Task templates with automatic recurrence", "Calendar reminders", "Someone remembers", "We don't have many recurring tasks"],
+        "sampleAnswer": "Calendar reminders"
+      }
+    ]
+  },
+  {
+    "id": "Q5.1",
+    "enrichesFinding": "5.1",
+    "title": "Intake Pipeline",
+    "domainId": 5,
+    "isInteractive": false,
+    "questions": [
+      {
+        "qId": "Q5.1.1",
+        "text": "How does your firm handle new client inquiries?",
+        "type": "single-select",
+        "options": ["Structured intake process with assigned workflow", "Whoever answers the phone handles it", "Depends on the source of the inquiry", "No consistent approach"],
+        "sampleAnswer": "Whoever answers the phone handles it"
+      },
+      {
+        "qId": "Q5.1.2",
+        "text": "Does your firm use Clio Grow's intake forms on your website?",
+        "type": "single-select",
+        "options": ["Yes actively", "Set up but not actively used", "No", "I'm not sure what Clio Grow is"],
+        "sampleAnswer": "Set up but not actively used"
+      },
+      {
+        "qId": "Q5.1.3",
+        "text": "How quickly does your firm typically respond to a new client inquiry?",
+        "type": "single-select",
+        "options": ["Within 1 hour", "Same business day", "Within 24 hours", "It varies widely", "I'm not sure"],
+        "sampleAnswer": "It varies widely"
+      },
+      {
+        "qId": "Q5.1.4",
+        "text": "Does your firm track why potential clients choose not to hire you?",
+        "type": "single-select",
+        "options": ["Yes systematically", "Sometimes informally", "No"],
+        "sampleAnswer": "No"
+      }
+    ]
+  },
+  {
+    "id": "Q5.2",
+    "enrichesFinding": "5.2",
+    "title": "Grow-to-Manage Integration",
+    "domainId": 5,
+    "isInteractive": false,
+    "questions": [
+      {
+        "qId": "Q5.2.1",
+        "text": "When a lead becomes a client in Clio Grow, how is the matter created in Clio Manage?",
+        "type": "single-select",
+        "options": ["Automatic conversion through Grow integration", "Manual copy-paste from Grow to Manage", "We create a new matter in Manage from scratch", "I'm not sure how it works"],
+        "sampleAnswer": "Manual copy-paste from Grow to Manage"
+      },
+      {
+        "qId": "Q5.2.2",
+        "text": "Approximately how long does it take to convert a lead to an active matter?",
+        "type": "single-select",
+        "options": ["Under 5 minutes", "5 to 15 minutes", "15 to 30 minutes", "More than 30 minutes", "It varies"],
+        "sampleAnswer": "15 to 30 minutes"
+      },
+      {
+        "qId": "Q5.2.3",
+        "text": "Are custom fields synchronized between Clio Grow and Clio Manage?",
+        "type": "single-select",
+        "options": ["Yes fully synced", "Partially", "No", "I don't know"],
+        "sampleAnswer": "I don't know"
+      }
+    ]
+  },
+  {
+    "id": "Q5.3",
+    "enrichesFinding": "Q.2",
+    "title": "Client Experience & Communication",
+    "domainId": 5,
+    "isInteractive": false,
+    "questions": [
+      {
+        "qId": "Q5.3.1",
+        "text": "How do clients currently check on the status of their case?",
+        "type": "single-select",
+        "options": ["Client portal with self-service access", "Call or email and someone responds", "We proactively update them on a schedule", "Clients are expected to wait until we contact them"],
+        "sampleAnswer": "Call or email and someone responds"
+      },
+      {
+        "qId": "Q5.3.2",
+        "text": "Does your firm collect client feedback at the end of a matter?",
+        "type": "single-select",
+        "options": ["Formal survey", "Informal conversation", "Only if the client volunteers feedback", "No"],
+        "sampleAnswer": "Informal conversation"
+      },
+      {
+        "qId": "Q5.3.3",
+        "text": "Has your firm received complaints about communication or responsiveness?",
+        "type": "single-select",
+        "options": ["Frequently", "Occasionally", "Rarely", "Never"],
+        "sampleAnswer": "Occasionally"
+      },
+      {
+        "qId": "Q5.3.4",
+        "text": "How important is improving client experience to your firm right now?",
+        "type": "single-select",
+        "options": ["Top priority", "Important but not urgent", "We're focused on other things", "Our client experience is already strong"],
+        "sampleAnswer": "Important but not urgent"
+      }
+    ]
+  },
+  {
+    "id": "Q6.1",
+    "enrichesFinding": "6.1",
+    "title": "Reporting & Analytics",
+    "domainId": 6,
+    "isInteractive": false,
+    "questions": [
+      {
+        "qId": "Q6.1.1",
+        "text": "Which of these key metrics does your firm regularly track?",
+        "type": "multi-select",
+        "options": ["Revenue by practice area", "Utilization rate", "Realization rate", "Collection rate", "AR aging", "Matters opened/closed", "Client acquisition cost"],
+        "sampleAnswer": ["Revenue by practice area", "AR aging"]
+      },
+      {
+        "qId": "Q6.1.2",
+        "text": "How does your firm generate performance reports?",
+        "type": "multi-select",
+        "options": ["Clio reports", "QuickBooks reports", "Manually built spreadsheets", "Third-party analytics", "We don't generate regular reports"],
+        "sampleAnswer": ["QuickBooks reports", "Manually built spreadsheets"]
+      },
+      {
+        "qId": "Q6.1.3",
+        "text": "How often does firm leadership review financial and operational performance?",
+        "type": "single-select",
+        "options": ["Weekly", "Monthly", "Quarterly", "Annually", "Only when there's a problem"],
+        "sampleAnswer": "Quarterly"
+      },
+      {
+        "qId": "Q6.1.4",
+        "text": "Does your firm have specific financial goals for this year?",
+        "type": "single-select",
+        "options": ["Yes with specific targets and metrics", "General goals but not measured", "No specific goals"],
+        "sampleAnswer": "General goals but not measured"
+      }
+    ]
+  },
+  {
+    "id": "Q6.2",
+    "enrichesFinding": "6.2",
+    "title": "License & Feature Utilization",
+    "domainId": 6,
+    "isInteractive": true,
+    "questions": [
+      {
+        "qId": "Q6.2.1",
+        "text": "What Clio subscription plan is your firm currently on?",
+        "type": "single-select",
+        "options": ["EasyStart", "Essentials", "Advanced", "Complete", "I don't know"],
+        "sampleAnswer": "Essentials"
+      },
+      {
+        "qId": "Q6.2.2",
+        "text": "Are you aware of the differences between Clio's subscription tiers?",
+        "type": "single-select",
+        "options": ["Yes I understand the differences", "Somewhat", "Not really", "I didn't know there were tiers"],
+        "sampleAnswer": "Not really"
+      },
+      {
+        "qId": "Q6.2.3",
+        "text": "Which of these features have you tried and stopped using, or never tried?",
+        "type": "multi-select",
+        "options": ["Clio Payments", "Client portal", "Document automation", "Task templates", "Text snippets", "Court rules", "Scheduled reports", "None — we use everything"],
+        "sampleAnswer": ["Clio Payments", "Client portal", "Document automation", "Task templates", "Text snippets"]
+      },
+      {
+        "qId": "Q6.2.4",
+        "text": "If you could have one feature you don't currently use working perfectly, what would it be?",
+        "type": "free-text",
+        "sampleAnswer": "Practice area profitability — I want to know which types of cases are actually making us money"
+      }
+    ]
+  },
+  {
+    "id": "Q7.1",
+    "enrichesFinding": "7.1",
+    "title": "User Adoption & Training",
+    "domainId": 7,
+    "isInteractive": false,
+    "questions": [
+      {
+        "qId": "Q7.1.1",
+        "text": "When was the last time your team received Clio training?",
+        "type": "single-select",
+        "options": ["Within the last 6 months", "6 to 12 months ago", "More than a year ago", "Only at initial setup", "Never had formal training"],
+        "sampleAnswer": "Only at initial setup"
+      },
+      {
+        "qId": "Q7.1.2",
+        "text": "Is there a designated 'Clio champion' or go-to person for system questions at your firm?",
+        "type": "single-select",
+        "options": ["Yes formally assigned", "Yes informally — one person helps everyone", "No, people figure it out on their own"],
+        "sampleAnswer": "Yes informally — one person helps everyone"
+      },
+      {
+        "qId": "Q7.1.3",
+        "text": "How would you describe firm leadership's use of Clio?",
+        "type": "single-select",
+        "options": ["Uses it daily and champions adoption", "Uses it sometimes", "Rarely uses it", "Does not use it personally"],
+        "sampleAnswer": "Uses it sometimes"
+      },
+      {
+        "qId": "Q7.1.4",
+        "text": "What best describes the resistance to Clio adoption at your firm?",
+        "type": "single-select",
+        "options": ["No resistance — team is on board", "Some prefer their old way of doing things", "Active frustration with the system", "People don't see the value"],
+        "sampleAnswer": "Some prefer their old way of doing things"
+      },
+      {
+        "qId": "Q7.1.5",
+        "text": "How comfortable are your team members with Clio?",
+        "type": "single-select",
+        "options": ["Everyone is confident", "Most are comfortable, a few struggle", "Comfort varies widely by person", "Most find it difficult"],
+        "sampleAnswer": "Comfort varies widely by person"
+      }
+    ]
+  },
+  {
+    "id": "Q7.2",
+    "enrichesFinding": "7.2",
+    "title": "Communication Logging",
+    "domainId": 7,
+    "isInteractive": false,
+    "questions": [
+      {
+        "qId": "Q7.2.1",
+        "text": "How does your firm manage client email communication?",
+        "type": "single-select",
+        "options": ["All email goes through a firm account", "Individual attorney email accounts", "Mix of firm and individual", "Email is archived to Clio automatically"],
+        "sampleAnswer": "Individual attorney email accounts"
+      },
+      {
+        "qId": "Q7.2.2",
+        "text": "Does your firm use the Clio Gmail or Outlook add-on for email archiving?",
+        "type": "single-select",
+        "options": ["Yes actively", "Installed but rarely used", "Not installed", "Not aware of it"],
+        "sampleAnswer": "Not aware of it"
+      },
+      {
+        "qId": "Q7.2.3",
+        "text": "How are client phone calls documented?",
+        "type": "single-select",
+        "options": ["Logged in Clio communication", "Notes in the matter", "Personal notes or memory", "Not documented consistently"],
+        "sampleAnswer": "Not documented consistently"
+      },
+      {
+        "qId": "Q7.2.4",
+        "text": "Is your firm familiar with the Clio client portal for secure messaging?",
+        "type": "single-select",
+        "options": ["Yes we use it", "Aware but haven't set it up", "Not aware of it"],
+        "sampleAnswer": "Not aware of it"
+      }
+    ]
+  },
+  {
+    "id": "Q7.3",
+    "enrichesFinding": "Q.1",
+    "title": "Technology Culture & Change Readiness",
+    "domainId": 7,
+    "isInteractive": false,
+    "questions": [
+      {
+        "qId": "Q7.3.1",
+        "text": "How would you describe your firm's overall attitude toward technology?",
+        "type": "single-select",
+        "options": ["Enthusiastic early adopters", "Willing but cautious", "Resistant to change", "Technology is a necessary evil"],
+        "sampleAnswer": "Willing but cautious"
+      },
+      {
+        "qId": "Q7.3.2",
+        "text": "Has your firm implemented any significant technology or process change in the last two years?",
+        "type": "single-select",
+        "options": ["Yes, successfully", "Yes, implemented with difficulty", "Tried but abandoned it", "No significant changes"],
+        "sampleAnswer": "Yes, implemented with difficulty"
+      },
+      {
+        "qId": "Q7.3.3",
+        "text": "If you could wave a magic wand and change one thing about how your firm uses technology, what would it be?",
+        "type": "free-text",
+        "sampleAnswer": "I wish everyone would actually use the tools we pay for"
+      }
+    ]
+  }
+]

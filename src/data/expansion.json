@@ -1,0 +1,148 @@
+{
+  "licenseUtilization": {
+    "plan": "Essentials",
+    "monthlyPerUser": 89,
+    "totalUsers": 5,
+    "monthlyCost": 445,
+    "featureUtilization": 0.35,
+    "observations": [
+      "Most unused capabilities are available at the current tier — no upgrade needed to address primary gaps",
+      "Clio Payments, client portal, and document automation are included but never activated",
+      "The firm's top wish (practice area profitability) is achievable on Essentials with proper configuration"
+    ]
+  },
+  "attornatoServices": [
+    {
+      "id": "as-1",
+      "title": "Structured Clio Implementation",
+      "signalStrength": "Strong",
+      "evidence": "40% configuration completeness (Finding 1.2), self-implemented without guidance, 6 of 10 configuration areas untouched, document templates identified as top priority but never built. The firm's pattern of abandoned initiatives (Finding Q.1) confirms that self-service configuration has failed.",
+      "customerNeed": "The firm needs someone to complete the Clio configuration they started in 2019, starting with the document templates and task template lists that would produce the highest immediate time savings.",
+      "conversationApproach": "Lead with the 200 to 300 hours per year in document drafting savings. Frame it as completing a project they started, not starting over. Reference their own stated priority (document automation) so it feels like their idea, not a sales pitch."
+    },
+    {
+      "id": "as-2",
+      "title": "Revenue Recovery Program",
+      "signalStrength": "Strong",
+      "evidence": "Combined $120,000+ in recoverable annual revenue across utilization ($178K uncaptured), realization ($43K write-offs), and collection ($89K outstanding). The billing cycle bottleneck alone costs $4,200/month in delayed collections.",
+      "customerNeed": "The firm needs structured billing workflow improvements, time entry policy implementation, and collections process design that will convert identified revenue gaps into actual cash flow improvement.",
+      "conversationApproach": "Present the $120,000 recoverable revenue number as the headline. Break it into the three components (capture, realize, collect) and show that each has a specific, actionable fix. Make the business case: a 5-day engagement that recovers even 30% of this gap pays for itself in the first quarter."
+    },
+    {
+      "id": "as-3",
+      "title": "Role-Specific Training Program",
+      "signalStrength": "Strong",
+      "evidence": "Initial-only training (Finding 7.1), 50x adoption gap, informal Clio champion, inconsistent leadership use, and a pattern of abandoned features. The firm's 'willing but cautious' technology culture (Finding Q.1) means training must be paired with change management.",
+      "customerNeed": "The firm needs role-specific training that goes beyond generic Clio instruction — attorneys need billing and matter management workflows, paralegals need document and calendar workflows, and the office manager needs billing and reporting workflows.",
+      "conversationApproach": "Avoid framing this as 'your team needs training' which implies they're doing it wrong. Instead: 'Your team has been using Clio for 6 years with initial training. Clio has added dozens of features since then. A targeted session for each role would unlock capabilities your team doesn't know exist.'"
+    },
+    {
+      "id": "as-4",
+      "title": "Risk Remediation Sprint",
+      "signalStrength": "Strong",
+      "evidence": "Confirmed missed deadline (Finding 2.3, overridden to score 1), conflict check near-miss (Custom Finding 2), 80% admin access with partial 2FA (Finding 1.1), and dual-system trust accounting (Finding 3.6). These represent compliance, malpractice, and ethical risks.",
+      "customerNeed": "The firm needs immediate remediation of its highest-risk gaps: deadline management automation, conflict check procedure, permission restructuring, and trust accounting consolidation.",
+      "conversationApproach": "This is the one engagement where urgency is justified. Lead with the missed deadline — Robert described it as 'the worst week of my career.' Connect it to the conflict check near-miss and the security gaps. Frame risk remediation as protecting the firm's reputation, license, and financial stability."
+    },
+    {
+      "id": "as-5",
+      "title": "Quarterly Optimization Retainer",
+      "signalStrength": "Moderate",
+      "evidence": "The firm's pattern of abandoned initiatives (Finding Q.1) and the absence of a formal Clio champion (Finding 7.1) suggest that one-time engagements will follow the same trajectory. Sustained adoption requires ongoing accountability.",
+      "customerNeed": "The firm needs a recurring touchpoint that monitors adoption, addresses emerging issues, reinforces training, and prevents the abandonment pattern from repeating.",
+      "conversationApproach": "Position this after at least one successful project engagement. The pitch: 'We've seen firms implement changes and then drift back to old habits within 90 days. A quarterly check-in ensures the improvements stick and evolve as your practice grows.' Reference the matter stages and Grow forms as examples of what happens without follow-up."
+    }
+  ],
+  "clioProducts": [
+    {
+      "id": "cp-1",
+      "title": "Clio Payments Activation",
+      "signalStrength": "Strong",
+      "evidence": "82% collection rate with $89,000 outstanding (Finding 3.5). Firm accepts only checks and bank transfers. Clio Payments is included in subscription but never activated. Managing partner said 'we should probably turn that on' during the interview.",
+      "customerNeed": "Faster client payments with less administrative friction.",
+      "conversationApproach": "This is the easiest win. No additional cost, immediate activation, and direct connection to the $89K outstanding receivables. The managing partner already expressed interest."
+    },
+    {
+      "id": "cp-2",
+      "title": "Client Portal (Clio for Clients)",
+      "signalStrength": "Strong",
+      "evidence": "8 to 12 weekly status calls consuming 5 to 8 hours of staff time (Custom Finding 3). No self-service access for clients. The firm is unaware the portal exists (Finding 7.2).",
+      "customerNeed": "Reduce inbound status calls and give clients self-service case access.",
+      "conversationApproach": "Quantify the time cost: 5 to 8 hours per week is 260 to 416 hours per year. The portal is included in Essentials. Frame as 'your clients get better service and your team gets hours back.'"
+    },
+    {
+      "id": "cp-3",
+      "title": "Court Rules Add-On",
+      "signalStrength": "Strong",
+      "evidence": "Confirmed missed deadline from manual calculation (Finding 2.3, score overridden to 1). Paralegal has been requesting this tool for two years. Manual spreadsheet-based deadline calculation is the confirmed root cause.",
+      "customerNeed": "Automated jurisdiction-specific deadline calculation to eliminate manual error.",
+      "conversationApproach": "The paralegal is already an advocate. The managing partner experienced the consequence. Connect the add-on cost directly to the malpractice exposure and reference the 'worst week of my career' quote."
+    },
+    {
+      "id": "cp-4",
+      "title": "Clio Grow Reactivation",
+      "signalStrength": "Moderate",
+      "evidence": "31% conversion rate with ad hoc intake (Finding 5.1). Grow forms configured but abandoned. No response time standard. No 'did not hire' tracking.",
+      "customerNeed": "Structured intake process to improve conversion rate and lead tracking.",
+      "conversationApproach": "The firm already has Grow and set up forms — this is reactivation, not new adoption. Frame as: 'You've already done the hard part. Let's make it work this time with a structured workflow behind it.'"
+    },
+    {
+      "id": "cp-5",
+      "title": "Clio Draft (AI Document Generation)",
+      "signalStrength": "Moderate",
+      "evidence": "Zero document templates in Clio (Finding 4.1). 10 Word templates exist but aren't migrated. Document automation is the firm's stated top priority. 200 to 300 hours per year wasted on manual document creation.",
+      "customerNeed": "Faster document generation with less manual work.",
+      "conversationApproach": "Position alongside the template migration work. After templates are in Clio, Draft can accelerate creation further. This is a natural second step after the implementation engagement."
+    },
+    {
+      "id": "cp-6",
+      "title": "Subscription Tier Upgrade (Essentials to Advanced)",
+      "signalStrength": "Exploratory",
+      "evidence": "35% feature utilization on Essentials (Finding 6.2). Firm wants custom reporting for practice area profitability. Advanced tier adds custom reports, advanced tasks, and additional integrations at $30/user/month more.",
+      "customerNeed": "Enhanced reporting and analytics capabilities.",
+      "conversationApproach": "Do NOT recommend this now. The firm should fully activate Essentials first. Revisit at the 6-month mark. If practice area profitability is achievable on Essentials with proper configuration, the upgrade may not be necessary."
+    },
+    {
+      "id": "cp-7",
+      "title": "Clio Duo (AI Assistant)",
+      "signalStrength": "Exploratory",
+      "evidence": "The firm's willingness to adopt new tools (Finding Q.1) combined with their preference for quick information retrieval and document summarization makes Clio Duo a potential fit for attorneys who want to work faster within the platform.",
+      "customerNeed": "Faster access to matter information and document insights.",
+      "conversationApproach": "Exploratory only. Introduce the concept after the firm has stronger platform adoption. Duo works best when the underlying data is clean and complete — which is not yet the case for this firm."
+    }
+  ],
+  "engagementPackaging": [
+    {
+      "phase": 1,
+      "title": "Foundation",
+      "duration": "5 days",
+      "focus": "Configuration, permissions, conflict check, court rules, Payments activation, portal setup",
+      "services": ["as-1", "as-4"],
+      "products": ["cp-1", "cp-2", "cp-3"]
+    },
+    {
+      "phase": 2,
+      "title": "Revenue Recovery",
+      "duration": "3 days",
+      "focus": "Billing workflow restructuring, time entry policy, discount controls, collections process, Grow reactivation",
+      "services": ["as-2"],
+      "products": ["cp-4"]
+    },
+    {
+      "phase": 3,
+      "title": "Training & Adoption",
+      "duration": "2 days + follow-up",
+      "focus": "Role-specific training, champion establishment, adoption scorecard, template migration",
+      "services": ["as-3"],
+      "products": ["cp-5"]
+    },
+    {
+      "phase": 4,
+      "title": "Ongoing Optimization",
+      "duration": "Quarterly",
+      "focus": "Adoption monitoring, feature expansion, reporting review, emerging issue resolution",
+      "services": ["as-5"],
+      "products": ["cp-6", "cp-7"]
+    }
+  ]
+}

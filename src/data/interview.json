@@ -1,0 +1,390 @@
+{
+  "stakeholder": {
+    "name": "Robert Brennan",
+    "role": "Managing Partner",
+    "duration": "45 minutes",
+    "elementCount": 47
+  },
+  "openingContext": "Robert Brennan is the Managing Partner and co-founder of Brennan & Clark LLP, a 4-attorney general practice firm in Tampa, Florida. The firm has been on Clio Manage since 2019 (self-implemented, Essentials plan) and added Clio Grow approximately 18 months ago. Robert handles Family Law and Estate Planning matters and is the firm's de facto technology decision-maker, though he describes himself as 'not a technology person.' His stated priorities coming into this assessment are getting more value from Clio, improving billing efficiency, and understanding why some team members resist using the system. Key data points to have ready: the firm's 22% adjusted utilization rate (not the 27% baseline), the $178,000 uncaptured revenue estimate, Karen Clark's 8% utilization and 52% realization, the confirmed missed deadline, the $127,000 unbilled inventory, and the 50x adoption gap between James Okafor (147 activities) and Karen Clark (3 activities). Robert is likely unaware of the severity of several findings — particularly the revenue impact of Karen's workflow, the security implications of universal admin access, and the malpractice exposure from the manual deadline process. Approach with respect for his experience and genuine curiosity about how the firm operates, not as an audit or evaluation.",
+  "findingTriggered": [
+    {
+      "id": "ft-1",
+      "findingRef": "3.1",
+      "triggerMetric": "Adjusted utilization: 22%. Range: 8% (K. Clark) to 41% (J. Okafor). Uncaptured revenue: $178,000/yr",
+      "domainGroup": "Time Tracking, Billing & Payments",
+      "question": "Your utilization data shows a range from 8% to 41% across your team. Walk me through how each attorney captures their time — is the process the same for everyone?",
+      "notes": "MP says each atty handles time their own way. He uses the timer sometimes. J.R. (senior partner) dictates to his assistant, she enters from handwritten notes days later. MP estimates she captures maybe 70-80%. Two younger attys use the timer more consistently but still batch-enter at end of day. Nobody tracks time on flat fee matters at all — 'what's the point if we're not billing hourly?' MP acknowledged they have no idea if flat fee matters are profitable.",
+      "promoted": true,
+      "usedIn": "Annotation on Finding 3.1, Annotation on Finding 7.1"
+    },
+    {
+      "id": "ft-2",
+      "findingRef": "3.2",
+      "triggerMetric": "Avg entry lag: 3.2 days. Same-day rate: 22%. Monday spike: 2.4x average",
+      "domainGroup": "Time Tracking, Billing & Payments",
+      "question": "We're seeing a pattern where time entry volume spikes on Mondays — about two and a half times the daily average. Does that match what you'd expect?",
+      "notes": "MP laughed — 'that's exactly right. Monday morning is catch-up time.' He said he tries to enter daily but admits he falls behind Thursday and Friday when court schedules get heavy. Karen doesn't enter her own time at all. James is the most disciplined — 'he's religious about the timer.' Sofia is inconsistent — some weeks good, some weeks she's doing Monday reconstruction like everyone else.",
+      "promoted": false,
+      "usedIn": null
+    },
+    {
+      "id": "ft-3",
+      "findingRef": "3.3",
+      "triggerMetric": "Avg time-to-bill: 38 days. Draft aging: 12 days. Unbilled inventory: $127,000",
+      "domainGroup": "Time Tracking, Billing & Payments",
+      "question": "Your invoices sit in draft an average of 12 days. What happens between when a draft is generated and when it goes out?",
+      "notes": "Office mgr generates drafts on the 1st of each month. She assigns each draft to the responsible attorney for review. 'Then I wait. And wait. I send reminder emails around the 8th or 9th. Usually by the 12th or 13th everyone has reviewed, and I send them out.' MP reviews his within 2 days. J.R. (senior partner) is consistently the last to review — her average is probably 10-14 days. Two younger attys take 5-7 days. Nobody has ever told them there's a deadline. Office mgr has never escalated to MP because 'I don't want to create conflict.'",
+      "promoted": true,
+      "usedIn": "Annotation on Finding 3.3"
+    },
+    {
+      "id": "ft-4",
+      "findingRef": "3.4",
+      "triggerMetric": "Firm realization: 71%. K. Clark: 52%. Annual write-offs: $43,000",
+      "domainGroup": "Time Tracking, Billing & Payments",
+      "question": "Your realization rate shows one attorney at 52% — meaning almost half of their billed time gets written off. What's driving those write-downs?",
+      "notes": "MP paused. 'Karen is generous with clients. She'll look at a bill and say, that's too much for what we did, and cut it by 30 or 40 percent.' He said he's mentioned it before but 'she's a name partner — I can't tell her how to bill.' He was surprised by the $43K annual number. 'I knew she discounted but I didn't realize it was that much.' He also noted Karen handles PI cases on contingency, so her hourly realization is skewed by matters where time isn't billed at all.",
+      "promoted": true,
+      "usedIn": "Annotation on Finding 3.4"
+    },
+    {
+      "id": "ft-5",
+      "findingRef": "3.5",
+      "triggerMetric": "Collection rate: 82%. Outstanding AR: $89,000. 37% over 60 days",
+      "domainGroup": "Time Tracking, Billing & Payments",
+      "question": "You have $89,000 in outstanding receivables with 37% over 60 days. What happens when a client doesn't pay on time?",
+      "notes": "MP said office mgr sends 'a reminder or two' but there's no formal process. He personally calls clients he has a relationship with if balances get large. 'We've talked about accepting credit cards but never set it up.' He didn't know Clio Payments was included in their subscription. When I told him, he said 'we should probably turn that on.' Three large balances are from clients who are 'slow but they always pay eventually.'",
+      "promoted": true,
+      "usedIn": "Annotation on Finding 3.5"
+    },
+    {
+      "id": "ft-6",
+      "findingRef": "2.3",
+      "triggerMetric": "Events linked to matters: 47%. Reminders: 58%. Missed deadline confirmed",
+      "domainGroup": "Matter & Contact Management",
+      "question": "The data shows 47% of calendar events aren't linked to matters. Can you walk me through how court dates and deadlines get into the system?",
+      "notes": "Paralegal handles all deadline entry. She gets dates from court notices, calculates deadlines manually using a spreadsheet with rule-based formulas she built herself. Enters in Google Calendar, which syncs to Clio. Doesn't always link to the matter because 'it takes extra clicks and I'm usually in a hurry.' Missed deadline last year was a filing due date — wrong start date used in her spreadsheet formula. Extension was granted but MP says it was terrifying. Nothing changed in the process afterward. Paralegal says she's been asking for a court rules tool for two years.",
+      "promoted": true,
+      "usedIn": "Annotation on Finding 2.3, Score Override on Finding 2.3"
+    },
+    {
+      "id": "ft-7",
+      "findingRef": "2.1",
+      "triggerMetric": "Stale matters: 31 (22%). Missing practice areas: 45 (32%). Orphaned: 7",
+      "domainGroup": "Matter & Contact Management",
+      "question": "Thirty-one of your open matters haven't had any activity in over 90 days. Are those still active cases?",
+      "notes": null,
+      "promoted": false,
+      "usedIn": null
+    },
+    {
+      "id": "ft-8",
+      "findingRef": "2.4",
+      "triggerMetric": "Stages: 2 of 5 practice areas. Progression: 38%. Spreadsheet used in parallel",
+      "domainGroup": "Matter & Contact Management",
+      "question": "Your firm set up matter stages for two practice areas but the data shows they're only 38% current. What happened?",
+      "notes": null,
+      "promoted": false,
+      "usedIn": null
+    },
+    {
+      "id": "ft-9",
+      "findingRef": "1.1",
+      "triggerMetric": "Admin users: 4 of 5 (80%). Permission groups: 0. Disabled users: 3",
+      "domainGroup": "Platform Configuration & Security",
+      "question": "Four of your five active users have administrator access. Was that an intentional decision?",
+      "notes": "Office mgr didn't know there were other permission levels. 'When we set up accounts, we just picked the same settings for everyone.' MP confirmed he's never reviewed permissions. When I explained that admin access means paralegals can delete matters, modify billing records, and change firm settings, office mgr's reaction was 'that's not good.' She asked if we could fix it during the engagement. I showed her the permission settings and she immediately identified which functions each role should have access to.",
+      "promoted": true,
+      "usedIn": "Annotation on Finding 1.1"
+    },
+    {
+      "id": "ft-10",
+      "findingRef": "4.1",
+      "triggerMetric": "Avg docs per matter: 3.8. Matters with zero docs: 29%. Templates: 0",
+      "domainGroup": "Document Management & Workflow Automation",
+      "question": "Twenty-nine percent of your open matters have no documents in Clio. Where are those documents?",
+      "notes": "MP confirmed most documents live in Google Drive, organized by client name folders. 'Clio is for billing and calendar. Google Drive is for documents.' He acknowledged this means documents aren't connected to cases in Clio. When I asked how a colleague would find a document if the responsible attorney was unavailable, he said 'they'd probably have to call them and ask.' He was interested in Clio Drive as a bridge between the two systems.",
+      "promoted": true,
+      "usedIn": "Annotation on Finding 4.1"
+    },
+    {
+      "id": "ft-11",
+      "findingRef": "4.2",
+      "triggerMetric": "Matters with tasks: 34%. Overdue: 28%. Zero completions: 2 users",
+      "domainGroup": "Document Management & Workflow Automation",
+      "question": "Only 34% of your matters have tasks in Clio, and 28% of existing tasks are overdue. How does work coordination actually happen here?",
+      "notes": null,
+      "promoted": false,
+      "usedIn": null
+    },
+    {
+      "id": "ft-12",
+      "findingRef": "5.1",
+      "triggerMetric": "Conversion rate: 31%. Grow forms: set up but abandoned. Response time: varies widely",
+      "domainGroup": "Client Intake & Growth",
+      "question": "Your intake conversion rate is 31%. When a potential client calls, walk me through what happens from that first contact to the decision to hire.",
+      "notes": "MP described an ad hoc process. Whoever answers takes basic info. If it sounds like a match, they try to schedule a consult within a few days. No intake form, no structured follow-up. 'We set up Grow forms on the website but we never really used them.' Response time depends on how busy everyone is — 'sometimes same day, sometimes a couple days.' He was surprised the conversion rate was only 31%. 'I thought we were doing better than that.'",
+      "promoted": true,
+      "usedIn": "Annotation on Finding 5.1"
+    },
+    {
+      "id": "ft-13",
+      "findingRef": "6.2",
+      "triggerMetric": "Subscription: Essentials. Feature utilization: 35%. Top wish: practice area profitability",
+      "domainGroup": "Reporting, Analytics & Integrations",
+      "question": "You're using about 35% of what's available on your current Clio plan. What features do you wish you had that you think you're missing?",
+      "notes": null,
+      "promoted": false,
+      "usedIn": null
+    },
+    {
+      "id": "ft-14",
+      "findingRef": "7.1",
+      "triggerMetric": "Active: 80%. Adoption gap: 50x (147 vs 3). Avg feature breadth: 2.8 of 6",
+      "domainGroup": "Adoption, Training & Collaboration",
+      "question": "One of your attorneys has logged 3 time entries in 30 days while another has logged 147 activities. That's a 50x gap. Is that something you're aware of, and have you tried to address it?",
+      "notes": "MP acknowledged he knows about the gap. 'Karen has practiced for 28 years. She has her way of doing things.' He described the dictation workflow — Karen dictates to Maria, Maria enters time from handwritten notes days later. MP estimates 70-80% capture rate. When I calculated the revenue impact ($60K+ annually), MP paused and said 'I never thought about it in dollar terms.' He admitted he has avoided raising it with Karen because 'she's my partner and I don't want to tell her how to practice.' He was receptive to the idea of voice-to-text alternatives that would preserve Karen's dictation preference.",
+      "promoted": true,
+      "usedIn": "Annotation on Finding 7.1"
+    },
+    {
+      "id": "ft-15",
+      "findingRef": "7.2",
+      "triggerMetric": "Matters with comms: 41%. Phone: 89%, Email: 11%. Time attached: 15%",
+      "domainGroup": "Adoption, Training & Collaboration",
+      "question": "Only 11% of logged communications are emails, and 59% of your matters have no communication log at all. Where do client communications actually live?",
+      "notes": null,
+      "promoted": false,
+      "usedIn": null
+    }
+  ],
+  "patternTriggered": [
+    {
+      "id": "pt-1",
+      "patternName": "Revenue Invisible",
+      "patternDetected": "Findings 3.1 (22% utilization), 3.2 (3.2-day entry lag), 3.3 ($127K unbilled), and 6.1 (2 of 7 metrics tracked) combine to show that the firm's revenue leakage is structural, multi-stage, and unmeasured.",
+      "question": "When you think about your firm's revenue, do you feel like you have a clear picture of where money is being left on the table — or does it feel more like a general sense that things could be better?",
+      "notes": null,
+      "promoted": false,
+      "usedIn": null
+    },
+    {
+      "id": "pt-2",
+      "patternName": "Single Point of Failure",
+      "patternDetected": "Findings 1.1 (office manager handles all settings), 7.1 (one informal Clio champion), and 4.1 (documents on one person's drive) converge on a dependency risk centered on the office manager.",
+      "question": "If Maria were unavailable for two weeks starting tomorrow — vacation, illness, anything — what would stop working at the firm?",
+      "notes": null,
+      "promoted": false,
+      "usedIn": null
+    },
+    {
+      "id": "pt-3",
+      "patternName": "Abandoned Initiatives",
+      "patternDetected": "Findings 2.4 (matter stages set up then abandoned), 5.1 (Grow forms configured but unused), and 6.2 (35% feature utilization) show a pattern of starting Clio features without sustaining adoption.",
+      "question": "You've set up several Clio features — matter stages, Grow intake forms, custom fields — that the data shows aren't being actively used anymore. What typically happens when you try something new in Clio?",
+      "notes": "MP sighed. 'We get excited, set it up over a weekend, use it for a month, and then it fades. Nobody follows up. Nobody checks if we're still doing it. After a while it just becomes another thing we tried.' He identified the core issue himself: 'We don't have anyone whose job it is to make sure we keep using this stuff.'",
+      "promoted": true,
+      "usedIn": "Annotation on Finding Q.1"
+    },
+    {
+      "id": "pt-4",
+      "patternName": "Karen Clark Effect",
+      "patternDetected": "Findings 3.1 (8% utilization), 3.4 (52% realization), and 7.1 (3 activities/month) combine to show one attorney's workflow is responsible for a disproportionate share of the firm's revenue gaps.",
+      "question": "We've talked about Karen's time entry, her realization rate, and her system usage separately. When you look at these together, what picture does it paint for you?",
+      "notes": null,
+      "promoted": false,
+      "usedIn": null
+    },
+    {
+      "id": "pt-5",
+      "patternName": "Compliance Exposure",
+      "patternDetected": "Findings 2.3 (missed deadline, manual calculations), 1.1 (80% admin, partial 2FA), and 3.6 (dual-system trust accounting) combine to create overlapping compliance and malpractice risks.",
+      "question": "Between the missed deadline, the security configuration, and the trust accounting setup — if you had to pick the one that keeps you up at night, which would it be?",
+      "notes": null,
+      "promoted": false,
+      "usedIn": null
+    },
+    {
+      "id": "pt-6",
+      "patternName": "Client Blindness",
+      "patternDetected": "Findings 7.2 (59% unlogged communications), 5.1 (no intake tracking), and Q.2 (reactive communication, no portal) combine to show the firm has minimal visibility into its own client interactions.",
+      "question": "If a client called today and said 'I told your associate about this three weeks ago,' how confident are you that your team could find that conversation?",
+      "notes": null,
+      "promoted": false,
+      "usedIn": null
+    }
+  ],
+  "observationPrompts": [
+    {
+      "id": "op-1",
+      "findingRef": "3.1",
+      "prompt": "Ask to see how an attorney creates a time entry right now — watch the actual workflow.",
+      "lookFor": "Do they use the timer or manual entry? Do they search for the matter or navigate to it? How long does the full process take? Do they add a description or leave it blank?",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "op-2",
+      "findingRef": "3.2",
+      "prompt": "Ask to see last Friday's time entries for two different attorneys — compare timeliness.",
+      "lookFor": "Were entries created on Friday or the following Monday? Are descriptions specific or vague? Is there a visible difference between attorneys who use the timer vs. batch entry?",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "op-3",
+      "findingRef": "3.3",
+      "prompt": "Ask the office manager to show you the current draft invoices and walk through the review workflow.",
+      "lookFor": "How many drafts are sitting unreviewed? How does she track which attorneys have reviewed? Does she have a follow-up system or does she rely on memory?",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "op-4",
+      "findingRef": "3.5",
+      "prompt": "Ask to see the outstanding receivables report — look at the aging distribution together.",
+      "lookFor": "Does the managing partner recognize the client names in the 90+ day bucket? Are these disputed amounts or simply unfollowed?",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "op-5",
+      "findingRef": "2.3",
+      "prompt": "Ask the paralegal to show you how she calculates a deadline from a court notice — watch the actual process.",
+      "lookFor": "Is the spreadsheet formula reliable? Does she double-check the calculation? How does she handle jurisdiction-specific rules? Does she link the resulting calendar event to the matter?",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "op-6",
+      "findingRef": "2.1",
+      "prompt": "Ask to see the matter list sorted by last activity date — review the oldest open matters together.",
+      "lookFor": "Does the managing partner recognize all the matters? Are any surprises? Are there matters that should have been closed months ago?",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "op-7",
+      "findingRef": "1.1",
+      "prompt": "Ask to see the user permission settings for a non-attorney staff member — review what they can access.",
+      "lookFor": "Can they access all matters? Can they modify billing records? Can they delete documents? Is the managing partner surprised by what they see?",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "op-8",
+      "findingRef": "4.1",
+      "prompt": "Ask to see how a standard engagement letter is currently created — watch the full process from blank page to finished document.",
+      "lookFor": "Does the attorney start from a template or from scratch? Where is the template stored? How are client details inserted — manual typing or copy-paste? How long does the process take?",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "op-9",
+      "findingRef": "4.1",
+      "prompt": "Ask to see the Google Drive document structure — browse the folders together.",
+      "lookFor": "Is there a consistent naming convention? Can you find a specific document for a specific matter within 30 seconds? Are there multiple versions of the same document?",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "op-10",
+      "findingRef": "4.2",
+      "prompt": "Ask to see the task list for an active matter — is there a structured workflow or ad hoc tasks?",
+      "lookFor": "Are tasks organized by workflow phase or scattered randomly? Are due dates set? Are tasks assigned to specific people? Are overdue tasks visible?",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "op-11",
+      "findingRef": "5.1",
+      "prompt": "Ask to see the Clio Grow pipeline — review the current matters in each stage.",
+      "lookFor": "Are the pipeline stages meaningful? Are matters stuck in early stages? Is projected value populated? When was the last time someone reviewed the pipeline?",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "op-12",
+      "findingRef": "7.1",
+      "prompt": "Ask each team member independently: on a scale of 1-10, how comfortable are you with Clio?",
+      "lookFor": "Variance in responses. Does anyone rate themselves very low? Do any responses contradict the usage data? Is anyone enthusiastic about features others don't use?",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "op-13",
+      "findingRef": "7.2",
+      "prompt": "Ask to see how a client phone call gets logged — or whether it gets logged at all.",
+      "lookFor": "Does the attorney log the call in Clio or just make a personal note? Is time captured? Is the communication linked to the matter?",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "op-14",
+      "findingRef": "6.1",
+      "prompt": "Ask the managing partner to show you the last report they generated and what they did with the information.",
+      "lookFor": "How long ago was it? What type of report? Did it lead to any action? Is it a Clio report or a manually built spreadsheet?",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "op-15",
+      "findingRef": "2.2",
+      "prompt": "Pick a random active client contact and review the completeness of their record.",
+      "lookFor": "Is email present? Phone? Mailing address? Are custom fields populated? Would you have enough information to contact this client through every channel?",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "op-16",
+      "findingRef": "3.6",
+      "prompt": "Ask the office manager to walk you through a trust deposit — from receiving the check to recording it in the system.",
+      "lookFor": "Does she enter it in Clio, QuickBooks, or both? How does she reconcile between the two? How long does the full process take?",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "op-17",
+      "findingRef": "5.2",
+      "prompt": "Ask to see the last lead that was converted from Grow to Manage — was the integration used or was data manually re-entered?",
+      "lookFor": "Is the Grow matter linked to the Manage matter? Are all fields carried over? Are there data discrepancies?",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "op-18",
+      "findingRef": "1.2",
+      "prompt": "Ask to see the firm's Clio settings page — review what has been configured versus what is at defaults.",
+      "lookFor": "Are activity descriptions customized? Are billing themes configured? Are there text snippets? Does the managing partner know these options exist?",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "op-19",
+      "findingRef": "2.3",
+      "prompt": "Ask to see the calendar for next week — are all events linked to matters with reminders?",
+      "lookFor": "How many events lack matter links? How many lack reminders? Are there any court dates or deadlines without reminder safety nets?",
+      "notes": null, "promoted": false, "usedIn": null
+    }
+  ],
+  "closingPrompts": [
+    {
+      "id": "cp-1",
+      "question": "Based on everything we've discussed, what surprised you the most?",
+      "purpose": "Gauges what the stakeholder didn't know about their own firm's operations. Useful for prioritizing recommendations.",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "cp-2",
+      "question": "If you could fix exactly one thing we've talked about today, which would you choose?",
+      "purpose": "Reveals the stakeholder's priority, which may differ from the data-driven priority. Useful for sequencing the roadmap.",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "cp-3",
+      "question": "What would success look like for your firm six months from now?",
+      "purpose": "Establishes a benchmark for measuring engagement outcomes. The answer shapes how we frame the report.",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "cp-4",
+      "question": "Is there anything about how your firm operates that we haven't covered but that you think I should know?",
+      "purpose": "Open-ended prompt that often surfaces issues the data cannot detect — interpersonal dynamics, upcoming changes, or concerns not captured in the structured interview.",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "cp-5",
+      "question": "How do you feel about the level of change that the findings seem to require? Does it feel manageable or overwhelming?",
+      "purpose": "Assesses change readiness and calibrates how aggressively to scope the improvement roadmap.",
+      "notes": null, "promoted": false, "usedIn": null
+    },
+    {
+      "id": "cp-6",
+      "question": "Who else in the firm should I speak with to get a fuller picture?",
+      "purpose": "Identifies additional stakeholders and signals whether the managing partner is open to broader team involvement.",
+      "notes": null, "promoted": false, "usedIn": null
+    }
+  ]
+}

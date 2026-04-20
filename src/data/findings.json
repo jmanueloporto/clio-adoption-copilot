@@ -1,0 +1,1401 @@
+[
+  {
+    "id": "1.1",
+    "title": "User Role & Permission Configuration",
+    "domainId": 1,
+    "baselineScore": 2,
+    "contextScore": 2,
+    "overrideScore": null,
+    "finalScore": 2,
+    "confidence": "High",
+    "apiCoverage": "High",
+    "enrichmentSource": "Q1.1",
+    "storyBeat": "User role and permission configuration is the foundation of data security and operational integrity in a law practice. When every user has administrator access, there are no guardrails against accidental data changes, unauthorized billing modifications, or access to confidential matters that should be restricted. Permission groups allow firms to define role-based access that matches their organizational structure. Uncleaned inactive users represent both a security risk and unnecessary license cost.",
+    "metrics": {
+      "totalUsers": 8,
+      "enabledUsers": 5,
+      "disabledUsers": 3,
+      "adminUsers": 4,
+      "adminPercent": 0.80,
+      "permissionGroups": 0,
+      "nonAttorneySubscriptions": 0
+    },
+    "recommendations": [
+      {
+        "body": "Reduce administrator access to only the firm administrator and managing partner. The current 80% admin rate means there is no effective access control.",
+        "whyRelevant": "Client data security is a bar ethical obligation, and unrestricted admin access creates exposure the firm may not be aware of.",
+        "howToImplement": "Navigate to Settings > Manage Users, edit each user profile, and set Billing and Matters permissions to appropriate levels for their role."
+      },
+      {
+        "body": "Create permission groups aligned to firm roles: attorney, paralegal, billing coordinator, administrative staff.",
+        "whyRelevant": "Groups simplify onboarding and ensure new hires receive appropriate access from day one.",
+        "howToImplement": "Navigate to Settings > Groups, create groups for each role, and assign users based on their firm role."
+      },
+      {
+        "body": "Review the 3 disabled users to ensure they do not hold paid licenses, and verify their access has been fully revoked.",
+        "whyRelevant": "Delayed deactivation means former employees may have had system access for months after departure.",
+        "howToImplement": "Check Settings > Manage Users for disabled accounts. Verify deactivation dates and license status. Review activity logs for post-departure access."
+      }
+    ],
+    "layer2": {
+      "headline": "Eighty percent admin access with partial 2FA and no security policy — a single compromised password exposes the entire system.",
+      "detail": "The Automated Baseline found 4 of 5 active users with admin permissions and zero permission groups defined. The questionnaire adds three layers of concern. First, 2FA is enabled for some users but not required firm-wide, meaning some accounts are protected by passwords alone. Second, the firm has no written information security or technology policy, which means there is no standard governing access, device security, or data handling. Third, when team members leave, account deactivation depends on who handles it rather than following a defined offboarding process — the 3 disabled users in the system may have had active access for days or weeks after departure. Combined, these factors create a security posture where any single compromised password grants full administrative access to all client data, financial records, and matter information. Bar rules in every US jurisdiction require lawyers to make reasonable efforts to safeguard client information, and this configuration does not meet that standard.",
+      "baselineCard": {
+        "title": "BASELINE-ONLY INTERPRETATION",
+        "content": "Admin users: 4 of 5 active (80%).\nPermission groups defined: 0.\nInactive users in system: 3.\nAssessment: Over-permissioned environment with no access controls."
+      },
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "2FA: Partial coverage (not required firm-wide).\nSecurity policy: None.\nOffboarding: Ad hoc, no defined process.\nAssessment: Compound security risk — over-permissioning, weak authentication, and unstructured offboarding create exposure that exceeds reasonable care under bar ethical obligations."
+      }
+    },
+    "layer3": {
+      "annotations": [
+        {
+          "id": "ann-1.1",
+          "type": "Validation",
+          "consultant": "Daniela Reyes, Senior Legal Technology Consultant",
+          "date": "March 12, 2026",
+          "text": "During the on-site assessment, I confirmed that all active users can access all matters, modify billing records, delete documents, and change firm settings. When I asked the office manager whether she was comfortable with interns and paralegals having the same system access as the managing partner, she said 'I didn't know there was another option.' The three disabled users include a former associate who left 8 months ago, a former paralegal who left 14 months ago, and a contract attorney whose engagement ended 5 months ago. None of these accounts were disabled on the date of departure — the office manager disabled them during a cleanup effort approximately 3 months ago, meaning there was a window of 2 to 11 months where former employees could have accessed the system. No audit was performed to verify whether any unauthorized access occurred during that period. The firm should review the Clio activity log for these three accounts during their post-departure active windows."
+        }
+      ],
+      "override": null,
+      "customFindings": [],
+      "interviewEvidence": [
+        {
+          "id": "ie-1.1",
+          "section": "Finding-Triggered",
+          "question": "Four of your five active users have administrator access. Was that an intentional decision?",
+          "answer": "Office mgr didn't know there were other permission levels. 'When we set up accounts, we just picked the same settings for everyone.' MP confirmed he's never reviewed permissions. When I explained that admin access means paralegals can delete matters, modify billing records, and change firm settings, office mgr's reaction was 'that's not good.' She asked if we could fix it during the engagement. I showed her the permission settings and she immediately identified which functions each role should have access to.",
+          "usedIn": ["Annotation on Finding 1.1"]
+        }
+      ]
+    },
+    "cvi": "Your firm has 80% admin-level access, partial 2FA coverage, and no written security policy. An Attornato consultant would implement a least-privilege permission structure, enforce firm-wide 2FA, create a technology security policy aligned to bar obligations, and establish an offboarding checklist that eliminates access gaps when staff depart."
+  },
+  {
+    "id": "1.2",
+    "title": "Platform Configuration Completeness",
+    "domainId": 1,
+    "baselineScore": 2,
+    "contextScore": 2,
+    "overrideScore": null,
+    "finalScore": 2,
+    "confidence": "High",
+    "apiCoverage": "High",
+    "enrichmentSource": "Q1.2",
+    "storyBeat": "Platform configuration completeness determines how much of Clio's capability the firm is actually using. Every unconfigured area represents automation and efficiency that is available but not activated. Firms that skip initial configuration or go live before setting up templates, categories, and custom fields find themselves doing manually what the system could handle automatically. The gap between what is configured and what is available is a direct measure of unrealized platform value.",
+    "metrics": {
+      "configuredAreas": 4,
+      "totalAreas": 10,
+      "completionPercent": 0.40,
+      "areas": [
+        { "name": "Practice Areas", "configured": true, "depth": "5 defined" },
+        { "name": "Custom Fields", "configured": true, "depth": "3 created (shallow)" },
+        { "name": "Activity Descriptions", "configured": false, "depth": "defaults only" },
+        { "name": "Expense Categories", "configured": true, "depth": "2 added (minimal)" },
+        { "name": "Document Templates", "configured": false, "depth": "none" },
+        { "name": "Document Categories", "configured": false, "depth": "none" },
+        { "name": "Task Template Lists", "configured": true, "depth": "1 created (minimal)" },
+        { "name": "Billing Themes", "configured": false, "depth": "default only" },
+        { "name": "Text Snippets", "configured": false, "depth": "none" },
+        { "name": "Calendar Structure", "configured": false, "depth": "default only" }
+      ]
+    },
+    "recommendations": [
+      {
+        "body": "Prioritize document templates and task template lists — these produce the highest time savings per configuration hour invested.",
+        "whyRelevant": "The firm produces 6 to 15 repeated document types manually. Each template created saves 15 to 20 minutes per use.",
+        "howToImplement": "Navigate to Documents > Document Templates > Create. Upload existing Word templates and add merge fields for client and matter data."
+      },
+      {
+        "body": "Create activity descriptions specific to the firm's practice areas to improve time entry accuracy and enable meaningful billing category analysis.",
+        "whyRelevant": "Without custom activity descriptions, time entries lack the categorization needed for practice area profitability reporting.",
+        "howToImplement": "Navigate to Settings > Activity Descriptions > Add. Create descriptions for common work types in each practice area."
+      },
+      {
+        "body": "Set up document categories and billing themes to standardize firm output and reduce per-matter configuration time.",
+        "whyRelevant": "Categories enable document organization and search. Billing themes customize invoice appearance for different billing models.",
+        "howToImplement": "Settings > Document Categories for categories. Settings > Bill Themes for billing templates."
+      }
+    ],
+    "layer2": {
+      "headline": "The firm configured Clio without guidance and ran out of time at 40% — document automation is their highest-priority gap.",
+      "detail": "The firm set up Clio independently without a consultant or Clio's onboarding team. They configured practice areas, custom fields (partially), expense categories (minimally), and one task template list — achieving 40% of the 10-area configuration framework. The remaining 6 areas (activity descriptions, document templates, document categories, billing themes, text snippets, and calendar structure) were never set up. The questionnaire reveals the barrier is time, not awareness — the firm knows document templates and task templates exist but hasn't had the bandwidth to build them. Their stated priority is document automation, specifically citing hours wasted rewriting the same letters. This priority aligns directly with the finding in Domain 4 showing zero document templates and zero automations. The 60% configuration gap represents functionality the firm is paying for but not using, and every day without templates means hours of unnecessary manual document work.",
+      "baselineCard": {
+        "title": "BASELINE-ONLY INTERPRETATION",
+        "content": "Configuration areas completed: 4 of 10 (40%).\nNotable gaps: Document templates, activity descriptions, billing themes, text snippets.\nAssessment: Below-average platform utilization with significant unconfigured capability."
+      },
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Setup method: Self-implemented without guidance.\nBarrier: Time, not awareness.\nFirm's top priority: Document automation (templates).\nAssessment: Targeted configuration investment would unlock the firm's highest-priority capability — template migration alone would save an estimated 5 to 10 hours per week."
+      }
+    },
+    "layer3": {
+      "annotations": [],
+      "override": null,
+      "customFindings": [],
+      "interviewEvidence": []
+    },
+    "cvi": "Your Clio configuration is 40% complete, and the firm's top priority is document automation. An Attornato consultant would conduct a configuration audit, build your top-priority document templates saving an estimated 5 to 10 hours per week in document drafting, configure task template lists for your practice areas, and complete the remaining setup areas in order of revenue impact."
+  },
+  {
+    "id": "2.1",
+    "title": "Matter Organization & Hygiene",
+    "domainId": 2,
+    "baselineScore": 2,
+    "contextScore": 2,
+    "overrideScore": null,
+    "finalScore": 2,
+    "confidence": "High",
+    "apiCoverage": "High",
+    "enrichmentSource": "Q2.1",
+    "storyBeat": "Matter organization is the structural foundation of a law firm's operations. When matters lack practice area assignments, the firm cannot report on revenue or workload by practice type. When stale matters accumulate without being closed or moved to pending status, they clutter workflows, distort reporting, and create risk — a matter left open without activity may represent a client who believes their case is being actively worked. Clean matter hygiene enables every downstream function: accurate billing, meaningful reports, effective conflict checks, and reliable workload management.",
+    "metrics": {
+      "totalOpenMatters": 142,
+      "pendingMatters": 89,
+      "closedMatters": 340,
+      "practiceAreaAssignmentRate": 0.68,
+      "missingPracticeArea": 45,
+      "staleMatters": 31,
+      "stalePercent": 0.22,
+      "orphanedMatters": 7
+    },
+    "recommendations": [
+      {
+        "body": "Assign practice areas to the 45 matters currently missing this classification.",
+        "whyRelevant": "Without this, revenue-by-practice and workload reports are unreliable. The firm identified practice area profitability as their most-wanted analytical capability.",
+        "howToImplement": "Filter the matter list by Practice Area: None. Assign the correct practice area to each matter. Prioritize open matters first."
+      },
+      {
+        "body": "Review the 31 stale open matters and either close them, move to pending status, or log activity confirming they are still active.",
+        "whyRelevant": "Stale matters may represent unmet client expectations and distort workload reporting.",
+        "howToImplement": "Sort matters by last_activity_date ascending. Review each stale matter with the responsible attorney. Close completed matters with a closing note."
+      },
+      {
+        "body": "Investigate the 7 matters with no client linked — these represent data integrity issues that affect billing and conflict checking.",
+        "whyRelevant": "A matter without a linked client cannot be billed, cannot appear in conflict checks, and has no clear ownership.",
+        "howToImplement": "Search for matters where client is not assigned. Link the appropriate client contact to each matter."
+      }
+    ],
+    "layer2": {
+      "headline": "No one owns matter hygiene — and it shows in 31 stale matters and 45 missing practice area assignments.",
+      "detail": "The Automated Baseline flagged 22% stale matters, 32% missing practice areas, and 7 orphaned matters without linked clients. The questionnaire reveals the organizational root cause: no individual or role is responsible for matter data quality, the firm uses an informal standard for opening matters (not written, not enforced), and stale matter review happens only when it becomes a problem rather than on a schedule. The absence of ownership means these gaps compound over time — every month that passes without review adds new uncategorized matters and lets stale ones age further. The 45 matters missing practice area assignments make revenue-by-practice-area reporting impossible, which the firm later identifies as one of its most-wanted analytical capabilities. The 7 matters without linked clients represent potential conflict check failures where the client relationship is not recorded in the system.",
+      "baselineCard": {
+        "title": "BASELINE-ONLY INTERPRETATION",
+        "content": "Stale open matters: 31 of 142 (22%).\nMissing practice areas: 45 of 142 (32%).\nOrphaned matters (no client): 7.\nAssessment: Significant data quality gaps affecting reporting and conflict checking."
+      },
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Root cause: No assigned owner for data quality. No review schedule.\nInformal matter opening process, not enforced.\nRevenue-by-practice reporting impossible with 32% unclassified.\nAssessment: Organizational gap, not a data entry problem — without ownership and process, cleanup will not sustain."
+      }
+    },
+    "layer3": {
+      "annotations": [],
+      "override": null,
+      "customFindings": ["cf-2"],
+      "interviewEvidence": []
+    },
+    "cvi": "Your matter organization has measurable gaps: 22% stale matters, 32% missing practice areas, and 7 orphaned matters. The questionnaire reveals no assigned owner for data quality and no regular review process. An Attornato consultant would establish a matter lifecycle governance process, conduct a one-time cleanup, assign ongoing ownership, and configure Clio to enforce required fields at matter creation."
+  },
+  {
+    "id": "2.2",
+    "title": "Contact Data Quality",
+    "domainId": 2,
+    "baselineScore": 3,
+    "contextScore": 3,
+    "overrideScore": null,
+    "finalScore": 3,
+    "confidence": "High",
+    "apiCoverage": "High",
+    "enrichmentSource": "Q2.2",
+    "storyBeat": "Contact data quality determines the reliability of every client-facing operation in the firm. Missing email addresses prevent electronic invoice delivery, portal invitations, and automated communications. Missing phone numbers create barriers when urgent case updates need to be communicated. Duplicate contacts lead to split records where some communications and documents are attached to one record and some to another, creating an incomplete and unreliable client history. Custom fields that exist but are rarely populated represent a configuration investment that is not producing returns.",
+    "metrics": {
+      "emailCompleteness": 0.76,
+      "phoneCompleteness": 0.69,
+      "potentialDuplicates": 12,
+      "customFieldPopulation": 0.34
+    },
+    "recommendations": [
+      {
+        "body": "Run a data cleanup initiative targeting the 24% of client contacts missing email addresses. Prioritize active matters first.",
+        "whyRelevant": "Clients without email cannot receive electronic invoices, portal invitations, or automated case updates.",
+        "howToImplement": "Export contacts filtered by is_client=true and primary_email_address=null. Contact each client to collect email. Update records."
+      },
+      {
+        "body": "Review the 12 potential duplicate contacts and merge where confirmed.",
+        "whyRelevant": "Duplicates cause split records that undermine conflict checking and matter history completeness.",
+        "howToImplement": "Search for contacts with matching last names. Compare details and merge confirmed duplicates using Clio's merge function."
+      },
+      {
+        "body": "Either populate custom fields consistently or remove unused ones to reduce data entry burden without adding value.",
+        "whyRelevant": "A 34% population rate means the custom fields add noise to the interface without delivering analytical value.",
+        "howToImplement": "Decide which custom fields are essential. Add them to the intake checklist as required fields. Remove or hide fields that will not be maintained."
+      }
+    ],
+    "layer2": {
+      "headline": "Email isn't required at intake — which is why 24% of client contacts are missing it.",
+      "detail": "The firm requires only full name and phone number at intake, which directly explains the 76% email completeness rate — email is not collected because it is not required. Paralegals handle data entry, but without a standard for completeness, each person applies their own judgment about what fields to populate. Custom fields were created during setup but are only 34% populated because there is no enforcement and no one has run a data cleanup since implementation. The 12 potential duplicate contacts remain unresolved because the firm has never performed deduplication. The practical impact: 24% of clients cannot receive electronic invoices (requiring manual mailing at higher cost and longer delivery time), cannot be invited to the client portal, and cannot receive automated case updates. Each missing email address creates a friction point in every digital interaction with that client.",
+      "baselineCard": {
+        "title": "BASELINE-ONLY INTERPRETATION",
+        "content": "Client email completeness: 76%.\nPhone completeness: 69%.\nPotential duplicates: 12.\nCustom field population: 34%.\nAssessment: Contact data gaps affecting billing delivery and client communication."
+      },
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Root cause: Email not required at intake. No data completeness standard.\nNo deduplication ever performed.\nCustom fields exist but unenforced.\nAssessment: Intake requirements gap — adding email as a required field would prevent future gaps while a cleanup initiative addresses the existing 24%."
+      }
+    },
+    "layer3": {
+      "annotations": [],
+      "override": null,
+      "customFindings": [],
+      "interviewEvidence": []
+    },
+    "cvi": "Your contact records are 76% complete on email and only 34% on custom fields. The intake process doesn't require email collection, and custom fields exist but aren't enforced. An Attornato consultant would redesign your intake data requirements, conduct a contact cleanup initiative, resolve the 12 duplicate records, and establish required field enforcement so data quality improves from this point forward."
+  },
+  {
+    "id": "2.3",
+    "title": "Calendar Utilization & Deadline Management",
+    "domainId": 2,
+    "baselineScore": 2,
+    "contextScore": 2,
+    "overrideScore": 1,
+    "finalScore": 1,
+    "confidence": "Medium",
+    "apiCoverage": "Medium",
+    "enrichmentSource": "Q2.3",
+    "storyBeat": "The calendar is a law firm's most critical risk management tool. Missed court dates and blown deadlines are among the most common causes of malpractice claims in legal practice. When calendar events are not linked to matters, the firm loses the ability to see a complete timeline of case activity. When reminders are not configured, the firm relies on individual attorney memory for deadline compliance. Calendar utilization in Clio versus external tools also indicates how centralized the firm's operations actually are.",
+    "metrics": {
+      "matterLinkedRate": 0.47,
+      "reminderConfigRate": 0.58,
+      "usersWithMinimalCalendar": 3,
+      "totalCalendarUsers": 8,
+      "courtRulesIntegration": false
+    },
+    "recommendations": [
+      {
+        "body": "Link all court dates, filing deadlines, and client meetings to their respective matters.",
+        "whyRelevant": "The 53% of unlinked events represent activity that is invisible in matter timelines and cannot be tracked or reported.",
+        "howToImplement": "When creating calendar events, always select the related matter from the Matter field. Retroactively link existing unlinked events for active matters."
+      },
+      {
+        "body": "Configure at least two reminders for every deadline-sensitive event: one 24 hours before and one 1 hour before.",
+        "whyRelevant": "42% of events have no reminders, meaning the firm relies entirely on individual memory for deadline compliance.",
+        "howToImplement": "Set reminder defaults in Settings > Calendar Settings. Review existing deadline events and add reminders where missing."
+      },
+      {
+        "body": "Investigate whether the three users with minimal calendar activity are using external calendars instead of Clio, and if so, enable synchronization.",
+        "whyRelevant": "Unsynchronized external calendars create blind spots where deadlines and meetings are invisible to the rest of the firm.",
+        "howToImplement": "Settings > Calendar Settings > enable Google or Outlook sync for all users. Verify sync is working by checking calendar views."
+      }
+    ],
+    "layer2": {
+      "headline": "A missed deadline in the past year confirms the risk — manual deadline calculation with inconsistent reminders is a malpractice exposure.",
+      "detail": "The firm syncs Google Calendar to Clio, which means calendar events exist but only 47% are linked to matters in Clio. Paralegals enter court dates and filing deadlines manually, calculating deadlines by hand rather than using automated court rules tools. The firm confirmed a deadline was missed within the last year — transforming this finding from a process improvement opportunity to a documented malpractice risk. With 42% of events lacking any reminder configuration, the firm relies on individual awareness and memory for deadline compliance. The combination of manual calculation (error-prone), inconsistent matter linking (no case timeline visibility), and missed reminders (no safety net) creates a compounding risk that increases with caseload. The missed deadline is unlikely to be the last unless the underlying process changes.",
+      "baselineCard": {
+        "title": "BASELINE-ONLY INTERPRETATION",
+        "content": "Events linked to matters: 47%.\nEvents with reminders: 58%.\nCalendar adoption: 5 of 8 users active.\nAssessment: Below-average calendar utilization with deadline management gaps."
+      },
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Confirmed missed deadline within the past year.\nManual deadline calculation with no court rules tool.\nGoogle Calendar synced but inconsistently linked to matters.\nAssessment: Active malpractice exposure — the missed deadline is a symptom of structural process gaps that increase risk with every new matter opened."
+      }
+    },
+    "layer3": {
+      "annotations": [
+        {
+          "id": "ann-2.3",
+          "type": "Risk Context",
+          "consultant": "Daniela Reyes, Senior Legal Technology Consultant",
+          "date": "March 12, 2026",
+          "text": "The missed deadline disclosed in the questionnaire was discussed in detail during my interview with the managing partner. It involved a filing deadline in a family law matter that was calculated incorrectly because the paralegal used the wrong starting date for the countdown. The error was caught two days after the deadline passed. The firm was able to file a motion for extension that was granted, but the managing partner described the incident as 'the worst week of my career.' Despite this experience, the firm has not changed its deadline calculation process. Court dates and filing deadlines are still calculated manually by paralegals using a wall calendar and a spreadsheet. I strongly recommend implementing Clio's Court Rules integration, which automates deadline calculation based on jurisdiction-specific rules, and configuring mandatory dual reminders (24-hour and 1-hour) for all deadline events. The cost of the Court Rules add-on is negligible compared to the malpractice exposure of the current manual process."
+        }
+      ],
+      "override": {
+        "originalScore": 2,
+        "overrideScore": 1,
+        "consultant": "Daniela Reyes, Senior Legal Technology Consultant",
+        "date": "March 14, 2026",
+        "justification": "I am overriding the automated score from 2 to 1 based on the confirmed missed deadline and the absence of any process change following that incident. The automated system scored this finding based on the percentage of events linked to matters and reminder configuration rates, which produced a Developing (2) assessment. However, the combination of a confirmed missed deadline within the past 12 months, continued reliance on manual deadline calculation with no court rules integration, and the firm's own admission that nothing has changed since the incident represents an Initial (1) maturity level. A firm that has experienced a deadline failure and has not modified its process is at higher risk than a firm that has never experienced one, because the vulnerability has been demonstrated rather than theoretical. This finding should be treated as the highest-priority remediation item in the engagement roadmap."
+      },
+      "customFindings": [],
+      "interviewEvidence": [
+        {
+          "id": "ie-2.3",
+          "section": "Finding-Triggered",
+          "question": "The data shows 47% of calendar events aren't linked to matters. Can you walk me through how court dates and deadlines get into the system?",
+          "answer": "Paralegal handles all deadline entry. She gets dates from court notices, calculates deadlines manually using a spreadsheet with rule-based formulas she built herself. Enters in Google Calendar, which syncs to Clio. Doesn't always link to the matter because 'it takes extra clicks and I'm usually in a hurry.' Missed deadline last year was a filing due date — wrong start date used in her spreadsheet formula. Extension was granted but MP says it was terrifying. Nothing changed in the process afterward. Paralegal says she's been asking for a court rules tool for two years.",
+          "usedIn": ["Annotation on Finding 2.3", "Score Override on Finding 2.3"]
+        }
+      ]
+    },
+    "cvi": "Your firm recently missed a deadline, and the data shows 47% of events are unlinked to matters with 42% lacking reminders. Your team calculates deadlines manually. An Attornato consultant would configure comprehensive deadline management including court rules integration, mandatory reminder standards, and a weekly deadline review workflow — directly reducing your firm's malpractice exposure."
+  },
+  {
+    "id": "2.4",
+    "title": "Matter Stage & Workflow Structure",
+    "domainId": 2,
+    "baselineScore": 2,
+    "contextScore": 2,
+    "overrideScore": null,
+    "finalScore": 2,
+    "confidence": "Medium",
+    "apiCoverage": "Medium",
+    "enrichmentSource": "Q2.4",
+    "storyBeat": "Matter stages transform Clio from a data repository into a case management system. Without stages, there is no structured way to track where a case stands in its lifecycle, which means status updates rely on individual attorney memory and ad hoc communication. When stages are defined but not maintained, the kanban view becomes unreliable and team members lose trust in the system. Effective stage management enables workload visibility, bottleneck identification, and proactive client communication about case progress.",
+    "metrics": {
+      "practiceAreasWithStages": 2,
+      "totalPracticeAreas": 5,
+      "stageDefinitionRate": 0.40,
+      "stageProgressionRate": 0.38,
+      "practiceAreasWithoutStages": 3
+    },
+    "recommendations": [
+      {
+        "body": "Define matter stages for the three practice areas currently without them.",
+        "whyRelevant": "Without stages, 60% of practice areas have no structured case tracking, making workload management and client updates ad hoc.",
+        "howToImplement": "Navigate to Settings > Matter Stages. Map the typical lifecycle of a matter in each practice area from intake through completion."
+      },
+      {
+        "body": "Establish a weekly matter review where attorneys update stages for their active matters.",
+        "whyRelevant": "62% of stage-eligible matters have no recent updates, meaning the kanban view is unreliable and cannot be trusted for case tracking.",
+        "howToImplement": "Schedule a recurring 15-minute weekly meeting to review and update matter stages. Assign stage updates as a standing agenda item."
+      },
+      {
+        "body": "Use matter stages as the basis for client status updates, creating a natural incentive for attorneys to keep stages current.",
+        "whyRelevant": "When stage updates trigger client communication, attorneys have a reason to maintain them beyond internal tracking.",
+        "howToImplement": "When a matter moves to a new stage, send the client a brief update. This can be as simple as a one-line email noting the case has progressed."
+      }
+    ],
+    "layer2": {
+      "headline": "Matter stages were configured but abandoned — the firm tracks cases on a spreadsheet that duplicates what Clio should do.",
+      "detail": "The firm set up matter stages for 2 of 5 practice areas but stopped maintaining them. The parallel tracking system — a spreadsheet managed through team meetings — has become the de facto case status tool. This means the firm is maintaining two incomplete systems: Clio stages that are 38% current and a spreadsheet that exists outside the practice management platform. When clients ask about case status, the firm responds reactively rather than proactively, and the information comes from the spreadsheet or attorney memory rather than the system of record. Paralegals assist with case progression but don't control stage updates, which remain the attorneys' responsibility — the same attorneys who allowed stages to go stale. The abandoned initiative represents both wasted configuration effort and a trust problem: the team tried a Clio feature, found it wasn't maintained, and fell back to familiar tools.",
+      "baselineCard": {
+        "title": "BASELINE-ONLY INTERPRETATION",
+        "content": "Practice areas with stages: 2 of 5 (40%).\nMatters with recent stage updates: 38%.\nThree practice areas have no stage structure.\nAssessment: Partial stage configuration with low active usage."
+      },
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Stages configured but abandoned in favor of a spreadsheet.\nCase status inquiries handled reactively.\nParalegals assist but attorneys control (and neglect) updates.\nAssessment: Failed adoption, not missing configuration — relaunch requires redesign around who actually drives case progression, not just re-training."
+      }
+    },
+    "layer3": {
+      "annotations": [],
+      "override": null,
+      "customFindings": [],
+      "interviewEvidence": []
+    },
+    "cvi": "Your firm defined stages for 2 practice areas but stopped maintaining them, falling back to a spreadsheet. This means case progress is tracked in two places, neither complete. An Attornato consultant would redesign your stage structure across all 5 practice areas, migrate your spreadsheet tracking into Clio, train the team on the kanban workflow, and establish a weekly review cadence that keeps stages current."
+  },
+  {
+    "id": "3.1",
+    "title": "Utilization Rate",
+    "domainId": 3,
+    "baselineScore": 2,
+    "contextScore": 2,
+    "overrideScore": null,
+    "finalScore": 2,
+    "confidence": "High",
+    "apiCoverage": "High",
+    "enrichmentSource": "Q3.1",
+    "storyBeat": "Utilization rate measures what percentage of available working hours are captured as billable time in the system. It is the single most important metric for understanding whether a firm is converting attorney capacity into revenue. Industry data consistently shows that small firms average around 31% utilization, meaning nearly 70% of potential billable time goes unrecorded. Every percentage point of improvement translates directly to additional revenue without requiring new clients or higher rates.",
+    "metrics": {
+      "firmAverage": 0.27,
+      "adjustedAverage": 0.22,
+      "industryAverage": 0.31,
+      "hoursPerWeek": 50,
+      "byAttorney": [
+        { "name": "James Okafor", "value": 0.41 },
+        { "name": "Robert Brennan", "value": 0.34 },
+        { "name": "Sofia Vega", "value": 0.28 },
+        { "name": "Karen Clark", "value": 0.08 }
+      ],
+      "blendedRate": 285,
+      "uncapturedRevenue": 178000
+    },
+    "recommendations": [
+      {
+        "body": "Implement contemporaneous time entry policies requiring same-day logging for all billable staff. Firms that log time on the same day capture 25 to 40% more billable hours than those reconstructing time weekly.",
+        "whyRelevant": "The firm's 22% adjusted utilization rate represents approximately $178,000 in annual uncaptured revenue.",
+        "howToImplement": "Create a written time entry policy. Communicate the expectation in a firm meeting. Monitor compliance via weekly activity reports filtered by user."
+      },
+      {
+        "body": "Enable and train all timekeepers on Clio's built-in timer feature, which can be started from any matter, task, document, or calendar event.",
+        "whyRelevant": "The timer captures time as it happens, eliminating the estimation error inherent in after-the-fact entry.",
+        "howToImplement": "Click the timer icon in the Clio header bar. Select the matter. Start timing. The timer persists across page navigation."
+      },
+      {
+        "body": "Review individual utilization by attorney to identify specific adoption gaps rather than treating low utilization as a firm-wide problem.",
+        "whyRelevant": "The range from 8% to 41% shows this is an individual-level problem concentrated in specific attorneys, not a uniform firm-wide behavior.",
+        "howToImplement": "Run a productivity report filtered by user. Compare per-user utilization rates and investigate outliers, particularly the attorney at 8%."
+      }
+    ],
+    "layer2": {
+      "headline": "Revenue leakage is worse than it appeared — actual utilization is 22%, not 27%.",
+      "detail": "The Automated Baseline calculated utilization at 27% against a standard 40-hour week. The firm reports attorneys typically work 50-hour weeks. Against actual hours worked, only 22% of available capacity is being captured as billable time. At the firm's blended rate of $285/hour, the 28-point gap between current utilization and a 50% target represents approximately $178,000 in annual uncaptured revenue across the firm. The absence of a written time entry policy and reliance on Clio's timer alone — with no supplementary capture tools — compounds the problem. Two attorneys in the firm's hourly-and-flat-fee mix have particularly acute capture gaps on flat-fee matters where time tracking is deprioritized despite its value for profitability analysis.",
+      "baselineCard": {
+        "title": "BASELINE-ONLY INTERPRETATION",
+        "content": "Firm utilization rate: 27% (against 40-hour assumed week).\nIndividual range: 8% to 41%.\nIndustry average (Clio Legal Trends Report): 31%.\nAssessment: Below industry average with significant variance across the team."
+      },
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Adjusted utilization rate: 22% (against 50-hour reported week).\nUncaptured revenue estimate: $178,000/year.\nNo written time entry policy. No supplementary capture tools.\nAssessment: Substantially below target with structural barriers to improvement."
+      }
+    },
+    "layer3": {
+      "annotations": [
+        {
+          "id": "ann-3.1",
+          "type": "Validation + Risk Context",
+          "consultant": "Daniela Reyes, Senior Legal Technology Consultant",
+          "date": "March 12, 2026",
+          "text": "The 22% adjusted utilization rate is consistent with what I observed during the on-site interview. The managing partner acknowledged that two attorneys routinely handle client calls from their personal phones during evenings and weekends without logging the time afterward. When I asked one of these attorneys to estimate their unrecorded weekly hours, they said 'probably four or five hours a week, maybe more.' At $285/hour blended rate, that single attorney's unrecorded time represents approximately $75,000 per year. The firm's flat-fee matters are particularly affected — multiple team members confirmed that time tracking stops entirely once a flat fee is quoted, eliminating any ability to assess whether flat-fee matters are profitable. I recommend the firm implement time tracking on all matters regardless of billing type, using a non-billable flag for flat-fee work, so that profitability analysis becomes possible without changing how clients are billed."
+        }
+      ],
+      "override": null,
+      "customFindings": [],
+      "interviewEvidence": [
+        {
+          "id": "ie-3.1",
+          "section": "Finding-Triggered",
+          "question": "Your utilization data shows a range from 8% to 41% across your team. Walk me through how each attorney captures their time — is the process the same for everyone?",
+          "answer": "MP says each atty handles time their own way. He uses the timer sometimes. J.R. (senior partner) dictates to his assistant, she enters from handwritten notes days later. MP estimates she captures maybe 70-80%. Two younger attys use the timer more consistently but still batch-enter at end of day. Nobody tracks time on flat fee matters at all — 'what's the point if we're not billing hourly?' MP acknowledged they have no idea if flat fee matters are profitable.",
+          "usedIn": ["Annotation on Finding 3.1", "Annotation on Finding 7.1"]
+        }
+      ]
+    },
+    "cvi": "Your firm's utilization rate is 27% against assumed hours, but your team reports working 50-hour weeks, which drops the effective capture rate to 22%. An Attornato consultant would conduct a time capture audit across your team, identify the specific activities where billable time is being lost, and implement a structured time entry workflow tailored to your mix of hourly and flat-fee work."
+  },
+  {
+    "id": "3.2",
+    "title": "Time Entry Timeliness",
+    "domainId": 3,
+    "baselineScore": 2,
+    "contextScore": 2,
+    "overrideScore": null,
+    "finalScore": 2,
+    "confidence": "High",
+    "apiCoverage": "High",
+    "enrichmentSource": "Q3.2",
+    "storyBeat": "Time entry timeliness measures how quickly attorneys record their billable work after performing it. Research consistently shows that time recorded more than 24 hours after the work was done loses 10 to 25% of its value through forgotten tasks, underestimated durations, and missing entries. The delay between work performed and time recorded is one of the strongest predictors of revenue leakage in a law firm.",
+    "metrics": {
+      "averageLagDays": 3.2,
+      "medianLagDays": 2.8,
+      "sameDayPercent": 0.22,
+      "nextDayPercent": 0.31,
+      "threePlusDaysPercent": 0.47,
+      "mondaySpikeMultiplier": 2.4,
+      "byAttorney": [
+        { "name": "James Okafor", "avgLag": 0.4 },
+        { "name": "Robert Brennan", "avgLag": 1.8 },
+        { "name": "Sofia Vega", "avgLag": 2.9 },
+        { "name": "Karen Clark", "avgLag": 4.8 }
+      ],
+      "revenueErosionEstimate": [18000, 44000]
+    },
+    "recommendations": [
+      {
+        "body": "Establish a firm-wide same-day time entry standard. The data shows that 47% of time entries are logged 3 or more days after the work was performed, which is the highest-risk window for lost billable time.",
+        "whyRelevant": "Research indicates that time logged more than 24 hours after the work captures 10 to 25% less value, costing the firm an estimated $18,000 to $44,000 annually.",
+        "howToImplement": "Written policy communicated to all timekeepers. Weekly compliance review by the office manager using activity reports filtered by user and date."
+      },
+      {
+        "body": "Use Clio's timer feature to capture time in real time rather than reconstructing it after the fact.",
+        "whyRelevant": "Timers eliminate the estimation error inherent in after-the-fact entry. The attorney at 0.4-day average lag demonstrates the impact of consistent timer use.",
+        "howToImplement": "Start the timer before beginning work on a matter. Stop when done. Review and save the time entry. The timer can be started from matters, tasks, documents, and calendar events."
+      },
+      {
+        "body": "Review the Monday spike pattern with firm leadership — it indicates weekly batch entry, which is the highest-risk pattern for revenue leakage.",
+        "whyRelevant": "The 2.4x Monday volume confirms that attorneys are reconstructing the previous week's time from memory every Monday morning.",
+        "howToImplement": "Show leadership the day-of-week distribution chart. Discuss the revenue impact. Set Monday morning as a deadline for the prior week rather than a catch-up session."
+      }
+    ],
+    "layer2": {
+      "headline": "The firm expects 24-hour entry but delivers 3.2 days — out-of-office work patterns are the primary driver.",
+      "detail": "The firm has an informal expectation of same-day or next-day time entry, but the data shows an average lag of 3.2 days with 47% of entries logged 3 or more days after the work was performed. The Monday spike pattern — where entry volume is 2.4 times the daily average — confirms weekly batch reconstruction is common. The questionnaire reveals that attorneys are frequently out of the office (court, client sites), and the firm uses manual same-day entry combined with end-of-week batch entry rather than real-time timers. With no formal review process catching entry gaps, time that slips past the 24-hour window has no safety net. Research indicates that time logged more than 24 hours after the work captures 10 to 25% less value, suggesting the batch-entry pattern is costing the firm $18,000 to $44,000 annually in value erosion.",
+      "baselineCard": {
+        "title": "BASELINE-ONLY INTERPRETATION",
+        "content": "Average entry lag: 3.2 days.\nSame-day entry rate: 22%.\nMonday spike: 2.4x average daily volume.\nAssessment: Significant delay pattern consistent with weekly batch reconstruction."
+      },
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Policy gap: 24-hour expectation vs. 3.2-day reality.\nRoot cause: Out-of-office work without mobile entry workflow.\nNo review process to catch entry gaps.\nAssessment: Policy compliance failure driven by workflow design, not individual behavior."
+      }
+    },
+    "layer3": {
+      "annotations": [],
+      "override": null,
+      "customFindings": [],
+      "interviewEvidence": [
+        {
+          "id": "ie-3.2",
+          "section": "Finding-Triggered",
+          "question": "We're seeing a pattern where time entry volume spikes on Mondays — about two and a half times the daily average. Does that match what you'd expect?",
+          "answer": "MP laughed — 'that's exactly right. Monday morning is catch-up time.' He said he tries to enter daily but admits he falls behind Thursday and Friday when court schedules get heavy. Karen doesn't enter her own time at all. James is the most disciplined — 'he's religious about the timer.' Sofia is inconsistent — some weeks good, some weeks she's doing Monday reconstruction like everyone else.",
+          "usedIn": ["Annotation on Finding 3.2"]
+        }
+      ]
+    },
+    "cvi": "Your firm expects time entry within 24 hours, but the actual average is 3.2 days, with a clear Monday spike pattern. An Attornato consultant would analyze which attorneys and work types drive the delay, design a mobile-friendly entry workflow for out-of-office work, and establish a review process that catches entry gaps before they become lost revenue."
+  },
+  {
+    "id": "3.3",
+    "title": "Billing Cycle Efficiency",
+    "domainId": 3,
+    "baselineScore": 2,
+    "contextScore": 2,
+    "overrideScore": null,
+    "finalScore": 2,
+    "confidence": "High",
+    "apiCoverage": "High",
+    "enrichmentSource": "Q3.3",
+    "storyBeat": "The billing cycle measures how quickly work performed converts into cash received. Every day a time entry sits unbilled or an invoice sits in draft is a day the firm is financing its clients' legal work interest-free. Firms with long billing cycles experience higher write-off rates, more client disputes over old charges, and chronic cash flow problems that constrain growth. The unbilled inventory number represents work the firm has already performed but has not yet asked to be paid for.",
+    "metrics": {
+      "avgTimeToBill": 38,
+      "draftAging": 12,
+      "collectionCycle": 34,
+      "unbilledInventory": 127000,
+      "unbilledMonths": 2.5,
+      "draftInvoices": 14,
+      "monthlyDelayedCost": 4200
+    },
+    "recommendations": [
+      {
+        "body": "Reduce the draft aging period by establishing a weekly billing review cadence. The 14 invoices currently in draft represent revenue that could be collected 12 days sooner.",
+        "whyRelevant": "Every day an invoice sits in draft delays collection and increases the risk of client disputes over stale charges.",
+        "howToImplement": "Set a billing calendar: drafts generated on the 1st, attorney review due by the 5th, office manager sends all reviewed invoices by the 7th."
+      },
+      {
+        "body": "Address the $127,000 unbilled inventory immediately. Sort by age and generate invoices for all work older than 30 days.",
+        "whyRelevant": "This represents 2.5 months of earned but uninvoiced revenue. The longer time sits unbilled, the less likely it is to be billed at full value.",
+        "howToImplement": "Navigate to Billing > Billable Clients. Sort by oldest unbilled activity. Generate invoices for all work older than 30 days. Review and send."
+      },
+      {
+        "body": "Configure Clio's billing reminders to flag draft invoices that have been sitting more than 48 hours without review.",
+        "whyRelevant": "Automated reminders remove the office manager's burden of chasing attorneys for review and create accountability.",
+        "howToImplement": "Settings > Notifications > configure billing draft reminders for 48-hour and 72-hour intervals."
+      }
+    ],
+    "layer2": {
+      "headline": "Attorney review is adding 12 days to every billing cycle — costing the firm $4,200/month in delayed collections.",
+      "detail": "The firm's 38-day average time-to-bill breaks down into three components: time entry accumulation (the first 20 days, driven by the monthly billing cadence), draft generation and attorney review (12 days on average, with each attorney reviewing their own invoices on their own schedule), and send-to-payment (6 days for the actual delivery step). The questionnaire identifies attorney review as the acknowledged bottleneck, but the firm has no target for the overall cycle and no mechanism to flag drafts sitting unreviewed. The $127,000 in unbilled inventory represents approximately 2.5 months of revenue the firm has earned but not invoiced. At the firm's cost of capital, this delay carries an implicit cost of approximately $4,200 per month in collections that could be accelerating cash flow. Fourteen invoices currently in draft have been sitting an average of 9 days without review.",
+      "baselineCard": {
+        "title": "BASELINE-ONLY INTERPRETATION",
+        "content": "Average time-to-bill: 38 days.\nDraft aging: 12 days average.\nUnbilled inventory: $127,000 (2.5 months revenue).\nAssessment: Billing cycle significantly exceeds best practice benchmarks."
+      },
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Bottleneck identified: Attorney self-review without deadline.\nCycle decomposition: 20 days accumulation + 12 days review + 6 days delivery.\nNo review deadline or escalation mechanism.\nAssessment: Structural process gap — attorney review is unmanaged and adding $4,200/month in delayed collections."
+      }
+    },
+    "layer3": {
+      "annotations": [
+        {
+          "id": "ann-3.3",
+          "type": "Recommendation Refinement",
+          "consultant": "Daniela Reyes, Senior Legal Technology Consultant",
+          "date": "March 13, 2026",
+          "text": "The 12-day attorney review bottleneck has a specific root cause I identified during the interview with the office manager. Three of the four billing attorneys review invoices only when they 'have a quiet moment,' which in a busy practice means invoices sit in draft until the end of the month or until the office manager sends a reminder. The managing partner reviews invoices within 48 hours but has not communicated this as a firm expectation. I recommend implementing a structured billing calendar: draft invoices generated on the 1st, attorney review due by the 5th, office manager sends all reviewed invoices by the 7th. This compresses the current 12-day review window to 5 days. Additionally, I recommend configuring Clio's billing notification to alert attorneys when draft invoices are assigned to them for review, and a second notification at the 48-hour mark if the invoice remains in draft."
+        }
+      ],
+      "override": null,
+      "customFindings": [],
+      "interviewEvidence": [
+        {
+          "id": "ie-3.3",
+          "section": "Finding-Triggered",
+          "question": "Your invoices sit in draft an average of 12 days. What happens between when a draft is generated and when it goes out?",
+          "answer": "Office mgr generates drafts on the 1st of each month. She assigns each draft to the responsible attorney for review. 'Then I wait. And wait. I send reminder emails around the 8th or 9th. Usually by the 12th or 13th everyone has reviewed, and I send them out.' MP reviews his within 2 days. J.R. (senior partner) is consistently the last to review — her average is probably 10-14 days. Two younger attys take 5-7 days. Nobody has ever told them there's a deadline. Office mgr has never escalated to MP because 'I don't want to create conflict.'",
+          "usedIn": ["Annotation on Finding 3.3"]
+        }
+      ]
+    },
+    "cvi": "Your billing cycle averages 38 days with $127,000 in unbilled inventory. The questionnaire identifies attorney review as the primary bottleneck. An Attornato consultant would restructure your billing workflow to separate time entry review from invoice approval, configure Clio's approval workflow, and reduce your cycle by an estimated 15 to 20 days."
+  },
+  {
+    "id": "3.4",
+    "title": "Realization Rate",
+    "domainId": 3,
+    "baselineScore": 2,
+    "contextScore": 2,
+    "overrideScore": null,
+    "finalScore": 2,
+    "confidence": "High",
+    "apiCoverage": "High",
+    "enrichmentSource": "Q3.4",
+    "storyBeat": "Realization rate reveals how much of the value a firm creates actually ends up on an invoice. When an attorney spends two hours on a task billed at $300 per hour but the invoice only reflects $450, the firm realized 75% of the value. Low realization rates signal systemic problems: inconsistent rate structures, excessive discounting, poor time descriptions that clients challenge, or work that exceeds estimates without client communication. Every point of realization improvement drops directly to the bottom line.",
+    "metrics": {
+      "firmRate": 0.71,
+      "industryBenchmark": 0.80,
+      "byAttorney": [
+        { "name": "James Okafor", "value": 0.89 },
+        { "name": "Robert Brennan", "value": 0.83 },
+        { "name": "Sofia Vega", "value": 0.78 },
+        { "name": "Karen Clark", "value": 0.52 }
+      ],
+      "annualWriteOffs": 43000,
+      "clarkWriteOffShare": 0.40
+    },
+    "recommendations": [
+      {
+        "body": "Investigate the attorney with 52% realization to understand the discounting pattern. This single attorney accounts for approximately 40% of the firm's total write-offs.",
+        "whyRelevant": "Concentrated write-offs from one attorney represent a coaching opportunity with disproportionate firm-wide impact.",
+        "howToImplement": "Run a billing report filtered by this attorney. Analyze discount patterns, frequency, and reasons. Schedule a one-on-one conversation focused on the revenue impact."
+      },
+      {
+        "body": "Review time entry descriptions for clarity. Vague descriptions invite client pushback and write-downs.",
+        "whyRelevant": "Specific descriptions like 'researched jurisdictional requirements for motion to dismiss in Smith v. Jones' are rarely challenged, while vague entries like 'research' or 'correspondence' frequently are.",
+        "howToImplement": "Establish a description standard: who, what, why, how long. Review sample entries with the team. Create text snippets for common activity descriptions."
+      },
+      {
+        "body": "Establish approval thresholds for discounts exceeding 10%, requiring partner sign-off before any write-down above that level.",
+        "whyRelevant": "Uncontrolled discretionary discounting is the primary driver of the realization gap. Approval requirements create visibility without eliminating flexibility.",
+        "howToImplement": "Create a written policy requiring partner approval for discounts over 10%. Communicate the policy to all billing attorneys. Track compliance through billing reports."
+      }
+    ],
+    "layer2": {
+      "headline": "Unchecked discretionary discounting and stale rates are driving $43,000 in annual write-offs.",
+      "detail": "The firm's 71% realization rate sits well below the industry benchmark of approximately 80%. The questionnaire reveals three compounding factors. First, discounting authority rests with individual attorneys with no approval threshold, which explains the 52% realization attorney operating without guardrails. Second, the most common write-off reason is attorneys deciding after the fact that work 'took too long,' indicating poor upfront estimation and no budget-to-actual tracking on matters. Third, billing rates have not been reviewed in over 12 months, meaning the firm may be undercharging relative to market while simultaneously writing off time at those already-low rates. The $43,000 in trailing 12-month write-offs is not distributed evenly — one attorney accounts for approximately 40% of total write-offs, representing a coaching opportunity with concentrated impact.",
+      "baselineCard": {
+        "title": "BASELINE-ONLY INTERPRETATION",
+        "content": "Firm realization rate: 71%.\nIndividual range: 52% to 89%.\nTrailing 12-month write-offs: $43,000.\nAssessment: Significantly below the 80% industry benchmark."
+      },
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Root causes: Discretionary discounting with no oversight, stale rates, no client estimates.\nOne attorney accounts for 40% of write-offs.\nNo rate review in 12+ months.\nAssessment: Realization gap is policy-driven and concentrated — targeted intervention on one attorney and rate structure would recover an estimated $25,000 annually."
+      }
+    },
+    "layer3": {
+      "annotations": [],
+      "override": null,
+      "customFindings": [],
+      "interviewEvidence": []
+    },
+    "cvi": "Your 71% realization rate with $43,000 in write-offs is driven by individual discretionary discounting with no oversight. An Attornato consultant would establish discount approval thresholds, review and benchmark your rate structure, implement budget-to-actual tracking on matters, and project a realization improvement to 82 to 85% — worth approximately $25,000 in additional annual revenue."
+  },
+  {
+    "id": "3.5",
+    "title": "Collection Rate",
+    "domainId": 3,
+    "baselineScore": 2,
+    "contextScore": 2,
+    "overrideScore": null,
+    "finalScore": 2,
+    "confidence": "High",
+    "apiCoverage": "High",
+    "enrichmentSource": "Q3.5",
+    "storyBeat": "Collection rate measures the final step in converting attorney effort into firm revenue. A firm can have perfect utilization and realization rates but still struggle financially if clients do not pay their invoices. Outstanding receivables tie up cash that could fund operations, hire staff, or invest in growth. Receivables aging faster than 90 days have a dramatically lower probability of collection and often signal client relationship issues that should have been addressed much earlier.",
+    "metrics": {
+      "collectionRate": 0.82,
+      "industryBenchmark": 0.89,
+      "outstandingAR": 89000,
+      "agingBuckets": {
+        "current": 0.35,
+        "days31to60": 0.28,
+        "days61to90": 0.22,
+        "days90plus": 0.15
+      },
+      "over60Percent": 0.37,
+      "over90Percent": 0.15,
+      "topClientsOver90": 3,
+      "topClientsOver90Share": 0.61,
+      "atRiskAmount": 13000
+    },
+    "recommendations": [
+      {
+        "body": "Enable Clio Payments to offer clients credit card and eCheck payment directly from invoices. Firms using online payments collect 35% faster on average.",
+        "whyRelevant": "Clio Payments is included in the firm's Essentials subscription at no additional software cost. It is the single fastest collection improvement available.",
+        "howToImplement": "Settings > Billing > Clio Payments > Connect and activate. Add payment links to invoice templates. Enable the online payment option when generating invoices."
+      },
+      {
+        "body": "Establish an automated follow-up sequence: reminder at 15 days past due, phone call at 30 days, formal collection letter at 60 days.",
+        "whyRelevant": "The current informal 30 to 60 day follow-up lets receivables enter the high-risk aging window before anyone acts.",
+        "howToImplement": "Configure Clio payment reminders at 15-day intervals. Create a task template for the collections workflow with escalation steps. Assign the office manager as the collections coordinator."
+      },
+      {
+        "body": "Address the three clients representing 61% of 90+ day balances individually — these likely require partner-level conversations rather than automated reminders.",
+        "whyRelevant": "These three accounts represent concentrated collection risk. Approximately $13,000 of the 90+ day balance is at significant risk of becoming uncollectable.",
+        "howToImplement": "Review each account with the responsible attorney. Determine if the balance is disputed, forgotten, or uncollectable. Schedule partner-level conversations for disputed or significant balances."
+      }
+    ],
+    "layer2": {
+      "headline": "Two structural barriers — no online payments and late follow-up — are keeping $89,000 outstanding.",
+      "detail": "The firm's 82% collection rate leaves $89,000 in outstanding receivables, with 37% of that balance over 60 days old and 15% over 90 days. The questionnaire reveals two structural causes. First, the firm accepts only checks and bank transfers, creating payment friction that research shows adds 10 to 14 days to the average payment cycle compared to firms offering online payment. Clio Payments is included in the firm's subscription but has never been activated. Second, the firm follows up informally at 30 to 60 days — meaning by the time anyone acts on an overdue invoice, it has already entered the high-risk aging window. The three clients accounting for 61% of the 90+ day balance have never received a formal collection communication. At the firm's current aging trajectory, approximately $13,000 of the 90+ day balance is at significant risk of becoming uncollectable.",
+      "baselineCard": {
+        "title": "BASELINE-ONLY INTERPRETATION",
+        "content": "Collection rate: 82%.\nOutstanding AR: $89,000.\nAging: 37% over 60 days, 15% over 90 days.\nAssessment: Below the 89% industry average with concerning concentration in aged receivables."
+      },
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Payment methods: Check and bank transfer only. Clio Payments not activated.\nFollow-up: Informal, begins at 30 to 60 days past due.\nThree clients represent 61% of 90+ day balance with no formal follow-up.\nAssessment: Collection gap is caused by payment friction and absent follow-up process — both are fixable with existing tools."
+      }
+    },
+    "layer3": {
+      "annotations": [],
+      "override": null,
+      "customFindings": [],
+      "interviewEvidence": []
+    },
+    "cvi": "Your firm collects 82% of billed amounts with $89,000 outstanding. You don't offer online payment and follow up only after 30 to 60 days. An Attornato consultant would activate Clio Payments, configure automated payment reminders, establish a collections escalation workflow, and target improvement to 90%+ collection — recovering an estimated $15,000 to $20,000 in currently outstanding receivables."
+  },
+  {
+    "id": "3.6",
+    "title": "Trust Account Activity",
+    "domainId": 3,
+    "baselineScore": 3,
+    "contextScore": 3,
+    "overrideScore": null,
+    "finalScore": 3,
+    "confidence": "Medium",
+    "apiCoverage": "Medium",
+    "enrichmentSource": "Q3.6",
+    "storyBeat": "Trust accounting is not just an operational concern — it is an ethical obligation. Every US jurisdiction requires lawyers to maintain client funds separately from firm operating funds, and mishandling trust accounts is one of the leading causes of bar discipline. When trust accounting is managed outside the practice management system, reconciliation becomes manual, error-prone, and audit-risky. Clio provides built-in trust management tools including per-matter trust ledgers, evergreen balance monitoring, and trust replenishment requests, but many firms either do not configure them or manage trust accounting in parallel systems.",
+    "metrics": {
+      "trustAccounts": 1,
+      "transactions90Days": 23,
+      "trustRequests": 0,
+      "evergreenConfigured": false,
+      "mattersWithTrust": 8,
+      "retainerMattersNoTrust": 14
+    },
+    "recommendations": [
+      {
+        "body": "Activate evergreen trust management for the 14 retainer-type matters that show no trust activity in Clio.",
+        "whyRelevant": "These matters likely require retainer deposits but have trust balances managed outside Clio, creating reconciliation burden and audit risk.",
+        "howToImplement": "Navigate to each matter > Edit > set Trust Balance Minimum. Configure the notification threshold so the firm is alerted when balances drop below the minimum."
+      },
+      {
+        "body": "Begin generating trust requests through Clio rather than manually invoicing for retainer replenishment.",
+        "whyRelevant": "Trust requests created through Clio produce an auditable trail and reduce the administrative time spent on manual trust invoicing.",
+        "howToImplement": "From the matter's Transactions tab, click Trust Request > Create. Enter the amount and send to the client. With Clio Payments active, clients can pay trust requests online."
+      },
+      {
+        "body": "Establish a monthly trust reconciliation workflow comparing Clio's trust ledger to bank statements.",
+        "whyRelevant": "Monthly reconciliation is the bar's minimum expectation in most jurisdictions. The current dual-system approach makes reconciliation more complex than necessary.",
+        "howToImplement": "Run the Trust Ledger report monthly. Compare balances against bank statements. Document the reconciliation and any discrepancies. Store the reconciliation record in Clio."
+      }
+    ],
+    "layer2": {
+      "headline": "Trust accounting is split across two systems, requiring monthly manual reconciliation that adds risk without adding value.",
+      "detail": "The Automated Baseline detected one trust account in Clio with 23 transactions in 90 days, zero trust requests, and no evergreen management. This appeared to indicate minimal trust activity. The questionnaire reveals the actual picture: the firm manages trust accounting in both Clio and QuickBooks in parallel, reconciling monthly through manual comparison. Trust deposits are recorded in both systems, but the reconciliation process is labor-intensive and error-prone. With retainers required for most matters, the 14 open retainer-type matters without trust activity in Clio likely have trust balances managed exclusively in QuickBooks. The dual-system approach means no single system has the complete trust picture, making bar audit preparation dependent on manual assembly of records from two sources. The firm has never been audited, but the current process would make audit response time-consuming and stressful.",
+      "baselineCard": {
+        "title": "BASELINE-ONLY INTERPRETATION",
+        "content": "Trust accounts in Clio: 1.\nTransactions (90 days): 23.\nTrust requests generated: 0. Evergreen management: not configured.\nAssessment: Minimal trust management activity in Clio despite retainer-based practice."
+      },
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Actual trust management: Dual-system (Clio + QuickBooks).\nMonthly manual reconciliation required.\n14 retainer matters likely managed entirely outside Clio.\nAssessment: Trust accounting is functional but fragmented — consolidation would reduce reconciliation effort and improve audit readiness."
+      }
+    },
+    "layer3": {
+      "annotations": [],
+      "override": null,
+      "customFindings": [],
+      "interviewEvidence": []
+    },
+    "cvi": "Your firm manages trust accounting in both Clio and QuickBooks, requiring manual monthly reconciliation. With retainers on most matters, this dual-system approach creates compliance risk and consumes administrative time. An Attornato consultant would consolidate your trust accounting into Clio, configure evergreen trust management for your 14 retainer matters, and establish a streamlined reconciliation workflow that reduces effort while improving accuracy."
+  },
+  {
+    "id": "4.1",
+    "title": "Document Management Maturity",
+    "domainId": 4,
+    "baselineScore": 2,
+    "contextScore": 2,
+    "overrideScore": null,
+    "finalScore": 2,
+    "confidence": "Medium",
+    "apiCoverage": "Medium",
+    "enrichmentSource": "Q4.1",
+    "storyBeat": "Document management in a law practice is both an efficiency tool and a compliance requirement. When documents are not stored in the practice management system, they become disconnected from the matters they relate to, invisible to colleagues who may need them, and impossible to locate through the system's search capabilities. Template-driven document generation eliminates repetitive drafting, reduces errors, and ensures consistency across the firm's work product. Firms that manage documents outside Clio are maintaining two systems, which doubles the risk of lost or misfiled documents.",
+    "metrics": {
+      "avgDocsPerMatter": 3.8,
+      "mattersWithZeroDocs": 0.29,
+      "documentCategories": 0,
+      "documentTemplates": 0,
+      "documentAutomations": 0,
+      "folderDepth": "flat",
+      "pdfPercent": 0.73
+    },
+    "recommendations": [
+      {
+        "body": "Create document templates for the firm's 5 to 10 most frequently produced documents such as engagement letters, standard correspondence, and court filings by type.",
+        "whyRelevant": "Each template created saves 15 to 30 minutes per use. At an estimated 20 templated documents per week, the annual time savings would be approximately 200 to 300 hours.",
+        "howToImplement": "Navigate to Documents > Document Templates > Create. Upload existing Word templates and add merge fields for client name, matter details, dates, and custom field data."
+      },
+      {
+        "body": "Define document categories that match the firm's practice areas and document types to enable search and organization.",
+        "whyRelevant": "Without categories, the firm's document library is an unsearchable flat list. Categories enable filtering and organization across all matters.",
+        "howToImplement": "Navigate to Settings > Document Categories > Add. Create categories for each document type: engagement letters, court filings, correspondence, discovery, closing documents."
+      },
+      {
+        "body": "Establish a firm policy that all case-related documents are stored in the Clio matter, not on local drives or personal cloud storage.",
+        "whyRelevant": "29% of matters with zero documents means case files are incomplete in the system. Documents stored elsewhere are invisible to colleagues and unsearchable.",
+        "howToImplement": "Communicate the policy to all staff. Install Clio Drive for seamless desktop document editing with automatic sync back to Clio."
+      }
+    ],
+    "layer2": {
+      "headline": "Ten document types are templated in Word but not in Clio — each manual recreation wastes 15 to 20 minutes the automation would eliminate.",
+      "detail": "The firm stores documents across both Clio and Google Drive, which explains why 29% of open matters show no documents in Clio — the documents exist, just not in the system. The firm produces 6 to 15 repeated document types and has Word templates for approximately 10 of them, but none have been migrated to Clio's template system. Every time an attorney or paralegal drafts one of these documents, they open the Word template, manually replace the client and matter details, save a copy, and then upload it to Clio or Google Drive. Clio's document automation would populate client name, matter details, dates, and custom field data automatically — turning a 15 to 20 minute process into a 2-minute one. At a conservative estimate of 20 templated documents per week, the annual time savings from migration would be approximately 200 to 300 hours. The firm is also unaware of Clio Drive and Clio Launcher, which would eliminate the manual save-and-upload step for documents edited on the desktop.",
+      "baselineCard": {
+        "title": "BASELINE-ONLY INTERPRETATION",
+        "content": "Average documents per matter: 3.8.\nMatters with zero documents: 29%.\nDocument templates in Clio: 0. Document automations: 0.\nAssessment: Minimal document management within Clio."
+      },
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Documents split between Clio and Google Drive.\n10 Word templates exist but are not in Clio.\nEstimated 200 to 300 hours/year lost to manual population.\nAssessment: High-impact automation opportunity — template migration is the single highest-ROI configuration investment available."
+      }
+    },
+    "layer3": {
+      "annotations": [
+        {
+          "id": "ann-4.1",
+          "type": "Recommendation Refinement",
+          "consultant": "Daniela Reyes, Senior Legal Technology Consultant",
+          "date": "March 14, 2026",
+          "text": "I reviewed the firm's Google Drive document storage during the on-site visit. The structure is a set of client-name folders, each containing a flat collection of files with inconsistent naming conventions. Some folders have 50+ documents with names like 'Letter_v2_final_FINAL.docx.' There is no subfolder structure by document type, and no naming convention. Three attorneys confirmed they have sometimes been unable to find documents they knew existed, resorting to recreating them from scratch. The Word templates the firm uses are stored on the managing partner's local drive and shared via email when someone needs one — meaning there are multiple versions in circulation with no version control. I recommend a phased migration approach: first, establish a folder template structure in Clio Documents that mirrors the firm's practice areas (engagement letters, court filings, correspondence, discovery, closing documents). Second, migrate the 10 most-used Word templates into Clio with merge fields. Third, implement Clio Drive so attorneys can work on documents from their desktop with automatic sync. The Google Drive archive should be maintained as read-only for historical reference but all new documents should be created and stored in Clio going forward."
+        }
+      ],
+      "override": null,
+      "customFindings": [],
+      "interviewEvidence": []
+    },
+    "cvi": "Your firm has 10+ document templates in Word that haven't been migrated to Clio, and 29% of matters have no documents stored in the system. An Attornato consultant would migrate your templates into Clio with merge fields for automatic population, set up Clio Drive for seamless desktop editing, and establish a document management standard that centralizes all case documents in Clio."
+  },
+  {
+    "id": "4.2",
+    "title": "Task Management Adoption",
+    "domainId": 4,
+    "baselineScore": 2,
+    "contextScore": 2,
+    "overrideScore": null,
+    "finalScore": 2,
+    "confidence": "High",
+    "apiCoverage": "High",
+    "enrichmentSource": "Q4.2",
+    "storyBeat": "Task management is how a law firm translates case strategy into daily execution. Without tasks, work coordination happens through email, verbal instructions, and individual memory, all of which are unreliable, untraceable, and invisible to firm management. Overdue tasks represent deadlines that have been missed or obligations that are falling through the cracks. When only a fraction of matters have associated tasks, the firm is managing most of its caseload outside the system, which means there is no centralized visibility into who is doing what, what is overdue, and where bottlenecks exist.",
+    "metrics": {
+      "activeTasks": 67,
+      "overdueTasks": 19,
+      "overdueRate": 0.28,
+      "tasksWithAssignees": 0.78,
+      "mattersWithTasks": 0.34,
+      "taskTemplateLists": 1,
+      "avgCompletedPerUserPerWeek": 2.1,
+      "usersWithZeroCompletions": 2
+    },
+    "recommendations": [
+      {
+        "body": "Create task template lists for each practice area's standard matter workflow, ensuring every new matter automatically gets a structured task list with deadlines.",
+        "whyRelevant": "Only 1 task template list exists. Templates codify workflows so that institutional knowledge is embedded in the system rather than residing in experienced staff memory.",
+        "howToImplement": "Navigate to Tasks > Task Template Lists > Create. Build the standard workflow for each practice area from matter opening through completion. Include due date offsets and default assignees."
+      },
+      {
+        "body": "Address the 19 overdue tasks immediately — each one represents either a missed deadline or a task that should be rescheduled.",
+        "whyRelevant": "A 28% overdue rate means more than one in four active tasks has passed its deadline without completion or rescheduling.",
+        "howToImplement": "Filter tasks by status=overdue. Review each with the assignee. Complete tasks that are done, reschedule those that are still needed, and close those that are no longer relevant."
+      },
+      {
+        "body": "Investigate why 2 users have zero task completions in 30 days — this may indicate they are not using Clio for task management at all.",
+        "whyRelevant": "Users with no task activity are managing their work outside the system, creating blind spots for firm management.",
+        "howToImplement": "Discuss task management workflow with each user individually. Determine if they use another method (email, paper lists) and help transition to Clio tasks."
+      }
+    ],
+    "layer2": {
+      "headline": "A recent missed obligation confirms the risk — informal workflows and scattered task management leave 66% of matters without structured tracking.",
+      "detail": "The firm coordinates work through a combination of email, verbal instructions, and team meetings, with Clio tasks playing a supplementary role. Only 34% of open matters have tasks, and the 28% overdue rate suggests even existing tasks aren't actively monitored. The questionnaire confirmed that an obligation recently fell through the cracks because responsibility was unclear — precisely the failure mode that structured task management prevents. The firm has informal workflows based on experienced staff knowledge rather than documented checklists, meaning institutional knowledge walks out the door when anyone leaves. One task template list exists (new client onboarding) but additional practice-specific templates have not been created. Two users have completed zero tasks in 30 days, indicating they are either not assigned tasks or ignore them. The combination of informal workflows, scattered communication, and minimal Clio task usage creates a recurring risk of missed deadlines and duplicated effort.",
+      "baselineCard": {
+        "title": "BASELINE-ONLY INTERPRETATION",
+        "content": "Open matters with tasks: 34%.\nOverdue tasks: 19 of 67 (28%).\nTask template lists: 1.\nUsers with zero completions (30 days): 2.\nAssessment: Low task management adoption with concerning overdue rate."
+      },
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Confirmed recent missed obligation due to unclear responsibility.\nWork coordination via email and verbal instructions.\nWorkflows are informal and experience-dependent.\nAssessment: Active operational risk — the recent incident is a predictable outcome of unstructured task management, and the risk scales with caseload."
+      }
+    },
+    "layer3": {
+      "annotations": [],
+      "override": null,
+      "customFindings": [],
+      "interviewEvidence": []
+    },
+    "cvi": "Your firm recently had an obligation fall through the cracks, and the data shows only 34% of matters have tasks with a 28% overdue rate. An Attornato consultant would build task template lists for each of your practice areas' standard workflows, train the team on consistent task creation and completion, and establish a weekly task review that catches overdue items before they become problems."
+  },
+  {
+    "id": "5.1",
+    "title": "Intake Pipeline Health",
+    "domainId": 5,
+    "baselineScore": 3,
+    "contextScore": 3,
+    "overrideScore": null,
+    "finalScore": 3,
+    "confidence": "Medium",
+    "apiCoverage": "Low-Medium",
+    "enrichmentSource": "Q5.1",
+    "storyBeat": "Client intake is where revenue begins. A firm that does not systematically track leads, measure conversion rates, and manage its pipeline is making growth decisions based on intuition rather than data. Every lead that falls through the cracks during intake represents lost revenue that the firm invested marketing dollars to generate. Conversion rate, time to conversion, and pipeline value are the metrics that connect marketing spend to actual client acquisition, enabling the firm to understand which efforts are working and which are not.",
+    "metrics": {
+      "pipelineTotal": 47,
+      "statusBreakdown": {
+        "intake": 18,
+        "hired": 22,
+        "didNotHire": 7
+      },
+      "conversionRate": 0.31,
+      "avgDaysToConversion": 14,
+      "projectedValuePopulated": 0.40,
+      "matterTypePopulated": 0.72
+    },
+    "recommendations": [
+      {
+        "body": "Populate projected_value on all pipeline matters to enable revenue forecasting. Currently only 40% have this data, making pipeline value projections unreliable.",
+        "whyRelevant": "Without projected values, the firm cannot forecast revenue from its intake pipeline or evaluate which lead sources produce the highest-value clients.",
+        "howToImplement": "Review each pipeline matter in Clio Grow and add an estimated value based on the matter type and practice area averages."
+      },
+      {
+        "body": "Assign matter types to the 28% of pipeline matters missing this classification to enable intake analysis by practice area.",
+        "whyRelevant": "Without matter types, the firm cannot determine which practice areas attract the most inquiries or have the highest conversion rates.",
+        "howToImplement": "Edit each Grow matter missing a matter type. Select the appropriate type from the configured list."
+      },
+      {
+        "body": "Track and review 'did not hire' matters to understand why leads are not converting and whether intake processes can be improved.",
+        "whyRelevant": "Without 'did not hire' reason tracking, the firm cannot diagnose why 69% of leads do not convert — making improvement impossible.",
+        "howToImplement": "Add a note to each 'did not hire' matter recording the reason. Create a simple categorization: pricing, practice area mismatch, chose another firm, unresponsive, conflict, other."
+      }
+    ],
+    "layer2": {
+      "headline": "Inconsistent intake and unknown response times mean the firm can't diagnose why 69% of leads don't convert.",
+      "detail": "The firm's 31% conversion rate operates against an intake process with no structure, no response time standard, and no tracking of why leads don't convert. New inquiries are handled by whoever answers the phone, with no assigned workflow or follow-up sequence. The firm set up Clio Grow intake forms but abandoned them, reverting to ad hoc intake handling. Response time to new inquiries 'varies widely,' which research shows is one of the strongest predictors of conversion failure — firms that respond within one hour convert at dramatically higher rates than those responding within days. Without 'did not hire' reason tracking on the 7 unconverted matters in the sample period, the firm cannot identify whether it is losing leads to slow response, pricing, practice area mismatch, or competitor advantage. Every percentage point of conversion improvement at the firm's average matter value represents meaningful incremental revenue.",
+      "baselineCard": {
+        "title": "BASELINE-ONLY INTERPRETATION",
+        "content": "Pipeline conversion rate: 31% (trailing 6 months).\nMatters with projected value: 40%.\nAverage days to conversion: 14.\nAssessment: Moderate conversion rate with incomplete pipeline data."
+      },
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Intake process: Ad hoc, no structure. Response time: varies widely.\nGrow intake forms: Configured but abandoned.\n'Did not hire' tracking: None.\nAssessment: Conversion rate is likely suppressed by process gaps — structured intake with response time targets could drive 30 to 50% improvement."
+      }
+    },
+    "layer3": {
+      "annotations": [],
+      "override": null,
+      "customFindings": ["cf-3"],
+      "interviewEvidence": []
+    },
+    "cvi": "Your 31% conversion rate operates against an ad hoc intake process with no response time standard and no tracking of lost leads. Clio Grow forms were set up but abandoned. An Attornato consultant would reactivate and optimize your Grow intake forms, establish a structured intake workflow with response time targets, implement 'did not hire' tracking, and target a 40%+ conversion rate."
+  },
+  {
+    "id": "5.2",
+    "title": "Grow-to-Manage Integration",
+    "domainId": 5,
+    "baselineScore": 3,
+    "contextScore": 3,
+    "overrideScore": null,
+    "finalScore": 3,
+    "confidence": "Medium",
+    "apiCoverage": "Low-Medium",
+    "enrichmentSource": "Q5.2",
+    "storyBeat": "The integration between Clio Grow and Clio Manage is the bridge between client acquisition and case management. When hired matters are not properly converted through the integration, staff must manually re-enter client information, documents, and notes into Manage, which wastes time and introduces errors. Data discrepancies between the two systems create confusion and undermine the reliability of the client record. The conversion workflow should be a one-click process that carries all intake data into the active matter seamlessly.",
+    "metrics": {
+      "hiredMatters": 22,
+      "linkedToManage": 15,
+      "linkedPercent": 0.68,
+      "manuallyRecreated": 7,
+      "dataDiscrepancies": 3
+    },
+    "recommendations": [
+      {
+        "body": "Establish a standard operating procedure requiring all matter conversions to go through the Grow-to-Manage integration rather than manual recreation.",
+        "whyRelevant": "Manual recreation wastes 15 to 30 minutes per conversion and introduces the data errors visible in 3 mismatched records.",
+        "howToImplement": "From the Grow matter, click Convert to Matter. Verify data transfer. Do not create a new matter manually in Manage for any lead that exists in Grow."
+      },
+      {
+        "body": "Reconcile the 7 matters that were manually recreated and merge any duplicate records.",
+        "whyRelevant": "These matters may have duplicate contact and matter records across Grow and Manage, creating data integrity issues.",
+        "howToImplement": "Compare Grow and Manage records for these 7 matters. Merge or link duplicate contacts. Update matter details to ensure consistency."
+      },
+      {
+        "body": "Resolve the 3 matters with conflicting contact information between Grow and Manage.",
+        "whyRelevant": "Conflicting data means neither system has a reliable client record, which affects communication, billing, and conflict checking.",
+        "howToImplement": "Identify the correct information for each discrepancy. Update both Grow and Manage to match. Verify custom field synchronization is configured."
+      }
+    ],
+    "layer2": {
+      "headline": "Manual data transfer at 20 minutes per conversion wastes 7+ hours per quarter and introduces the errors visible in 3 mismatched records.",
+      "detail": "The Automated Baseline detected that 68% of hired Grow matters have Clio IDs linking them to Manage, but 32% appear to have been manually recreated. The questionnaire confirms this: staff typically copy and paste information from Grow to Manage rather than using the automated conversion, and each conversion takes 15 to 30 minutes. Custom field synchronization status is unknown to the respondent, which means data loss during conversion is likely undetected. The 3 matters with conflicting contact information between Grow and Manage are a direct consequence of manual re-entry. At 22 conversions over 6 months averaging 20 minutes each, the firm spends approximately 7 hours per quarter on data re-entry that should be a one-click operation. Beyond the time cost, every manual re-entry introduces error risk that compounds as the matter progresses through its lifecycle.",
+      "baselineCard": {
+        "title": "BASELINE-ONLY INTERPRETATION",
+        "content": "Hired matters linked to Manage: 15 of 22 (68%).\nManually recreated matters: 7 (32%).\nData discrepancies detected: 3.\nAssessment: Partial integration with data consistency concerns."
+      },
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Conversion method: Manual copy-paste (15 to 30 min each).\nCustom field sync: Unknown to the firm.\nAdministrative cost: 7+ hours per quarter.\nAssessment: Integration workflow is broken — the manual process wastes time and creates the data errors that undermine trust in both systems."
+      }
+    },
+    "layer3": {
+      "annotations": [],
+      "override": null,
+      "customFindings": [],
+      "interviewEvidence": []
+    },
+    "cvi": "Your firm spends 15 to 30 minutes manually transferring each lead conversion, resulting in 3 known data discrepancies. An Attornato consultant would configure the Grow-to-Manage integration properly, sync custom fields between the platforms, establish a one-click conversion workflow, and recover the 7+ hours per quarter currently spent on manual re-entry."
+  },
+  {
+    "id": "6.1",
+    "title": "Reporting Utilization",
+    "domainId": 6,
+    "baselineScore": 2,
+    "contextScore": 2,
+    "overrideScore": null,
+    "finalScore": 2,
+    "confidence": "Medium",
+    "apiCoverage": "Medium",
+    "enrichmentSource": "Q6.1",
+    "storyBeat": "Reports transform operational data into management intelligence. A firm that does not regularly review its own performance metrics is managing by feel rather than by evidence. Billing reports are necessary but insufficient: they tell the firm what has been invoiced but not whether the team is productive, which practice areas are growing, which clients are profitable, or whether the firm is on track to meet its financial goals. When reports are generated only occasionally and narrowly, leadership lacks the information needed to make strategic decisions about hiring, marketing investment, and practice development.",
+    "metrics": {
+      "reportPresets": 2,
+      "reportsGenerated90Days": 7,
+      "reportTypesUsed": 1,
+      "availableReportTypes": 5,
+      "scheduledReports": 0,
+      "productivityReports": 0,
+      "matterReports": 0,
+      "revenueReports": 0
+    },
+    "recommendations": [
+      {
+        "body": "Create and schedule a monthly productivity report per attorney to track utilization trends over time.",
+        "whyRelevant": "Without productivity reports, the firm cannot measure whether utilization is improving, stagnating, or declining — making the $178,000 utilization gap invisible to leadership.",
+        "howToImplement": "Navigate to Reports > New Report > Productivity. Filter by user. Save as a preset. Schedule for monthly delivery to firm leadership."
+      },
+      {
+        "body": "Add matter and revenue reports to the regular review cycle to understand which practice areas are driving growth.",
+        "whyRelevant": "The firm wants practice area profitability data but has never generated a matter or revenue report in Clio.",
+        "howToImplement": "Reports > New Report > select Matter or Revenue type. Configure filters by practice area and date range. Save and schedule."
+      },
+      {
+        "body": "Configure scheduled report delivery to firm leadership on the first business day of each month so that reporting becomes a habit rather than an afterthought.",
+        "whyRelevant": "Zero scheduled reports means reporting is entirely ad hoc, happening only when someone remembers or when a problem forces a look at the data.",
+        "howToImplement": "From any saved report preset, click Schedule. Set frequency to monthly and add recipient email addresses for firm leadership."
+      }
+    ],
+    "layer2": {
+      "headline": "The firm tracks 2 of 7 key metrics using manual spreadsheets — missing the 5 metrics that would reveal $40,000+ in recoverable revenue.",
+      "detail": "The firm generates billing reports in Clio sporadically but relies primarily on QuickBooks reports and manually built spreadsheets for financial monitoring. Of seven key practice management metrics (revenue by practice area, utilization rate, realization rate, collection rate, AR aging, matters opened/closed, client acquisition cost), the firm tracks only two: revenue and AR aging. The five untracked metrics are precisely the ones this assessment has identified as driving the firm's revenue gaps — the 22% utilization rate, 71% realization rate, and 82% collection rate are each quantified findings with actionable recommendations, but the firm has no mechanism to monitor improvement over time. Leadership reviews performance quarterly, which means problems that develop between reviews compound for months before detection. General financial goals exist but are not measured against specific targets, removing accountability from the aspiration.",
+      "baselineCard": {
+        "title": "BASELINE-ONLY INTERPRETATION",
+        "content": "Report presets saved: 2 (both billing).\nReports generated (90 days): 7 (all billing-related).\nReport types used: 1 of 5 available.\nScheduled reports: 0.\nAssessment: Minimal reporting activity limited to billing metrics."
+      },
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Actual reporting: QuickBooks and manual spreadsheets.\nMetrics tracked: 2 of 7 key indicators.\nReview cadence: Quarterly. Goals: General, not measured.\nAssessment: The firm is managing by feel — the 5 untracked metrics collectively explain the revenue gaps this assessment has identified, and without monitoring, improvement cannot be measured."
+      }
+    },
+    "layer3": {
+      "annotations": [],
+      "override": null,
+      "customFindings": [],
+      "interviewEvidence": []
+    },
+    "cvi": "Your firm reviews performance quarterly using manual spreadsheets and tracks only 2 of 7 key metrics. The 5 untracked metrics collectively explain the revenue gaps identified in this assessment. An Attornato consultant would configure automated Clio reports for all key metrics, establish a monthly review cadence, and connect reporting to the specific findings in this assessment so leadership can track improvement over time."
+  },
+  {
+    "id": "6.2",
+    "title": "License & Feature Utilization",
+    "domainId": 6,
+    "baselineScore": 2,
+    "contextScore": 2,
+    "overrideScore": 3,
+    "finalScore": 3,
+    "confidence": "Medium",
+    "apiCoverage": "Medium",
+    "enrichmentSource": "Q6.2",
+    "storyBeat": "Every law firm pays for a software subscription tier that includes a defined set of capabilities. When a significant portion of those capabilities go unused, the firm is effectively paying for value it is not receiving. Conversely, when a firm consistently hits the limitations of its current tier, upgrading could unlock efficiency gains that more than pay for the additional cost. Understanding the gap between what is available and what is used is essential for making informed decisions about technology investment.",
+    "metrics": {
+      "subscription": "Essentials",
+      "monthlyCost": 445,
+      "featureUtilization": 0.35,
+      "unusedFeatures": ["Clio Payments", "Client Portal", "Court Rules", "Document Automation", "Advanced Tasks", "Custom Reports", "Text Snippets"]
+    },
+    "recommendations": [
+      {
+        "body": "Activate Clio Payments — this is included in the current subscription and would accelerate collections with no additional software cost.",
+        "whyRelevant": "The firm pays for Clio Payments capability but has never activated it, while simultaneously struggling with an 82% collection rate.",
+        "howToImplement": "Navigate to Settings > Billing > Clio Payments > Connect and activate. Add payment links to invoice templates."
+      },
+      {
+        "body": "Set up the client portal for active matters to improve client communication and reduce inbound status inquiries.",
+        "whyRelevant": "The portal is included in the subscription. With 8 to 12 weekly status calls consuming 5 to 8 hours of staff time, the portal would pay for itself immediately.",
+        "howToImplement": "For each active client contact, enable Clio for Clients permission and send a portal invitation."
+      },
+      {
+        "body": "Evaluate whether the firm's reporting needs justify upgrading to the Advanced tier, which would unlock custom reports and additional analytics.",
+        "whyRelevant": "The firm wants practice area profitability analysis. Basic reporting is available on Essentials, but custom reports require Advanced ($119/user/month).",
+        "howToImplement": "First fully activate Essentials capabilities. At the 6-month mark, evaluate whether Advanced reporting justifies the additional $150/month ($30/user x 5 users)."
+      }
+    ],
+    "layer2": {
+      "headline": "The firm's top wish — practice area profitability — is available on their current plan but unconfigured.",
+      "detail": "The firm is on Clio's Essentials plan and uses approximately 35% of the capabilities available at that tier. When asked what feature they wished Clio had, the respondent cited practice area profitability tracking — a capability that is achievable on the Essentials plan through the combination of practice area assignments (partially configured), activity categories (not configured), and existing report types (barely used). The firm is unaware of the different subscription tiers and hasn't explored most available features, meaning they are paying for capabilities they don't know exist. The features they tried and stopped using (or never tried) represent a substantial efficiency gap: Clio Payments, client portal, document automation, task templates, and text snippets are all available and unused. Rather than needing a more expensive plan, the firm needs to fully activate the plan they already have.",
+      "baselineCard": {
+        "title": "BASELINE-ONLY INTERPRETATION",
+        "content": "Subscription: Essentials plan.\nFeature utilization: 35% of available capabilities.\nKey unused features: Clio Payments, client portal, custom reports, document automation.\nAssessment: Significant capability gap at the current tier."
+      },
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Firm's top wish: Practice area profitability (available but unconfigured).\nTier awareness: Not aware of differences between plans.\nFeature exploration: Most available features never tried.\nAssessment: The firm does not need a more expensive plan — it needs to activate the plan it already pays for, starting with the exact capability it most wants."
+      }
+    },
+    "layer3": {
+      "annotations": [],
+      "override": {
+        "originalScore": 2,
+        "overrideScore": 3,
+        "consultant": "Daniela Reyes, Senior Legal Technology Consultant",
+        "date": "March 14, 2026",
+        "justification": "I am overriding the automated score from 2 to 3 based on contextual factors the automated system cannot assess. While the firm uses only 35% of available Essentials capabilities, the features they do use — matter management, time tracking, billing, and trust accounting — are used with reasonable consistency for core operations. The unused capabilities (document templates, text snippets, advanced task management) represent growth opportunities, not failures. The firm's subscription tier is appropriate for their size and needs, and their awareness that more capabilities exist positions them well for incremental activation. Scoring this as Developing (2) overstates the severity relative to other findings; the firm's core platform usage is functional, and the gap is in secondary features rather than fundamental operations. A Defined (3) score better reflects that the firm has a working core configuration and needs expansion rather than remediation."
+      },
+      "customFindings": [],
+      "interviewEvidence": []
+    },
+    "cvi": "Your firm uses 35% of available Essentials capabilities and wants practice area profitability tracking, which is achievable with proper configuration of practice areas, activity categories, and existing Clio reports. An Attornato consultant would audit your subscription utilization, activate the features available on your current plan, and advise whether the Advanced tier's additional capabilities would justify the cost based on your specific needs."
+  },
+  {
+    "id": "7.1",
+    "title": "User Adoption Breadth & Consistency",
+    "domainId": 7,
+    "baselineScore": 3,
+    "contextScore": 3,
+    "overrideScore": null,
+    "finalScore": 3,
+    "confidence": "Medium",
+    "apiCoverage": "Medium",
+    "enrichmentSource": "Q7.1",
+    "storyBeat": "Technology adoption is binary at the individual level but variable at the firm level. A practice management system delivers value in proportion to how consistently the entire team uses it. When one attorney logs every call and another logs nothing, the firm's data is incomplete, reporting is unreliable, and the system cannot serve as the single source of truth it needs to be. Adoption variance across a team is often the strongest predictor of whether a technology investment will succeed or become an expensive underutilized tool.",
+    "metrics": {
+      "enabledUsers": 5,
+      "activeUsers30Days": 4,
+      "activeRate": 0.80,
+      "adoptionGap": 49,
+      "topUserActivities": 147,
+      "bottomUserActivities": 3,
+      "avgFeatureBreadth": 2.8,
+      "totalFeatures": 6,
+      "featuresByUser": [
+        { "name": "James Okafor", "breadth": 5, "features": ["time", "tasks", "calendar", "docs", "comms"] },
+        { "name": "Robert Brennan", "breadth": 4, "features": ["time", "tasks", "calendar", "comms"] },
+        { "name": "Sofia Vega", "breadth": 3, "features": ["time", "tasks", "calendar"] },
+        { "name": "Karen Clark", "breadth": 1, "features": ["time"] },
+        { "name": "Andrea Torres", "breadth": 3, "features": ["calendar", "tasks", "docs"] },
+        { "name": "Maria Santos", "breadth": 3, "features": ["time", "tasks", "comms"] }
+      ]
+    },
+    "recommendations": [
+      {
+        "body": "Address the near-inactive attorney directly. Three time entries in 30 days suggests the system is not part of their daily workflow.",
+        "whyRelevant": "This attorney handles the firm's highest-value matters. An estimated $60,000 to $70,000 in annual revenue is lost through the assistant-mediated time entry workflow.",
+        "howToImplement": "Determine the root cause: training, resistance, or workflow design. Frame the conversation around revenue impact, not technology compliance. Explore voice-to-text entry options."
+      },
+      {
+        "body": "Expand feature breadth for users who only interact with one or two functions. An attorney using only time entry treats Clio as a timekeeping tool, not a practice management platform.",
+        "whyRelevant": "The average feature breadth of 2.8 out of 6 means most users are leaving the majority of Clio's capabilities untouched.",
+        "howToImplement": "Role-specific training sessions showing how tasks, calendar, documents, and communications integrate into a unified workflow."
+      },
+      {
+        "body": "Establish a monthly adoption scorecard visible to firm leadership to create accountability without micromanagement.",
+        "whyRelevant": "What gets measured gets managed. A visible scorecard incentivizes consistent usage without requiring daily oversight.",
+        "howToImplement": "Monthly report showing per-user activity counts and feature breadth. Share with firm leadership and discuss trends in a monthly meeting."
+      }
+    ],
+    "layer2": {
+      "headline": "No training since initial setup and inconsistent leadership use explain why adoption varies 50x between the most and least active users.",
+      "detail": "The firm received training once at initial setup and has had no formal training since. There is no designated Clio champion — one person informally helps when asked, but this is not a recognized role with allocated time. Firm leadership uses the system 'sometimes' rather than daily, which sends a clear signal to the team that Clio is optional rather than essential. The reported resistance pattern is 'prefer their old way of doing things,' and comfort levels vary widely by person. This context transforms the 50x adoption gap between the most and least active users from a data point into a predictable outcome. The firm's one-time training covered basic functionality but never expanded as the team's needs evolved. New features, workflow improvements, and role-specific capabilities have accumulated since the initial training without anyone learning to use them. The informal helper has become a bottleneck — a single point of failure for institutional knowledge about how the system works.",
+      "baselineCard": {
+        "title": "BASELINE-ONLY INTERPRETATION",
+        "content": "Active users: 4 of 5 (80%) in trailing 30 days.\nAdoption gap: 147 activities (top) vs. 3 activities (bottom).\nAverage feature breadth: 2.8 of 6 functions.\nAssessment: Moderate active rate but extreme variance and narrow feature usage."
+      },
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Training: Initial only, no follow-up.\nClio champion: Informal, no allocated time.\nLeadership use: Inconsistent.\nResistance pattern: Preference for old methods.\nAssessment: Adoption gap is a leadership and training problem, not a technology problem — the system is capable, but the team was never equipped or motivated to use it fully."
+      }
+    },
+    "layer3": {
+      "annotations": [
+        {
+          "id": "ann-7.1",
+          "type": "Context Note",
+          "consultant": "Daniela Reyes, Senior Legal Technology Consultant",
+          "date": "March 13, 2026",
+          "text": "The attorney with only 3 time entries in 30 days is a senior partner who handles the firm's highest-value matters. During our interview, he was candid: 'I've been practicing law for 28 years. I have a system that works. I dictate notes to my assistant and she enters everything.' His assistant confirmed she enters his time from handwritten notes, typically 3 to 5 days after the work is performed. She estimates she captures 70 to 80% of his actual billable time. This single workflow gap — one attorney's resistance to direct entry — likely accounts for $50,000 to $70,000 in annual uncaptured revenue based on his billing rate and estimated lost hours. The managing partner is aware but has avoided the confrontation. I recommend framing the conversation not as 'you need to use the software' but as 'your current workflow is costing the firm $60,000 per year in revenue that your assistant cannot reconstruct from notes.' I also recommend exploring voice-to-text time entry solutions that would allow the partner to dictate time entries directly into Clio from his phone, preserving his preferred workflow while eliminating the reconstruction lag."
+        }
+      ],
+      "override": null,
+      "customFindings": ["cf-1"],
+      "interviewEvidence": [
+        {
+          "id": "ie-7.1",
+          "section": "Finding-Triggered",
+          "question": "One of your attorneys has logged 3 time entries in 30 days while another has logged 147 activities. That's a 50x gap. Is that something you're aware of, and have you tried to address it?",
+          "answer": "MP acknowledged he knows about the gap. 'Karen has practiced for 28 years. She has her way of doing things.' He described the dictation workflow — Karen dictates to Maria, Maria enters time from handwritten notes days later. MP estimates 70-80% capture rate. When I calculated the revenue impact ($60K+ annually), MP paused and said 'I never thought about it in dollar terms.' He admitted he has avoided raising it with Karen because 'she's my partner and I don't want to tell her how to practice.' He was receptive to the idea of voice-to-text alternatives that would preserve Karen's dictation preference.",
+          "usedIn": ["Annotation on Finding 7.1"]
+        }
+      ]
+    },
+    "cvi": "Your firm's 50x adoption gap between most and least active users traces to one-time initial training, no Clio champion, and inconsistent leadership use. An Attornato consultant would deliver role-specific training for each team member, establish an internal Clio champion with ongoing support, create a 90-day adoption scorecard, and work with firm leadership to model the system usage they expect from the team."
+  },
+  {
+    "id": "7.2",
+    "title": "Communication Logging Discipline",
+    "domainId": 7,
+    "baselineScore": 3,
+    "contextScore": 3,
+    "overrideScore": null,
+    "finalScore": 3,
+    "confidence": "Medium",
+    "apiCoverage": "Medium",
+    "enrichmentSource": "Q7.2",
+    "storyBeat": "A complete client communication record is both an operational asset and a liability shield. When communications are not logged in the matter, critical context is trapped in individual email inboxes, phone records, and memory. If an attorney leaves the firm, becomes unavailable, or if a malpractice claim arises, the matter record should tell the complete story of client interaction. Logging communications also enables time capture for billable calls and emails that would otherwise go unrecorded.",
+    "metrics": {
+      "mattersWithComms": 0.41,
+      "avgCommsPerMatter": 2.3,
+      "phonePercent": 0.89,
+      "emailPercent": 0.11,
+      "secureMessagePercent": 0,
+      "timeEntriesAttached": 0.15,
+      "clientPortalMessaging": false
+    },
+    "recommendations": [
+      {
+        "body": "Set up the Gmail or Outlook add-on to make email logging frictionless. The current 11% email logging rate suggests staff are communicating via email but not archiving in Clio.",
+        "whyRelevant": "The add-on enables one-click email archiving to matters without leaving the inbox, eliminating the friction that prevents email logging.",
+        "howToImplement": "Install the Clio add-on from the Gmail or Outlook marketplace. Configure for all users. Train users on one-click archiving: open email, click Clio icon, select matter, archive."
+      },
+      {
+        "body": "Establish a standard that every client call is logged with a communication entry. Attach time entries to billable calls at the point of logging to prevent revenue leakage.",
+        "whyRelevant": "Only 15% of logged communications have time entries attached, meaning 85% of billable calls are not generating time entries at the moment of logging.",
+        "howToImplement": "After each client call, create a communication entry in the matter. Add the call duration as a time entry. This captures both the communication record and the billable time in one step."
+      },
+      {
+        "body": "Activate the client portal for secure messaging on active matters to centralize client communication within Clio.",
+        "whyRelevant": "Zero secure messages indicates the client portal is not being used for communication. Portal messages are automatically logged in the matter, eliminating the manual archiving step.",
+        "howToImplement": "Enable Clio for Clients on active client contacts. Send portal invitations. Train clients to use the portal for case-related communication."
+      }
+    ],
+    "layer2": {
+      "headline": "Two critical Clio communication tools — the email add-on and client portal — are unknown to the firm, leaving 59% of matter communications unrecorded.",
+      "detail": "The firm manages client email through individual attorney inboxes with no shared visibility. Phone calls are logged 'sometimes' — which the 41% communication coverage rate confirms. The Gmail/Outlook add-on that would allow one-click email archiving to matters is unknown to the firm, and the client portal for secure messaging is unfamiliar as well. This means two of Clio's highest-impact communication features have never been evaluated, much less deployed. The 89% phone call, 11% email split in logged communications reflects the barrier: logging a phone call requires a deliberate action in Clio, which happens sometimes, but logging an email requires either the add-on (unknown) or manual effort (rarely done). Only 15% of logged communications have time entries attached, indicating that even when calls are logged, the billable time is often not captured. The practical result is that 59% of client communications exist only in individual email inboxes and attorney memory — unavailable to colleagues, invisible in the matter record, and unrecoverable if an attorney leaves or a dispute arises.",
+      "baselineCard": {
+        "title": "BASELINE-ONLY INTERPRETATION",
+        "content": "Matters with communications logged: 41%.\nCommunication types: 89% phone, 11% email, 0% secure.\nTime entries attached: 15%.\nClient portal messaging: 0%.\nAssessment: Incomplete communication record with minimal email capture and no secure messaging."
+      },
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Email management: Individual inboxes, no shared visibility.\nGmail/Outlook add-on: Unknown to the firm.\nClient portal: Unknown to the firm.\nPhone call logging: Sometimes.\nAssessment: Two high-impact tools are unknown, not rejected — awareness and deployment would address the majority of the 59% communication gap with minimal behavior change required."
+      }
+    },
+    "layer3": {
+      "annotations": [],
+      "override": null,
+      "customFindings": [],
+      "interviewEvidence": []
+    },
+    "cvi": "Your firm is unaware of Clio's Gmail/Outlook add-on and client portal, which explains why only 41% of matters have logged communications and email logging is at 11%. An Attornato consultant would install and configure the email add-on for all users, set up the client portal for active matters, train the team on call logging workflows, and establish a communication standard that captures the currently invisible 59% of client interactions."
+  },
+  {
+    "id": "Q.1",
+    "title": "Firm Technology Culture & Change Readiness",
+    "domainId": 7,
+    "baselineScore": null,
+    "contextScore": 3,
+    "overrideScore": null,
+    "finalScore": 3,
+    "confidence": "Medium",
+    "apiCoverage": "None",
+    "enrichmentSource": "Q7.3",
+    "isQuestionnaireOnly": true,
+    "storyBeat": "Technology adoption in a law firm is ultimately a cultural challenge, not a technical one. The most sophisticated practice management configuration will fail if the people expected to use it resist change, distrust the tools, or lack the support to develop new habits. Understanding a firm's technology culture and change history is essential for designing an improvement plan that will actually be implemented.",
+    "metrics": {
+      "technologyAttitude": "Willing but cautious",
+      "recentChangeExperience": "Implemented with difficulty",
+      "statedWish": "I wish everyone would actually use the tools we pay for"
+    },
+    "recommendations": [
+      {
+        "body": "Design improvement initiatives with structured change management, not just technical configuration. The firm's history predicts that new features launched without role-specific training and leadership commitment will be abandoned.",
+        "whyRelevant": "The pattern of abandoned initiatives (matter stages, Grow forms, custom fields) demonstrates that configuration alone does not produce adoption.",
+        "howToImplement": "Every new feature rollout should include: role-specific training, a designated champion, a 30-day check-in, and visible leadership use. Start with the feature the firm wants most (document templates)."
+      },
+      {
+        "body": "Leverage the firm's willingness — they are not hostile to change, they are cautious about it. Frame improvements as solving problems they already feel, not introducing new complexity.",
+        "whyRelevant": "The managing partner's wish ('everyone would use the tools we pay for') indicates leadership frustration that can be channeled into commitment.",
+        "howToImplement": "Lead with the revenue impact data from this assessment. Show specific dollar amounts attached to specific changes. Make the business case before the technology case."
+      }
+    ],
+    "layer2": {
+      "headline": "Willing but cautious, with a difficult recent change — the firm needs guided implementation, not just configuration.",
+      "detail": "The firm describes its technology attitude as 'willing but cautious' and reports that a recent technology change was implemented 'with difficulty.' The stated wish — 'I wish everyone would actually use the tools we pay for' — is one of the most common refrains in legal technology consulting, and it signals a gap between investment and adoption that is felt at the leadership level. The combination of willingness (not hostile to change) and difficulty (past efforts were painful) suggests the firm needs structured change management alongside technical implementation. Simply configuring features and providing a user manual will not overcome the 'prefer their old way' resistance identified in the adoption finding. The firm's history predicts that any new initiative launched without role-specific training, a clear champion, and visible leadership commitment will follow the same trajectory as the abandoned matter stages and unused Grow intake forms.",
+      "baselineCard": null,
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Technology attitude: Willing but cautious.\nRecent change experience: Implemented with difficulty.\nStated wish: 'I wish everyone would actually use the tools we pay for.'\nAssessment: The firm will adopt change with the right support but has a demonstrated pattern of abandoning initiatives without it — engagement model should prioritize guided implementation over self-service."
+      }
+    },
+    "layer3": {
+      "annotations": [],
+      "override": null,
+      "customFindings": [],
+      "interviewEvidence": []
+    },
+    "cvi": "Your firm is willing but cautious about technology change, with a recent difficult implementation and a pattern of starting features without sustaining them. An Attornato consultant would design a change management approach specific to your firm's culture, sequencing improvements by impact and readiness, providing role-specific training rather than generic sessions, and establishing accountability structures that prevent the abandonment pattern from repeating."
+  },
+  {
+    "id": "Q.2",
+    "title": "Client Experience & Communication Quality",
+    "domainId": 5,
+    "baselineScore": null,
+    "contextScore": 2,
+    "overrideScore": null,
+    "finalScore": 2,
+    "confidence": "Medium",
+    "apiCoverage": "None",
+    "enrichmentSource": "Q5.3",
+    "isQuestionnaireOnly": true,
+    "storyBeat": "The client experience begins with the first inquiry and extends through every interaction until the matter closes. In a competitive legal market, clients increasingly expect the same transparency, responsiveness, and convenience from their law firm that they receive from other professional service providers. Firms that rely on reactive communication — waiting for clients to ask — rather than proactive updates create anxiety, generate unnecessary inbound calls, and risk client dissatisfaction that affects referrals and retention.",
+    "metrics": {
+      "statusCheckMethod": "Call or email and someone responds",
+      "feedbackCollection": "Informal conversations",
+      "communicationComplaints": "Occasionally",
+      "clientExperiencePriority": "Important but not urgent"
+    },
+    "recommendations": [
+      {
+        "body": "Establish a bi-weekly proactive update standard for all active matters. Set this expectation with clients at engagement, ideally in the engagement letter.",
+        "whyRelevant": "Clients currently have no expectation of when they will hear from the firm, creating anxiety that drives 8 to 12 weekly status calls.",
+        "howToImplement": "Add a communication cadence clause to the engagement letter. Create recurring bi-weekly calendar events linked to each active matter. The update can be a two-sentence email — regularity matters more than length."
+      },
+      {
+        "body": "Activate the client portal to give clients self-service access to case documents, status updates, and secure messaging.",
+        "whyRelevant": "The portal would reduce inbound status calls (currently 5 to 8 hours per week of staff time) by giving clients an alternative to calling for updates.",
+        "howToImplement": "Enable Clio for Clients on active client contacts. Send portal invitations. Upload key documents to the portal. Train clients on self-service access."
+      },
+      {
+        "body": "Implement a simple client feedback mechanism — even a one-question satisfaction check at matter close.",
+        "whyRelevant": "Without feedback, dissatisfied clients are invisible until they leave a negative review or stop referring. Informal conversations miss the clients who quietly leave.",
+        "howToImplement": "Send a brief satisfaction email at matter close. Track responses. Review monthly for patterns. This can be as simple as 'How would you rate your experience? Would you refer us?'"
+      }
+    ],
+    "layer2": {
+      "headline": "Reactive client communication and no feedback collection leave the firm blind to the experience driving referrals.",
+      "detail": "Clients check case status by calling or emailing, and someone responds when available. There is no proactive update cadence, no client portal for self-service status checking, and no automated notifications. The firm occasionally receives complaints about responsiveness, confirming that the reactive model creates friction clients notice. Client feedback is gathered only through informal conversations, which means dissatisfied clients who simply leave or stop referring are invisible. The firm considers client experience 'important but not urgent,' which is a common pattern among firms that have not quantified the revenue impact of referral rates. With no client portal active and 89% of logged communications being phone calls, clients have no asynchronous way to interact with the firm outside of email to individual attorney inboxes. The 8 to 12 weekly status calls consume 5 to 8 hours of staff time that proactive communication and self-service tools would largely eliminate.",
+      "baselineCard": null,
+      "contextCard": {
+        "title": "CONTEXT-ADJUSTED INTERPRETATION",
+        "content": "Client status access: Reactive (call or email).\nClient portal: Not set up.\nFeedback collection: Informal only.\nOccasional responsiveness complaints confirmed.\nAssessment: Client experience is unmanaged — the firm cannot measure satisfaction, has no proactive communication cadence, and lacks the self-service tools that modern clients expect."
+      }
+    },
+    "layer3": {
+      "annotations": [],
+      "override": null,
+      "customFindings": ["cf-3"],
+      "interviewEvidence": []
+    },
+    "cvi": "Your firm handles client status inquiries reactively, has no client portal, and gathers feedback only through informal conversations. With occasional responsiveness complaints and 8 to 12 weekly status calls consuming staff time, the client experience is a blind spot. An Attornato consultant would activate the client portal, establish a proactive communication cadence, implement client feedback collection, and reduce the inbound call burden that currently costs the firm 5 to 8 hours per week."
+  }
+]

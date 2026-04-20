@@ -1,0 +1,89 @@
+{
+  "name": "Brennan & Clark LLP",
+  "location": "Tampa, Florida",
+  "founded": 2011,
+  "size": "4 attorneys, 1 paralegal, 1 office manager",
+  "clioUsers": 5,
+  "revenue": 610000,
+  "subscription": "Essentials",
+  "subscriptionCost": "$89/user/month",
+  "clioSince": 2019,
+  "billingModel": "65% hourly, 35% flat fee",
+  "blendedRate": 285,
+  "bar": "Florida Bar",
+  "people": [
+    {
+      "name": "Robert Brennan",
+      "role": "Managing Partner",
+      "type": "Attorney",
+      "utilization": 0.34,
+      "realization": 0.83,
+      "rate": 300,
+      "activitiesLast30": 89,
+      "featureBreadth": ["time", "tasks", "calendar", "comms"]
+    },
+    {
+      "name": "Karen Clark",
+      "role": "Senior Partner",
+      "type": "Attorney",
+      "utilization": 0.08,
+      "realization": 0.52,
+      "rate": 350,
+      "activitiesLast30": 3,
+      "featureBreadth": ["time"]
+    },
+    {
+      "name": "James Okafor",
+      "role": "Associate",
+      "type": "Attorney",
+      "utilization": 0.41,
+      "realization": 0.89,
+      "rate": 250,
+      "activitiesLast30": 147,
+      "featureBreadth": ["time", "tasks", "calendar", "docs", "comms"]
+    },
+    {
+      "name": "Sofia Vega",
+      "role": "Associate",
+      "type": "Attorney",
+      "utilization": 0.28,
+      "realization": 0.78,
+      "rate": 225,
+      "activitiesLast30": 64,
+      "featureBreadth": ["time", "tasks", "calendar"]
+    },
+    {
+      "name": "Andrea Torres",
+      "role": "Paralegal",
+      "type": "Non-Attorney",
+      "activitiesLast30": 45,
+      "featureBreadth": ["calendar", "tasks", "docs"]
+    },
+    {
+      "name": "Maria Santos",
+      "role": "Office Manager",
+      "type": "Non-Attorney",
+      "activitiesLast30": 38,
+      "featureBreadth": ["time", "tasks", "comms"]
+    }
+  ],
+  "practiceAreas": [
+    { "name": "Family Law", "lead": "Brennan, Vega", "billing": "Hourly", "open": 38, "closed12mo": 42, "avgValue": 4800 },
+    { "name": "Estate Planning", "lead": "Brennan, Clark", "billing": "Hourly + Flat", "open": 31, "closed12mo": 67, "avgValue": 2200 },
+    { "name": "Personal Injury", "lead": "Clark", "billing": "Contingency", "open": 24, "closed12mo": 8, "avgValue": 18500 },
+    { "name": "Real Estate", "lead": "Okafor", "billing": "Flat Fee", "open": 29, "closed12mo": 134, "avgValue": 1100 },
+    { "name": "Small Business", "lead": "Okafor, Vega", "billing": "Hourly", "open": 20, "closed12mo": 89, "avgValue": 3400 }
+  ],
+  "keyMetrics": {
+    "totalRecoverableRevenue": 120000,
+    "uncapturedRevenue": 178000,
+    "karenClarkUncaptured": 65000,
+    "timeEntryErosion": 31000,
+    "annualWriteOffs": 43000,
+    "outstandingAR": 89000,
+    "unbilledInventory": 127000,
+    "monthlyDelayedCost": 4200,
+    "documentDraftingWasteHours": 250,
+    "statusCallBurdenHoursWeek": 6.5
+  }
+}

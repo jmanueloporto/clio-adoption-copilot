@@ -1,0 +1,238 @@
+{
+  "callouts": [
+    {
+      "id": "card-1",
+      "type": "callout",
+      "title": "Two Views, One Assessment",
+      "text": "This demo has two views. You're in Customer View, which shows findings with actionable insights and what a consultant would recommend. Use the toggle in the top right to switch to Consultant View and see the tools and workflows behind the assessment.",
+      "page": "dashboard",
+      "visibility": "customer"
+    },
+    {
+      "id": "card-2",
+      "type": "callout",
+      "title": "Your Firm's Assessment",
+      "text": "The maturity score of 2.3 is calculated from 22 findings across 7 domains. Each domain card shows a functional area of your Clio usage — click any card to see the findings that affect your practice. The critical findings list highlights the 5 issues with the highest impact on your firm.",
+      "page": "dashboard",
+      "visibility": "customer"
+    },
+    {
+      "id": "card-3",
+      "type": "callout",
+      "title": "What a Consultant Would Address",
+      "text": "This section previews the combined value of a consultant engagement: $120,000 in recoverable revenue, risk remediation for confirmed compliance gaps, and 200-300 hours of automation savings. These numbers come directly from the assessment findings above.",
+      "page": "dashboard",
+      "visibility": "customer"
+    },
+    {
+      "id": "card-4",
+      "type": "callout",
+      "title": "Assessment Overview",
+      "text": "The 2.3 maturity score aggregates 22 weighted findings across 7 domains. The critical findings list is ranked by business impact — revenue connection, risk severity, and remediation urgency. Domain cards show where to drill down for client conversations.",
+      "page": "dashboard",
+      "visibility": "consultant"
+    },
+    {
+      "id": "card-5",
+      "type": "callout",
+      "title": "Cross-Domain Patterns",
+      "text": "These visualizations combine data across findings to surface firm-wide patterns for the consultant. The utilization chart identifies individual coaching targets, the revenue funnel quantifies the leakage cascade, and the adoption heatmap pinpoints where training is needed most.",
+      "page": "dashboard",
+      "visibility": "consultant"
+    },
+    {
+      "id": "card-6",
+      "type": "callout",
+      "title": "Exploring Your Findings",
+      "text": "Your findings are grouped by domain and ranked by score. Each row shows a one-line summary explaining what the finding means for your firm. Scores range from 1 (critical gaps) to 5 (best practice). Click any finding to see the full analysis and recommendations.",
+      "page": "findings",
+      "visibility": "customer"
+    },
+    {
+      "id": "card-7",
+      "type": "callout",
+      "title": "What the Scores Mean",
+      "text": "A score of 1 means critical gaps requiring immediate attention. A score of 2 means developing with room for improvement. A score of 3 means defined and functional. The badge colors — red, orange, amber — make severity visible at a glance so you can prioritize action.",
+      "page": "findings",
+      "visibility": "customer"
+    },
+    {
+      "id": "card-8",
+      "type": "callout",
+      "title": "Finding Inventory",
+      "text": "Findings are grouped by domain for structured analysis. The one-line summaries pull from Layer 2 context — already enriched beyond raw metrics. Use the score and confidence badges to prioritize which findings to expand in client conversations.",
+      "page": "findings",
+      "visibility": "consultant"
+    },
+    {
+      "id": "card-9",
+      "type": "callout",
+      "title": "Consultant-Identified Findings",
+      "text": "At the bottom, findings created through direct observation appear. These capture risks automation cannot detect — like the conflict check near-miss discovered during a live demonstration, or the office manager dependency identified through on-site interviews.",
+      "page": "findings",
+      "visibility": "consultant"
+    },
+    {
+      "id": "card-10",
+      "type": "callout",
+      "title": "Three Layers of Insight",
+      "text": "Layer 1 (white) shows what your Clio data reveals. Layer 2 (blue) shows how your questionnaire answers change the picture — watch how the same numbers tell a different story with context. Layer 3 (purple) shows what a consultant discovered through direct observation of your firm.",
+      "page": "findings-detail",
+      "visibility": "customer"
+    },
+    {
+      "id": "card-11",
+      "type": "callout",
+      "title": "Before and After Context",
+      "text": "The two side-by-side cards in Layer 2 are the key insight. The left card shows what the data says on its own. The right card shows what it means with your firm's organizational context. Compare the 'Assessment' lines at the bottom to see how the interpretation shifts.",
+      "page": "findings-detail",
+      "visibility": "customer"
+    },
+    {
+      "id": "card-12",
+      "type": "callout",
+      "title": "What a Consultant Would Do",
+      "text": "The teal section at the bottom translates this finding into specific actions a consultant would take — using your firm's actual numbers, not generic promises. Toggle to Consultant View to see the tools and judgment that produce this value.",
+      "page": "findings-detail",
+      "visibility": "customer"
+    },
+    {
+      "id": "card-13",
+      "type": "callout",
+      "title": "The Three-Layer Architecture",
+      "text": "Layer 1 (white) is the automated baseline from API data. Layer 2 (blue) shows the enrichment from the questionnaire — this is where the assessment differentiates from a simple data report. Layer 3 (purple) is where your expert judgment, annotations, and overrides add the depth automation cannot replicate.",
+      "page": "findings-detail",
+      "visibility": "consultant"
+    },
+    {
+      "id": "card-14",
+      "type": "callout",
+      "title": "Score Overrides",
+      "text": "When present, the large numbers with the arrow show where you overrode the automated score. Finding 2.3 was downgraded from 2 to 1 based on a confirmed missed deadline. Finding 6.2 was upgraded from 2 to 3. The justification is mandatory — both scores are always displayed for transparency.",
+      "page": "findings-detail",
+      "visibility": "consultant"
+    },
+    {
+      "id": "card-15",
+      "type": "callout",
+      "title": "Consultant Tools",
+      "text": "The action buttons let you add annotations, override scores, or create custom findings. Each action layers your expert judgment on top of the automated assessment. The original automation is never hidden — transparency is a core design principle.",
+      "page": "findings-detail",
+      "visibility": "consultant"
+    },
+    {
+      "id": "card-16",
+      "type": "callout",
+      "title": "Why Your Answers Matter",
+      "text": "Each section captures information your Clio data alone cannot reveal — whether your firm has written policies, how your team actually works day-to-day, or what tools you use outside Clio. Your answers transform raw metrics into insights specific to your firm's situation.",
+      "page": "questionnaire",
+      "visibility": "customer"
+    },
+    {
+      "id": "card-17",
+      "type": "callout",
+      "title": "See Your Impact in Real Time",
+      "text": "Three sections marked 'Interactive' have working controls. Try changing 'hours per week' in the Utilization Rate section from 50 to 40 — watch your finding update instantly. The headline, metrics, and comparison cards all recalculate to show how your answer changes the conclusion.",
+      "page": "questionnaire",
+      "visibility": "customer"
+    },
+    {
+      "id": "card-18",
+      "type": "callout",
+      "title": "The Enrichment Engine",
+      "text": "Each section enriches exactly one finding with context the API cannot capture. The questionnaire is where baseline metrics become actionable insights — organizational barriers, cultural factors, and process gaps that explain why the numbers look the way they do.",
+      "page": "questionnaire",
+      "visibility": "consultant"
+    },
+    {
+      "id": "card-19",
+      "type": "callout",
+      "title": "Live Recalculation Demo",
+      "text": "Three interactive sections demonstrate the enrichment concept in real time. Change 'hours per week' in Q3.1 from 50 to 40 — utilization jumps from 22% to 27%. This is the single most effective way to show a customer how context changes the assessment.",
+      "page": "questionnaire",
+      "visibility": "consultant"
+    },
+    {
+      "id": "card-20",
+      "type": "callout",
+      "title": "The Interview Workflow",
+      "text": "Questions are generated from finding data — each triggered by a metric that warrants investigation. Pre-populated answers with green 'Promoted' badges have been transformed into assessment content. Click 'Used in' links to trace each insight to its destination.",
+      "page": "interview-guide",
+      "visibility": "consultant"
+    },
+    {
+      "id": "card-21",
+      "type": "callout",
+      "title": "Promote: Notes to Findings",
+      "text": "The Promote button transforms raw interview notes into polished assessment content — annotations, score override justifications, or custom findings. The raw version stays here; the polished output appears in the finding. This creates the auditable chain visible in the 'Used in' links.",
+      "page": "interview-guide",
+      "visibility": "consultant"
+    },
+    {
+      "id": "card-22",
+      "type": "callout",
+      "title": "Your Assessment Report",
+      "text": "This is the report your firm would receive. The document-style formatting, flowing prose, and narrower layout are designed for firm leadership — people who need to understand findings and take action without wading through technical detail.",
+      "page": "report",
+      "visibility": "customer"
+    },
+    {
+      "id": "card-23",
+      "type": "callout",
+      "title": "The Bottom Line",
+      "text": "The executive summary synthesizes 22 findings into a business narrative with specific dollar amounts and confirmed risks. The 20-item roadmap below is organized by urgency — risk remediation first, then revenue recovery, then workflow optimization. Each item includes a measurable target.",
+      "page": "report",
+      "visibility": "customer"
+    },
+    {
+      "id": "card-24",
+      "type": "callout",
+      "title": "Report Structure",
+      "text": "The report synthesizes all three assessment layers into a client-ready deliverable. The executive summary, domain narratives, and roadmap are generated from the complete data set. Domains 2 and 3 are expanded to show the narrative depth — click others to expand.",
+      "page": "report",
+      "visibility": "consultant"
+    },
+    {
+      "id": "card-25",
+      "type": "callout",
+      "title": "The Roadmap",
+      "text": "The 20-item roadmap is your engagement blueprint. Four phases sequenced by urgency: risk remediation (days 1-30), revenue recovery (31-90), workflow optimization (91-180), strategic growth (181-365). Each item maps to a finding and a measurable target — this is how assessment becomes action.",
+      "page": "report",
+      "visibility": "consultant"
+    },
+    {
+      "id": "card-26",
+      "type": "callout",
+      "title": "Consultant Impact at a Glance",
+      "text": "The Key Decisions section answers one question in 15 seconds: what did you see that the automation missed? Every score override, custom finding, and key recommendation is listed with a one-line rationale. The timeline below shows how your 4 days were spent.",
+      "page": "engagement",
+      "visibility": "consultant"
+    },
+    {
+      "id": "card-27",
+      "type": "callout",
+      "title": "Engagement Timeline",
+      "text": "This 4-day timeline documents the engagement from API analysis on Day 1 through stakeholder interviews on Days 2-3 to report delivery on Day 4. The activity summary at the top quantifies your output: 6 annotations, 2 overrides, 3 custom findings.",
+      "page": "engagement",
+      "visibility": "consultant"
+    },
+    {
+      "id": "card-28",
+      "type": "callout",
+      "title": "Evidence-Based Opportunities",
+      "text": "Each service and product opportunity is grounded in specific assessment findings and dollar amounts — not generic descriptions. Signal strength indicates confidence. The conversation approach coaches how to raise each topic naturally with the customer.",
+      "page": "expansion",
+      "visibility": "consultant"
+    },
+    {
+      "id": "card-29",
+      "type": "callout",
+      "title": "Engagement Packaging",
+      "text": "The four phases sequence opportunities by priority and dependency. Foundation (risk and configuration) enables everything else. The quarterly retainer addresses this firm's demonstrated pattern of abandoning initiatives — one-time fixes without follow-up will repeat the pattern.",
+      "page": "expansion",
+      "visibility": "consultant"
+    }
+  ],
+  "aiCards": [],
+  "hints": []
+}
