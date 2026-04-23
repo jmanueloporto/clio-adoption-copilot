@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import {
   ConfidenceBadge,
   DemoTooltip,
-  ScoreBadge,
 } from '../components/shared'
 import { useRole } from '../context/RoleContext'
 import customFindings from '../data/customFindings.json'
@@ -89,7 +88,6 @@ function FindingsPage() {
               }`}
             >
               <h3 className="text-base font-semibold text-[#1a2332]">{domain.name}</h3>
-              <ScoreBadge score={domain.finalScore} size="sm" />
               <span className="text-xs text-gray-400">
                 {domain.findings.length} findings
               </span>
@@ -127,7 +125,6 @@ function FindingsPage() {
                   </div>
 
                   <div className="flex flex-col items-end gap-1">
-                    <ScoreBadge score={finding.finalScore} size="sm" />
                     <ConfidenceBadge level={finding.confidence} />
                   </div>
                 </div>

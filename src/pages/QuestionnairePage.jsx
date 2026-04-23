@@ -1,4 +1,5 @@
 import {
+  AlertCircle,
   CheckCircle,
   ChevronDown,
   ChevronUp,
@@ -13,6 +14,15 @@ import findingsSeed from '../data/findings.json'
 import questionnaire from '../data/questionnaire.json'
 
 const INTERACTIVE_SECTION_IDS = new Set(['Q3.1', 'Q2.3', 'Q6.2'])
+const UNANSWERED_SECTION_IDS = new Set([
+  'Q1.2',
+  'Q2.4',
+  'Q3.2',
+  'Q3.6',
+  'Q4.2',
+  'Q5.2',
+  'Q7.2',
+])
 
 function isEqualValue(a, b) {
   if (Array.isArray(a) && Array.isArray(b)) {
@@ -33,20 +43,25 @@ function getInitialResponses() {
 
   questionnaire.forEach((section) => {
     section.questions.forEach((question) => {
-      responses[question.qId] = Array.isArray(question.sampleAnswer)
-        ? [...question.sampleAnswer]
-        : question.sampleAnswer
+      responses[question.qId] = getInitialAnswerValue(question, section.id)
 
       if (question.conditional?.followUp) {
         const followUp = question.conditional.followUp
-        responses[followUp.qId] = Array.isArray(followUp.sampleAnswer)
-          ? [...followUp.sampleAnswer]
-          : followUp.sampleAnswer
+        responses[followUp.qId] = getInitialAnswerValue(followUp, section.id)
       }
     })
   })
 
   return responses
+}
+
+function getInitialAnswerValue(question, sectionId) {
+  if (UNANSWERED_SECTION_IDS.has(sectionId)) {
+    return null
+  }
+  return Array.isArray(question.sampleAnswer)
+    ? [...question.sampleAnswer]
+    : question.sampleAnswer
 }
 
 function shouldShowFollowUp(question, answer) {
@@ -62,13 +77,28 @@ function shouldShowFollowUp(question, answer) {
   return triggerValues.includes(answer)
 }
 
+function isQuestionComplete(question, responses) {
+  const answer = responses[question.qId]
+  if (answer === null || answer === undefined) return false
+
+  if (question.conditional && shouldShowFollowUp(question, answer)) {
+    return isQuestionComplete(question.conditional.followUp, responses)
+  }
+
+  return true
+}
+
+function isSectionComplete(section, responses) {
+  return section.questions.every((question) => isQuestionComplete(question, responses))
+}
+
 function QuestionnairePage() {
   const { findings, updateFinding } = useFindings()
 
   const [responses, setResponses] = useState(() => getInitialResponses())
   const [expandedSections, setExpandedSections] = useState(() =>
     Object.fromEntries(
-      questionnaire.map((section) => [section.id, section.isInteractive]),
+      questionnaire.map((section) => [section.id, false]),
     ),
   )
   const [highlightedSectionId, setHighlightedSectionId] = useState(null)
@@ -86,6 +116,17 @@ function QuestionnairePage() {
   const originalFindingsById = useMemo(
     () => Object.fromEntries(findingsSeed.map((finding) => [finding.id, finding])),
     [],
+  )
+  const sectionCompletionById = useMemo(
+    () =>
+      Object.fromEntries(
+        questionnaire.map((section) => [section.id, isSectionComplete(section, responses)]),
+      ),
+    [responses],
+  )
+  const completedSectionCount = useMemo(
+    () => Object.values(sectionCompletionById).filter(Boolean).length,
+    [sectionCompletionById],
   )
 
   const triggerToast = (findingId) => {
@@ -219,30 +260,7 @@ function QuestionnairePage() {
     }))
   }
 
-  const renderReadOnlyOptionPills = (question, answer, isMulti = false) => {
-    const selectedValues = isMulti ? (answer || []) : [answer]
-    return (
-      <div className="flex flex-wrap gap-2">
-        {question.options.map((option) => {
-          const isSelected = selectedValues.includes(option)
-          return (
-            <span
-              key={option}
-              className={`rounded-full border px-3 py-1 text-xs ${
-                isSelected
-                  ? 'border-blue-200 bg-blue-50 text-blue-700'
-                  : 'border-gray-200 bg-gray-50 text-gray-400'
-              }`}
-            >
-              {option}
-            </span>
-          )
-        })}
-      </div>
-    )
-  }
-
-  const renderInteractiveOptionPills = (sectionId, question, answer, isMulti = false) => {
+  const renderOptionPills = (sectionId, question, answer, isMulti = false) => {
     const selectedValues = isMulti ? (answer || []) : [answer]
 
     const toggleValue = (option) => {
@@ -281,7 +299,7 @@ function QuestionnairePage() {
     )
   }
 
-  const renderQuestion = (section, question, isInteractive, isFollowUp = false) => {
+  const renderQuestion = (section, question, isFollowUp = false) => {
     const answer = responses[question.qId]
 
     return (
@@ -292,70 +310,76 @@ function QuestionnairePage() {
         <p className="mb-2 text-sm font-medium text-gray-700">{question.text}</p>
 
         {question.type === 'single-select'
-          ? isInteractive
-            ? renderInteractiveOptionPills(section.id, question, answer, false)
-            : renderReadOnlyOptionPills(question, answer, false)
+          ? renderOptionPills(section.id, question, answer, false)
           : null}
 
         {question.type === 'multi-select'
-          ? isInteractive
-            ? renderInteractiveOptionPills(section.id, question, answer, true)
-            : renderReadOnlyOptionPills(question, answer, true)
+          ? renderOptionPills(section.id, question, answer, true)
           : null}
 
         {question.type === 'numeric' ? (
-          isInteractive ? (
-            <div className="flex items-center gap-0">
-              <button
-                type="button"
-                onClick={() =>
-                  setResponseValue(section.id, question, Math.max(1, (Number(answer) || 1) - 1))
+          <div className="flex items-center gap-0">
+            <button
+              type="button"
+              onClick={() =>
+                setResponseValue(
+                  section.id,
+                  question,
+                  Math.max(1, (Number(answer ?? question.default) || 1) - 1),
+                )
+              }
+              className="rounded-l-lg border bg-gray-50 px-3 py-1.5 hover:bg-gray-100"
+            >
+              <Minus size={14} />
+            </button>
+            <input
+              type="number"
+              value={answer ?? question.default ?? ''}
+              onChange={(event) => {
+                const nextValue = event.target.value
+                if (nextValue === '') {
+                  setResponseValue(section.id, question, null)
+                  return
                 }
-                className="rounded-l-lg border bg-gray-50 px-3 py-1.5 hover:bg-gray-100"
-              >
-                <Minus size={14} />
-              </button>
-              <input
-                type="number"
-                value={Number(answer) || 0}
-                onChange={(event) =>
-                  setResponseValue(section.id, question, Math.max(1, Number(event.target.value) || 1))
-                }
-                className="w-20 border-b border-t py-1.5 text-center font-mono text-sm"
-              />
-              <button
-                type="button"
-                onClick={() => setResponseValue(section.id, question, (Number(answer) || 0) + 1)}
-                className="rounded-r-lg border bg-gray-50 px-3 py-1.5 hover:bg-gray-100"
-              >
-                <Plus size={14} />
-              </button>
-            </div>
-          ) : (
-            <div className="inline-flex rounded border bg-gray-50 px-3 py-1.5 font-mono text-sm">
-              {answer}
-            </div>
-          )
+
+                const numericValue = Number(nextValue)
+                if (Number.isNaN(numericValue)) return
+                setResponseValue(section.id, question, Math.max(1, numericValue))
+              }}
+              className="w-20 border-b border-t py-1.5 text-center font-mono text-sm"
+            />
+            <button
+              type="button"
+              onClick={() =>
+                setResponseValue(section.id, question, (Number(answer ?? question.default) || 0) + 1)
+              }
+              className="rounded-r-lg border bg-gray-50 px-3 py-1.5 hover:bg-gray-100"
+            >
+              <Plus size={14} />
+            </button>
+          </div>
         ) : null}
 
         {question.type === 'free-text' ? (
-          isInteractive ? (
-            <textarea
-              value={answer || ''}
-              onChange={(event) => setResponseValue(section.id, question, event.target.value)}
-              rows={3}
-              className="w-full rounded-lg border border-gray-200 p-3 text-sm"
-            />
-          ) : (
-            <div className="rounded border bg-gray-50 p-3 text-sm text-gray-600">{answer}</div>
-          )
+          <textarea
+            value={answer || ''}
+            onChange={(event) =>
+              setResponseValue(
+                section.id,
+                question,
+                event.target.value.trim().length === 0 ? null : event.target.value,
+              )
+            }
+            rows={3}
+            placeholder="Your answer..."
+            className="w-full rounded-lg border border-gray-200 p-3 text-sm"
+          />
         ) : null}
 
         {question.conditional && shouldShowFollowUp(question, answer)
           ? renderQuestion(
               section,
               question.conditional.followUp,
-              isInteractive,
               true,
             )
           : null}
@@ -395,15 +419,15 @@ function QuestionnairePage() {
         </p>
         <div className="mt-4 inline-flex items-center rounded-full bg-green-50 px-3 py-1 text-xs text-green-700">
           <CheckCircle size={14} className="mr-1.5 text-green-500" />
-          22 of 22 sections completed
+          {completedSectionCount} of {questionnaire.length} sections completed
         </div>
       </header>
 
       <section className="mt-6">
         {questionnaire.map((section) => {
           const isExpanded = !!expandedSections[section.id]
-          const isInteractive = section.isInteractive
           const isHighlighted = highlightedSectionId === section.id
+          const isComplete = !!sectionCompletionById[section.id]
 
           return (
             <article
@@ -424,18 +448,17 @@ function QuestionnairePage() {
                   <span className="ml-3 text-sm font-medium text-[#1a2332]">
                     {section.title}
                   </span>
-                  {isInteractive ? (
-                    <span className="ml-2 rounded-full bg-blue-50 px-2 py-0.5 text-xs text-blue-600">
-                      Interactive
-                    </span>
-                  ) : null}
                   <span className="ml-2 text-xs text-gray-400">
                     → Finding {section.enrichesFinding}
                   </span>
                 </div>
 
                 <span className="ml-4 flex items-center gap-2">
-                  <CheckCircle size={18} className="text-green-500" />
+                  {isComplete ? (
+                    <CheckCircle size={18} className="text-green-500" />
+                  ) : (
+                    <AlertCircle size={18} className="text-red-400" />
+                  )}
                   {isExpanded ? (
                     <ChevronUp size={16} className="text-gray-400" />
                   ) : (
@@ -446,18 +469,8 @@ function QuestionnairePage() {
 
               {isExpanded ? (
                 <div className="border-t border-gray-100 px-4 pb-4 pt-3">
-                  {isInteractive ? (
-                    <p className="mb-4 inline-flex rounded bg-blue-50 px-3 py-1.5 text-xs font-medium text-blue-600">
-                      Try changing values to see findings update in real time
-                    </p>
-                  ) : (
-                    <p className="mb-3 text-xs italic text-gray-400">
-                      Pre-populated with sample data
-                    </p>
-                  )}
-
                   {section.questions.map((question) =>
-                    renderQuestion(section, question, isInteractive),
+                    renderQuestion(section, question),
                   )}
                 </div>
               ) : null}

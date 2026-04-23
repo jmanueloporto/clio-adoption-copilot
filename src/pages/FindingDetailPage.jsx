@@ -44,31 +44,6 @@ const OVERRIDE_SCORE_TOOLTIP_TEXT =
 const ADD_CUSTOM_FINDING_TOOLTIP_TEXT =
   'In production, this opens the custom finding creator with fields for title, domain, severity, and the Observation/Impact/Recommendation structure. Custom findings capture things the automated system cannot detect.'
 
-const FINDING_ORDER = [
-  '1.1',
-  '1.2',
-  '2.1',
-  '2.2',
-  '2.3',
-  '2.4',
-  '3.1',
-  '3.2',
-  '3.3',
-  '3.4',
-  '3.5',
-  '3.6',
-  '4.1',
-  '4.2',
-  '5.1',
-  '5.2',
-  '6.1',
-  '6.2',
-  '7.1',
-  '7.2',
-  'Q.1',
-  'Q.2',
-]
-
 const METRIC_CARD_CONFIG = {
   '1.1': [
     { label: 'Admin Users', value: '4 of 5 (80%)' },
@@ -382,22 +357,6 @@ function FindingDetailPage() {
     }
     document.title = 'Clio HealthCheck — Findings'
   }, [finding])
-  const findingOrderIndex = FINDING_ORDER.indexOf(id)
-
-  const previousFindingId =
-    findingOrderIndex >= 0
-      ? FINDING_ORDER[
-          (findingOrderIndex - 1 + FINDING_ORDER.length) % FINDING_ORDER.length
-        ]
-      : FINDING_ORDER[FINDING_ORDER.length - 1]
-  const nextFindingId =
-    findingOrderIndex >= 0
-      ? FINDING_ORDER[(findingOrderIndex + 1) % FINDING_ORDER.length]
-      : FINDING_ORDER[0]
-
-  const previousFinding = findings.find((item) => item.id === previousFindingId)
-  const nextFinding = findings.find((item) => item.id === nextFindingId)
-
   if (!finding) {
     return (
       <div className="rounded-lg border border-gray-200 bg-white p-6">
@@ -447,12 +406,9 @@ function FindingDetailPage() {
 
   return (
     <div>
-      <div className="mb-6 flex items-center justify-between">
-        <Link to={`/findings/${previousFindingId}`} className="text-sm text-[#0066cc] hover:underline">
-          ← {previousFinding?.title || 'Previous Finding'}
-        </Link>
-        <Link to={`/findings/${nextFindingId}`} className="text-sm text-[#0066cc] hover:underline">
-          {nextFinding?.title || 'Next Finding'} →
+      <div className="mb-6">
+        <Link to="/findings" className="text-sm text-[#0066cc] hover:underline">
+          ← Back to Findings
         </Link>
       </div>
 

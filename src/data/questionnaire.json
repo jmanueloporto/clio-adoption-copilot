@@ -68,7 +68,7 @@
         "qId": "Q1.2.4",
         "text": "If you could have one Clio feature fully configured and working tomorrow, what would it be?",
         "type": "free-text",
-        "sampleAnswer": "Document automation — we waste hours rewriting the same letters"
+        "sampleAnswer": null
       }
     ]
   },
@@ -209,7 +209,7 @@
         "text": "Do your clients ask about case status? If so, how do you handle those inquiries?",
         "type": "single-select",
         "options": ["We proactively update clients", "We respond when asked", "It's a frequent source of client frustration", "Not applicable"],
-        "sampleAnswer": "We respond when asked"
+        "sampleAnswer": null
       },
       {
         "qId": "Q2.4.4",
@@ -300,7 +300,7 @@
         "text": "Does anyone at the firm review time entries for completeness before billing?",
         "type": "single-select",
         "options": ["Yes a specific person reviews", "Partners review their own", "No review process"],
-        "sampleAnswer": "No review process"
+        "sampleAnswer": null
       },
       {
         "qId": "Q3.2.4",
@@ -458,7 +458,7 @@
         "text": "Has your firm ever been subject to a trust account audit or inquiry from the state bar?",
         "type": "single-select",
         "options": ["Yes", "No", "I don't know"],
-        "sampleAnswer": "No"
+        "sampleAnswer": null
       },
       {
         "qId": "Q3.6.4",
@@ -539,7 +539,7 @@
         "text": "How does your firm handle recurring tasks (annual filings, periodic reviews, etc.)?",
         "type": "single-select",
         "options": ["Task templates with automatic recurrence", "Calendar reminders", "Someone remembers", "We don't have many recurring tasks"],
-        "sampleAnswer": "Calendar reminders"
+        "sampleAnswer": null
       }
     ]
   },
@@ -606,7 +606,7 @@
         "text": "Are custom fields synchronized between Clio Grow and Clio Manage?",
         "type": "single-select",
         "options": ["Yes fully synced", "Partially", "No", "I don't know"],
-        "sampleAnswer": "I don't know"
+        "sampleAnswer": null
       }
     ]
   },
@@ -790,7 +790,7 @@
         "text": "How are client phone calls documented?",
         "type": "single-select",
         "options": ["Logged in Clio communication", "Notes in the matter", "Personal notes or memory", "Not documented consistently"],
-        "sampleAnswer": "Not documented consistently"
+        "sampleAnswer": null
       },
       {
         "qId": "Q7.2.4",

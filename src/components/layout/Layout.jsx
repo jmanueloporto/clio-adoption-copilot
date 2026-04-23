@@ -19,13 +19,13 @@ function Layout() {
     location.pathname === '/' || location.pathname.startsWith('/domains/')
 
   const navItemClass = (isRouteActive) =>
-    `px-3 py-1 text-sm transition-colors ${
+    `whitespace-nowrap px-3 py-1 text-sm transition-colors ${
       isRouteActive
         ? 'rounded bg-white/15 font-medium text-white'
         : 'text-gray-300 hover:text-white'
     }`
 
-  const consultantNavClass = `flex items-center gap-2 overflow-hidden transition-all duration-300 ${
+  const consultantNavClass = `flex items-center gap-1 whitespace-nowrap overflow-hidden transition-all duration-300 ${
     role === 'consultant'
       ? 'max-w-[420px] translate-y-0 opacity-100'
       : 'pointer-events-none max-w-0 -translate-y-1 opacity-0'
@@ -38,7 +38,7 @@ function Layout() {
         : 'bg-transparent text-white hover:bg-white/10'
     }`
 
-  const renderNav = () => (
+  const renderPrimaryNav = () => (
     <>
       <NavLink to="/" className={() => navItemClass(isDashboardRoute)} end>
         Dashboard
@@ -52,86 +52,86 @@ function Layout() {
       <NavLink to="/report" className={({ isActive }) => navItemClass(isActive)}>
         Report
       </NavLink>
-      <span className={consultantNavClass}>
-        <NavLink
-          to="/interview-guide"
-          className={({ isActive }) => navItemClass(isActive)}
-        >
-          Interview
-        </NavLink>
-        <NavLink to="/engagement" className={({ isActive }) => navItemClass(isActive)}>
-          Engagement
-        </NavLink>
-        <NavLink to="/expansion" className={({ isActive }) => navItemClass(isActive)}>
-          Expansion
-        </NavLink>
-      </span>
     </>
   )
 
   return (
     <div>
-      <header className="sticky top-0 z-50 bg-[#1a2332] text-white shadow-sm">
-        <div className="mx-auto max-w-7xl px-6 py-3 md:px-8">
-          <div className="flex flex-col gap-3">
-            <div className="flex flex-wrap items-center justify-between gap-3 xl:flex-nowrap">
-              <div className="flex min-w-0 items-center gap-3">
-                <div className="flex items-center gap-2">
-                  <ShieldCheck size={24} />
-                  <span className="font-sans text-lg font-semibold">
-                    Clio HealthCheck
-                  </span>
-                </div>
-                <div className="h-5 w-px bg-white/20" />
-                <span className="truncate text-sm text-white">
-                  {company.name}
+      <header className="sticky top-0 z-50 min-w-[900px] bg-[#1a2332] text-white shadow-sm">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex items-center justify-between overflow-hidden whitespace-nowrap px-6 py-2.5">
+            <div className="flex flex-shrink-0 items-center gap-3">
+              <div className="flex items-center gap-2">
+                <ShieldCheck size={24} />
+                <span className="whitespace-nowrap font-sans text-lg font-semibold">
+                  Clio HealthCheck
                 </span>
               </div>
-
-              <span className="demo-banner inline-flex w-fit items-center rounded-full bg-amber-500/20 px-3 py-1 text-xs text-amber-200">
-                Demo Environment — Sample Data
+              <div className="h-5 w-px bg-white/20" />
+              <span className="whitespace-nowrap text-sm text-gray-400">
+                {company.name}
               </span>
-
-              <div className="ml-auto flex items-center gap-3">
-                <button
-                  type="button"
-                  onClick={toggleGuide}
-                  className={`inline-flex items-center gap-2 rounded-md border border-white/50 bg-transparent px-3 py-1.5 text-sm text-white transition-colors hover:bg-white/10 ${
-                    isActive ? 'ring-1 ring-purple-400' : ''
-                  }`}
-                >
-                  {isActive ? <EyeOff size={18} /> : <Eye size={18} />}
-                  Guide
-                </button>
-
-                <nav className="hidden items-center gap-2 xl:flex">{renderNav()}</nav>
-
-                <div className="inline-flex items-center rounded-lg bg-white/10 p-0.5">
-                  <button
-                    type="button"
-                    className={roleSegmentClass('customer')}
-                    onClick={() => {
-                      if (role !== 'customer') toggleRole()
-                    }}
-                  >
-                    Customer
-                  </button>
-                  <button
-                    type="button"
-                    className={roleSegmentClass('consultant')}
-                    onClick={() => {
-                      if (role !== 'consultant') toggleRole()
-                    }}
-                  >
-                    Consultant
-                  </button>
-                </div>
-              </div>
             </div>
 
-            <nav className="flex flex-wrap items-center gap-2 xl:hidden">
-              {renderNav()}
+            <div className="flex justify-center px-4">
+              <span className="demo-banner inline-flex items-center whitespace-nowrap rounded-full bg-amber-500/20 px-3 py-1 text-xs text-amber-200">
+                Demo Environment — Sample Data
+              </span>
+            </div>
+
+            <div className="flex flex-shrink-0 items-center gap-3">
+              <button
+                type="button"
+                onClick={toggleGuide}
+                className={`inline-flex items-center gap-2 whitespace-nowrap rounded-md border border-white/50 bg-transparent px-3 py-1.5 text-sm text-white transition-colors hover:bg-white/10 ${
+                  isActive ? 'ring-1 ring-purple-400' : ''
+                }`}
+              >
+                {isActive ? <EyeOff size={18} /> : <Eye size={18} />}
+                Guide
+              </button>
+
+              <div className="inline-flex items-center whitespace-nowrap rounded-lg bg-white/10 p-0.5">
+                <button
+                  type="button"
+                  className={roleSegmentClass('customer')}
+                  onClick={() => {
+                    if (role !== 'customer') toggleRole()
+                  }}
+                >
+                  Customer
+                </button>
+                <button
+                  type="button"
+                  className={roleSegmentClass('consultant')}
+                  onClick={() => {
+                    if (role !== 'consultant') toggleRole()
+                  }}
+                >
+                  Consultant
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between whitespace-nowrap border-t border-white/10 px-6 py-1.5">
+            <nav className="flex items-center gap-1 whitespace-nowrap">
+              {renderPrimaryNav()}
             </nav>
+            <div className={consultantNavClass}>
+              <NavLink
+                to="/interview-guide"
+                className={({ isActive }) => navItemClass(isActive)}
+              >
+                Interview
+              </NavLink>
+              <NavLink to="/engagement" className={({ isActive }) => navItemClass(isActive)}>
+                Engagement
+              </NavLink>
+              <NavLink to="/expansion" className={({ isActive }) => navItemClass(isActive)}>
+                Expansion
+              </NavLink>
+            </div>
           </div>
         </div>
       </header>
