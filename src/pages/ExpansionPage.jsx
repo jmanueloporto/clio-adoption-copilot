@@ -1,5 +1,6 @@
 import { Info } from 'lucide-react'
 import { useEffect } from 'react'
+import DemoAnchor from '../components/demoGuide/DemoAnchor'
 import { SignalStrengthBadge } from '../components/shared'
 import expansion from '../data/expansion.json'
 
@@ -66,39 +67,40 @@ function ExpansionPage() {
         </div>
       </section>
 
-      <section>
-        <h3 className="mb-4 mt-2 font-sans text-lg font-semibold text-[#1a2332]">
-          Service Opportunities
-        </h3>
+      <DemoAnchor placement="service-opportunities">
+        <section>
+          <h3 className="mb-4 mt-2 font-sans text-lg font-semibold text-[#1a2332]">
+            Service Opportunities
+          </h3>
 
-        {expansion.attornatoServices.map((service) => (
-          <article
-            key={service.id}
-            className={`mb-4 rounded-xl border border-gray-200 bg-white p-5 ${getServiceBorderClass(service.signalStrength)}`}
-          >
-            <div className="flex items-start justify-between gap-4">
-              <h4 className="text-base font-semibold text-[#1a2332]">{service.title}</h4>
-              <SignalStrengthBadge strength={service.signalStrength} />
-            </div>
+          {expansion.attornatoServices.map((service) => (
+            <article
+              key={service.id}
+              className={`mb-4 rounded-xl border border-gray-200 bg-white p-5 ${getServiceBorderClass(service.signalStrength)}`}
+            >
+              <div className="flex items-start justify-between gap-4">
+                <h4 className="text-base font-semibold text-[#1a2332]">{service.title}</h4>
+                <SignalStrengthBadge strength={service.signalStrength} />
+              </div>
 
-            <p className="mb-1 mt-3 text-xs font-semibold uppercase tracking-wider text-gray-500">
-              Assessment Evidence:
-            </p>
-            <p className="text-sm leading-relaxed text-gray-700">{service.evidence}</p>
+              <p className="mb-1 mt-3 text-xs font-semibold uppercase tracking-wider text-gray-500">
+                Assessment Evidence:
+              </p>
+              <p className="text-sm leading-relaxed text-gray-700">{service.evidence}</p>
 
-            <p className="mb-1 mt-3 text-xs font-semibold uppercase tracking-wider text-gray-500">
-              Customer Need:
-            </p>
-            <p className="text-sm leading-relaxed text-gray-700">{service.customerNeed}</p>
+              <p className="mb-1 mt-3 text-xs font-semibold uppercase tracking-wider text-gray-500">
+                Customer Need:
+              </p>
+              <p className="text-sm leading-relaxed text-gray-700">{service.customerNeed}</p>
 
-            <p className="mb-1 mt-3 text-xs font-semibold uppercase tracking-wider text-gray-500">
-              Conversation Approach:
-            </p>
-            <p className="text-sm italic leading-relaxed text-gray-600">
-              {service.conversationApproach}
-            </p>
-          </article>
-        ))}
+              <p className="mb-1 mt-3 text-xs font-semibold uppercase tracking-wider text-gray-500">
+                Conversation Approach:
+              </p>
+              <p className="text-sm italic leading-relaxed text-gray-600">
+                {service.conversationApproach}
+              </p>
+            </article>
+          ))}
       </section>
 
       <section>
@@ -133,43 +135,46 @@ function ExpansionPage() {
               {product.conversationApproach}
             </p>
           </article>
-        ))}
-      </section>
+          ))}
+        </section>
+      </DemoAnchor>
 
-      <section>
-        <h3 className="mb-4 mt-8 font-sans text-lg font-semibold text-[#1a2332]">
-          Recommended Engagement Phases
-        </h3>
+      <DemoAnchor placement="engagement-packaging">
+        <section>
+          <h3 className="mb-4 mt-8 font-sans text-lg font-semibold text-[#1a2332]">
+            Recommended Engagement Phases
+          </h3>
 
-        {expansion.engagementPackaging.map((phase) => (
-          <article key={`phase-${phase.phase}`} className="mb-3 rounded-lg bg-gray-50 p-5">
-            <h4 className="text-sm font-semibold text-[#1a2332]">
-              Phase {phase.phase}: {phase.title}
-            </h4>
-            <p className="mt-0.5 text-xs text-gray-500">{phase.duration}</p>
-            <p className="mt-2 text-sm text-gray-700">{phase.focus}</p>
+          {expansion.engagementPackaging.map((phase) => (
+            <article key={`phase-${phase.phase}`} className="mb-3 rounded-lg bg-gray-50 p-5">
+              <h4 className="text-sm font-semibold text-[#1a2332]">
+                Phase {phase.phase}: {phase.title}
+              </h4>
+              <p className="mt-0.5 text-xs text-gray-500">{phase.duration}</p>
+              <p className="mt-2 text-sm text-gray-700">{phase.focus}</p>
 
-            <div className="mt-3 flex flex-wrap gap-2">
-              {phase.services.map((serviceId) => (
-                <span
-                  key={`${phase.phase}-${serviceId}`}
-                  className="rounded-full bg-purple-50 px-2 py-0.5 text-xs text-purple-700"
-                >
-                  {servicesById[serviceId]?.title}
-                </span>
-              ))}
-              {phase.products.map((productId) => (
-                <span
-                  key={`${phase.phase}-${productId}`}
-                  className="rounded-full bg-blue-50 px-2 py-0.5 text-xs text-blue-700"
-                >
-                  {productsById[productId]?.title}
-                </span>
-              ))}
-            </div>
-          </article>
-        ))}
-      </section>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {phase.services.map((serviceId) => (
+                  <span
+                    key={`${phase.phase}-${serviceId}`}
+                    className="rounded-full bg-purple-50 px-2 py-0.5 text-xs text-purple-700"
+                  >
+                    {servicesById[serviceId]?.title}
+                  </span>
+                ))}
+                {phase.products.map((productId) => (
+                  <span
+                    key={`${phase.phase}-${productId}`}
+                    className="rounded-full bg-blue-50 px-2 py-0.5 text-xs text-blue-700"
+                  >
+                    {productsById[productId]?.title}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </section>
+      </DemoAnchor>
     </div>
   )
 }

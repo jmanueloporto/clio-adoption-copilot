@@ -1,6 +1,15 @@
 {
   "callouts": [
     {
+      "id": "card-about",
+      "type": "callout",
+      "placement": "about",
+      "title": "About the Demo Guide",
+      "text": "These cards explain what you are looking at on each page. They change depending on which page you visit and whether you are in Customer or Consultant View. Dismiss individual cards with the X button, or turn the Guide off using the button above.",
+      "page": "all",
+      "visibility": "both"
+    },
+    {
       "id": "card-1",
       "type": "callout",
       "title": "Two Views, One Assessment",

@@ -1,6 +1,7 @@
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import DemoAnchor from '../components/demoGuide/DemoAnchor'
 import {
   DemoTooltip,
   ScoreBadge,
@@ -96,28 +97,32 @@ function ReportPreviewPage() {
         </DemoTooltip>
       </div>
 
-      <header>
-        <h2 className="font-sans text-3xl font-bold text-[#1a2332]">
-          Clio HealthCheck Assessment
-        </h2>
-        <p className="mt-1 font-sans text-xl text-gray-600">Brennan & Clark LLP</p>
-        <p className="mt-2 text-sm text-gray-500">
-          Prepared by Daniela Reyes, Senior Legal Technology Consultant
-        </p>
-        <p className="text-sm text-gray-500">Engagement Period: March 11-14, 2026</p>
-        <div className="mb-8 mt-6 border-t border-gray-200" />
-      </header>
-
-      <section>
-        <h3 className="mb-4 font-sans text-xl font-semibold text-[#1a2332]">
-          Executive Summary
-        </h3>
-        {report.executiveSummary.split('\n\n').map((paragraph, index) => (
-          <p key={`summary-${index}`} className="mb-4 text-sm leading-relaxed text-gray-700">
-            {paragraph}
+      <DemoAnchor placement="report-header">
+        <header>
+          <h2 className="font-sans text-3xl font-bold text-[#1a2332]">
+            Clio HealthCheck Assessment
+          </h2>
+          <p className="mt-1 font-sans text-xl text-gray-600">Brennan & Clark LLP</p>
+          <p className="mt-2 text-sm text-gray-500">
+            Prepared by Daniela Reyes, Senior Legal Technology Consultant
           </p>
-        ))}
-      </section>
+          <p className="text-sm text-gray-500">Engagement Period: March 11-14, 2026</p>
+          <div className="mb-8 mt-6 border-t border-gray-200" />
+        </header>
+      </DemoAnchor>
+
+      <DemoAnchor placement="executive-summary">
+        <section>
+          <h3 className="mb-4 font-sans text-xl font-semibold text-[#1a2332]">
+            Executive Summary
+          </h3>
+          {report.executiveSummary.split('\n\n').map((paragraph, index) => (
+            <p key={`summary-${index}`} className="mb-4 text-sm leading-relaxed text-gray-700">
+              {paragraph}
+            </p>
+          ))}
+        </section>
+      </DemoAnchor>
 
       <section>
         <h3 className="mb-6 mt-10 font-sans text-xl font-semibold text-[#1a2332]">
@@ -314,10 +319,11 @@ function ReportPreviewPage() {
         ))}
       </section>
 
-      <section>
-        <h3 className="mb-6 mt-10 font-sans text-xl font-semibold text-[#1a2332]">
-          Improvement Roadmap
-        </h3>
+      <DemoAnchor placement="roadmap">
+        <section>
+          <h3 className="mb-6 mt-10 font-sans text-xl font-semibold text-[#1a2332]">
+            Improvement Roadmap
+          </h3>
 
         {report.roadmap.map((phase) => {
           const isExpanded = !!expandedRoadmap[phase.phase]
@@ -372,7 +378,8 @@ function ReportPreviewPage() {
             </div>
           )
         })}
-      </section>
+        </section>
+      </DemoAnchor>
     </div>
   )
 }

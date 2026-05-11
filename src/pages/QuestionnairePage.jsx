@@ -9,6 +9,7 @@ import {
 } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import DemoAnchor from '../components/demoGuide/DemoAnchor'
 import { useFindings } from '../context/FindingsContext'
 import findingsSeed from '../data/findings.json'
 import questionnaire from '../data/questionnaire.json'
@@ -410,18 +411,20 @@ function QuestionnairePage() {
         </div>
       ) : null}
 
-      <header>
-        <h2 className="font-sans text-2xl font-semibold text-[#1a2332]">
-          Organizational Context Questionnaire
-        </h2>
-        <p className="mt-1 text-sm text-gray-500">
-          Estimated completion time: 35–45 minutes. All sections are optional.
-        </p>
-        <div className="mt-4 inline-flex items-center rounded-full bg-green-50 px-3 py-1 text-xs text-green-700">
-          <CheckCircle size={14} className="mr-1.5 text-green-500" />
-          {completedSectionCount} of {questionnaire.length} sections completed
-        </div>
-      </header>
+      <DemoAnchor placement="context-explanation">
+        <header>
+          <h2 className="font-sans text-2xl font-semibold text-[#1a2332]">
+            Organizational Context Questionnaire
+          </h2>
+          <p className="mt-1 text-sm text-gray-500">
+            Estimated completion time: 35–45 minutes. All sections are optional.
+          </p>
+          <div className="mt-4 inline-flex items-center rounded-full bg-green-50 px-3 py-1 text-xs text-green-700">
+            <CheckCircle size={14} className="mr-1.5 text-green-500" />
+            {completedSectionCount} of {questionnaire.length} sections completed
+          </div>
+        </header>
+      </DemoAnchor>
 
       <section className="mt-6">
         {questionnaire.map((section) => {
@@ -429,13 +432,11 @@ function QuestionnairePage() {
           const isHighlighted = highlightedSectionId === section.id
           const isComplete = !!sectionCompletionById[section.id]
 
-          return (
+          const sectionArticle = (
             <article
               key={section.id}
               className={`mb-2 overflow-hidden rounded-lg border bg-white transition ${
-                isHighlighted
-                  ? 'border-blue-300 ring-2 ring-blue-100'
-                  : 'border-gray-200'
+                isHighlighted ? 'border-blue-300 ring-2 ring-blue-100' : 'border-gray-200'
               }`}
             >
               <button
@@ -443,39 +444,51 @@ function QuestionnairePage() {
                 onClick={() => toggleSection(section.id)}
                 className="flex w-full cursor-pointer items-center justify-between p-4 text-left hover:bg-gray-50"
               >
-                <div className="min-w-0">
-                  <span className="font-mono text-xs text-gray-400">{section.id}</span>
-                  <span className="ml-3 text-sm font-medium text-[#1a2332]">
-                    {section.title}
-                  </span>
-                  <span className="ml-2 text-xs text-gray-400">
-                    → Finding {section.enrichesFinding}
-                  </span>
-                </div>
+                  <div className="min-w-0">
+                    <span className="font-mono text-xs text-gray-400">{section.id}</span>
+                    <span className="ml-3 text-sm font-medium text-[#1a2332]">
+                      {section.title}
+                    </span>
+                    <span className="ml-2 text-xs text-gray-400">
+                      → Finding {section.enrichesFinding}
+                    </span>
+                  </div>
 
-                <span className="ml-4 flex items-center gap-2">
-                  {isComplete ? (
-                    <CheckCircle size={18} className="text-green-500" />
-                  ) : (
-                    <AlertCircle size={18} className="text-red-400" />
-                  )}
-                  {isExpanded ? (
-                    <ChevronUp size={16} className="text-gray-400" />
-                  ) : (
-                    <ChevronDown size={16} className="text-gray-400" />
-                  )}
-                </span>
+                  <span className="ml-4 flex items-center gap-2">
+                    {isComplete ? (
+                      <CheckCircle size={18} className="text-green-500" />
+                    ) : (
+                      <AlertCircle size={18} className="text-red-400" />
+                    )}
+                    {isExpanded ? (
+                      <ChevronUp size={16} className="text-gray-400" />
+                    ) : (
+                      <ChevronDown size={16} className="text-gray-400" />
+                    )}
+                  </span>
               </button>
 
               {isExpanded ? (
                 <div className="border-t border-gray-100 px-4 pb-4 pt-3">
-                  {section.questions.map((question) =>
-                    renderQuestion(section, question),
-                  )}
+                  {section.questions.map((question) => renderQuestion(section, question))}
                 </div>
               ) : null}
             </article>
           )
+
+          if (section.id === 'Q3.1') {
+            return (
+              <DemoAnchor key="interactive-section-anchor" placement="interactive-section">
+                {sectionArticle}
+              </DemoAnchor>
+            )
+          }
+
+          return (
+            <div key={`section-wrapper-${section.id}`}>
+              {sectionArticle}
+            </div>
+            )
         })}
       </section>
     </div>

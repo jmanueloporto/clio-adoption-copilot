@@ -21,13 +21,14 @@ export function LayerSection({
   subtitle,
   children,
   defaultExpanded = true,
+  className = '',
 }) {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded)
   const resolvedTitle = title || LAYER_DEFAULTS[layer] || 'Layer'
   const layerStyles = LAYER_STYLES[layer] || LAYER_STYLES[1]
 
   return (
-    <section className={`rounded-lg p-5 md:p-6 ${layerStyles}`}>
+    <section className={`rounded-lg p-5 md:p-6 ${layerStyles} ${className}`}>
       <button
         type="button"
         onClick={() => setIsExpanded((prev) => !prev)}

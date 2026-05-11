@@ -10,6 +10,7 @@ import {
 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import DemoAnchor from '../components/demoGuide/DemoAnchor'
 import { MetricCard } from '../components/shared'
 import engagement from '../data/engagement.json'
 
@@ -103,41 +104,44 @@ function EngagementPage() {
         <MetricCard label="Custom Findings" value="3" />
       </section>
 
-      <section>
-        <h3 className="mb-4 font-sans text-lg font-semibold text-[#1a2332]">
-          Key Decisions
-        </h3>
-        <p className="mb-3 text-sm text-gray-500">
-          What the consultant saw that the automation missed
-        </p>
+      <DemoAnchor placement="key-decisions">
+        <section>
+          <h3 className="mb-4 font-sans text-lg font-semibold text-[#1a2332]">
+            Key Decisions
+          </h3>
+          <p className="mb-3 text-sm text-gray-500">
+            What the consultant saw that the automation missed
+          </p>
 
-        {engagement.keyDecisions.map((decision, index) => (
-          <article
-            key={`${decision.title}-${index}`}
-            className="mb-2 flex items-start gap-3 rounded-lg border border-gray-200 bg-white p-4"
-          >
-            <div className="mt-0.5">
-              <DecisionIcon type={decision.type} />
-            </div>
-            <div className="flex-1">
-              <p className="text-sm font-medium text-[#1a2332]">{decision.title}</p>
-              <p className="mt-0.5 text-xs text-gray-500">{decision.rationale}</p>
-            </div>
-            <span
-              className={`rounded-full px-2 py-0.5 text-xs ${
-                DECISION_TYPE_STYLES[decision.type] || 'bg-gray-50 text-gray-700'
-              }`}
+          {engagement.keyDecisions.map((decision, index) => (
+            <article
+              key={`${decision.title}-${index}`}
+              className="mb-2 flex items-start gap-3 rounded-lg border border-gray-200 bg-white p-4"
             >
-              {decision.type}
-            </span>
-          </article>
-        ))}
-      </section>
+              <div className="mt-0.5">
+                <DecisionIcon type={decision.type} />
+              </div>
+              <div className="flex-1">
+                <p className="text-sm font-medium text-[#1a2332]">{decision.title}</p>
+                <p className="mt-0.5 text-xs text-gray-500">{decision.rationale}</p>
+              </div>
+              <span
+                className={`rounded-full px-2 py-0.5 text-xs ${
+                  DECISION_TYPE_STYLES[decision.type] || 'bg-gray-50 text-gray-700'
+                }`}
+              >
+                {decision.type}
+              </span>
+            </article>
+          ))}
+        </section>
+      </DemoAnchor>
 
-      <section>
-        <h3 className="mb-4 mt-8 font-sans text-lg font-semibold text-[#1a2332]">
-          Timeline
-        </h3>
+      <DemoAnchor placement="timeline">
+        <section>
+          <h3 className="mb-4 mt-8 font-sans text-lg font-semibold text-[#1a2332]">
+            Timeline
+          </h3>
 
         <div className="relative pl-8">
           <div className="absolute bottom-0 left-[10px] top-0 w-0.5 bg-gray-200" />
@@ -160,7 +164,8 @@ function EngagementPage() {
             </div>
           ))}
         </div>
-      </section>
+        </section>
+      </DemoAnchor>
 
       <section>
         <h3 className="mb-4 mt-8 font-sans text-lg font-semibold text-[#1a2332]">

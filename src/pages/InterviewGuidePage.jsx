@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import DemoAnchor from '../components/demoGuide/DemoAnchor'
 import { DemoTooltip } from '../components/shared'
 import interview from '../data/interview.json'
 
@@ -36,7 +37,7 @@ function DomainGroupSeparator({ label }) {
   )
 }
 
-function SectionHeader({ title, countLabel, isExpanded, onClick }) {
+function SectionHeader({ title, isExpanded, onClick }) {
   return (
     <button
       type="button"
@@ -45,7 +46,6 @@ function SectionHeader({ title, countLabel, isExpanded, onClick }) {
     >
       <div>
         <span className="text-sm font-semibold text-[#1a2332]">{title}</span>
-        <span className="ml-2 text-xs text-gray-400">{countLabel}</span>
       </div>
       {isExpanded ? (
         <ChevronUp size={16} className="text-gray-500" />
@@ -92,41 +92,45 @@ function InterviewNotesField({
       </div>
 
       {isInitiallyPopulated && isPromoted && usedIn ? (
-        <p className="mt-1 text-xs text-gray-400">
-          Used in:{' '}
-          {usedIn.split(', ').map((destination, index) => {
-            const findingId = getFindingIdFromUsedIn(destination)
-            return (
-              <span key={`${destination}-${index}`}>
-                {index > 0 ? ', ' : ''}
-                {findingId ? (
-                  <Link to={`/findings/${findingId}`} className="text-[#0066cc] hover:underline">
-                    {destination}
-                  </Link>
-                ) : (
-                  destination
-                )}
-              </span>
-            )
-          })}
-        </p>
+        <DemoAnchor placement="used-in-links">
+          <p className="mt-1 text-xs text-gray-400">
+            Used in:{' '}
+            {usedIn.split(', ').map((destination, index) => {
+              const findingId = getFindingIdFromUsedIn(destination)
+              return (
+                <span key={`${destination}-${index}`}>
+                  {index > 0 ? ', ' : ''}
+                  {findingId ? (
+                    <Link to={`/findings/${findingId}`} className="text-[#0066cc] hover:underline">
+                      {destination}
+                    </Link>
+                  ) : (
+                    destination
+                  )}
+                </span>
+              )
+            })}
+          </p>
+        </DemoAnchor>
       ) : null}
 
       {!isInitiallyPopulated ? (
-        <div
-          className={`mt-2 transition-opacity duration-300 ${
-            showPromote ? 'opacity-100' : 'pointer-events-none opacity-0'
-          }`}
-        >
-          <DemoTooltip tooltipText={PROMOTE_TOOLTIP_TEXT}>
-            <button
-              type="button"
-              className="flex cursor-pointer items-center gap-1 text-xs font-medium text-purple-600 hover:text-purple-800"
-            >
-              Promote ↗
-            </button>
-          </DemoTooltip>
-        </div>
+        <DemoAnchor placement="promote-button">
+          <div
+            className={`mt-2 transition-opacity duration-300 ${
+              showPromote ? 'opacity-100' : 'pointer-events-none opacity-0'
+            }`}
+          >
+            <DemoTooltip tooltipText={PROMOTE_TOOLTIP_TEXT}>
+              <button
+                type="button"
+                className="flex cursor-pointer items-center gap-1 text-xs font-medium text-purple-600 hover:text-purple-800"
+              >
+                Promote ↗
+              </button>
+            </DemoTooltip>
+          </div>
+        </DemoAnchor>
       ) : null}
     </div>
   )
@@ -238,8 +242,7 @@ function InterviewGuidePage() {
 
       <section className="mb-5">
         <SectionHeader
-          title="Opening Context"
-          countLabel="1 briefing"
+          title="1. Opening Context"
           isExpanded={expandedSections.opening}
           onClick={() => toggleSection('opening')}
         />
@@ -252,10 +255,17 @@ function InterviewGuidePage() {
         ) : null}
       </section>
 
-      <section className="mb-5">
+      <DemoAnchor placement="finding-triggered">
+        <section className="mb-5">
         <SectionHeader
-          title="Finding-Triggered Questions"
-          countLabel={`${interview.findingTriggered.length} questions`}
+          title={
+            <>
+              2. Finding-Triggered Questions{' '}
+              <span className="font-normal text-gray-400">
+                ({interview.findingTriggered.length})
+              </span>
+            </>
+          }
           isExpanded={expandedSections.finding}
           onClick={() => toggleSection('finding')}
         />
@@ -296,12 +306,19 @@ function InterviewGuidePage() {
             ))}
           </div>
         ) : null}
-      </section>
+        </section>
+      </DemoAnchor>
 
       <section className="mb-5">
         <SectionHeader
-          title="Pattern-Triggered Questions"
-          countLabel={`${interview.patternTriggered.length} patterns`}
+          title={
+            <>
+              3. Pattern-Triggered Questions{' '}
+              <span className="font-normal text-gray-400">
+                ({interview.patternTriggered.length})
+              </span>
+            </>
+          }
           isExpanded={expandedSections.pattern}
           onClick={() => toggleSection('pattern')}
         />
@@ -335,8 +352,14 @@ function InterviewGuidePage() {
 
       <section className="mb-5">
         <SectionHeader
-          title="Observation Prompts"
-          countLabel={`${interview.observationPrompts.length} prompts`}
+          title={
+            <>
+              4. Observation Prompts{' '}
+              <span className="font-normal text-gray-400">
+                ({interview.observationPrompts.length})
+              </span>
+            </>
+          }
           isExpanded={expandedSections.observation}
           onClick={() => toggleSection('observation')}
         />
@@ -389,8 +412,14 @@ function InterviewGuidePage() {
 
       <section>
         <SectionHeader
-          title="Closing Prompts"
-          countLabel={`${interview.closingPrompts.length} prompts`}
+          title={
+            <>
+              5. Closing Prompts{' '}
+              <span className="font-normal text-gray-400">
+                ({interview.closingPrompts.length})
+              </span>
+            </>
+          }
           isExpanded={expandedSections.closing}
           onClick={() => toggleSection('closing')}
         />

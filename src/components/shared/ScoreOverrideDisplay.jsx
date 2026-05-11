@@ -4,7 +4,7 @@ const SCORE_COLORS = {
   1: 'text-[#dc2626]',
   2: 'text-[#ea580c]',
   3: 'text-[#ca8a04]',
-  4: 'text-[#2563eb]',
+  4: 'text-[#4ade80]',
   5: 'text-[#059669]',
 }
 
@@ -32,6 +32,9 @@ export function ScoreOverrideDisplay({
 
   return (
     <article className="rounded-lg border bg-white p-6 shadow-sm">
+      <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500">
+        Consultant Score Override
+      </p>
       <div className="flex items-center justify-center gap-6">
         <span className={`${numberSizeClass} font-bold ${originalColor} opacity-40`}>
           {originalScore}
@@ -45,7 +48,11 @@ export function ScoreOverrideDisplay({
       </div>
 
       <p className="mt-3 text-center text-sm font-medium text-gray-700">
-        {SCORE_LABELS[originalScore]} -&gt; {SCORE_LABELS[overrideScore]}
+        {SCORE_LABELS[originalScore]} → {SCORE_LABELS[overrideScore]}
+      </p>
+      <p className="mb-4 mt-2 text-xs italic text-gray-500">
+        The consultant changed this score based on evidence the automated assessment
+        could not capture.
       </p>
 
       <p className="mb-2 mt-4 text-xs font-semibold uppercase tracking-wider text-gray-500">

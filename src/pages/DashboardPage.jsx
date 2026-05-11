@@ -11,6 +11,7 @@ import {
   YAxis,
 } from 'recharts'
 import { Link, useNavigate } from 'react-router-dom'
+import DemoAnchor from '../components/demoGuide/DemoAnchor'
 import { ScoreBadge } from '../components/shared'
 import { useRole } from '../context/RoleContext'
 import company from '../data/company.json'
@@ -35,6 +36,16 @@ function DashboardPage() {
 
   const findingsById = useMemo(
     () => Object.fromEntries(findings.map((finding) => [finding.id, finding])),
+    [],
+  )
+  const sortedDomains = useMemo(
+    () =>
+      [...domains].sort((a, b) => {
+        if (a.finalScore !== b.finalScore) {
+          return a.finalScore - b.finalScore
+        }
+        return a.id - b.id
+      }),
     [],
   )
 
@@ -125,27 +136,33 @@ function DashboardPage() {
     { name: 'M. Santos', values: [true, true, false, false, true, false] },
   ]
 
-  const getProgressColorClass = (score) => {
-    if (score === 1) return 'bg-red-500'
-    if (score === 2) return 'bg-orange-500'
-    if (score === 3) return 'bg-amber-500'
-    if (score === 4) return 'bg-blue-500'
-    return 'bg-green-500'
+  const getScoreColor = (score) => {
+    const roundedScore = Math.round(score)
+    if (roundedScore <= 1) return '#dc2626'
+    if (roundedScore === 2) return '#ea580c'
+    if (roundedScore === 3) return '#ca8a04'
+    if (roundedScore === 4) return '#4ade80'
+    return '#059669'
   }
 
   return (
     <div className="space-y-8">
-      <section className="flex items-center gap-6">
-        <h2 className="font-sans text-2xl font-semibold text-[#1a2332]">
-          Overall Maturity Score
-        </h2>
-        <span className="font-mono text-4xl font-bold text-[#ea580c]">
-          {2.3.toFixed(1)}
-        </span>
-        <ScoreBadge score={2} size="lg" />
-      </section>
+      <DemoAnchor placement="role-toggle">
+        <section className="flex items-center gap-6">
+          <h2 className="font-sans text-2xl font-semibold text-[#1a2332]">
+            Overall Maturity Score
+          </h2>
+          <span
+            className="font-mono text-4xl font-bold"
+            style={{ color: getScoreColor(2.3) }}
+          >
+            {2.3.toFixed(1)}
+          </span>
+        </section>
+      </DemoAnchor>
 
-      <section className="mt-6">
+      <DemoAnchor placement="overall-score">
+        <section className="mt-6">
         <header className="mb-4">
           <h3 className="font-sans text-xl font-semibold text-[#1a2332]">
             Domain Scores
@@ -153,51 +170,56 @@ function DashboardPage() {
           <p className="text-sm text-gray-500">7 evaluation domains</p>
         </header>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {domains.map((domain, index) => (
-            <article
-              key={domain.id}
-              role="button"
-              tabIndex={0}
-              onClick={() => navigate(`/domains/${domain.id}`)}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                  navigate(`/domains/${domain.id}`)
-                }
-              }}
-              className={`cursor-pointer rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all hover:shadow-md ${
-                cardsVisible ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-0'
-              }`}
-              style={{ transitionDelay: `${index * 80}ms` }}
-            >
-              <h4 className="text-sm font-semibold leading-tight text-[#1a2332]">
-                {domain.name}
-              </h4>
-              <p className="mt-2 line-clamp-2 text-xs text-gray-500">
-                {domain.question}
-              </p>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {sortedDomains.map((domain, index) => (
+              <article
+                key={domain.id}
+                role="button"
+                tabIndex={0}
+                onClick={() => navigate(`/domains/${domain.id}`)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    navigate(`/domains/${domain.id}`)
+                  }
+                }}
+                className={`cursor-pointer rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all hover:shadow-md ${
+                  cardsVisible ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-0'
+                }`}
+                style={{ transitionDelay: `${index * 80}ms` }}
+              >
+                <h4 className="text-sm font-semibold leading-tight text-[#1a2332]">
+                  {domain.name}
+                </h4>
+                <p className="mt-2 line-clamp-2 text-xs text-gray-500">
+                  {domain.question}
+                </p>
 
-              <div className="mt-4">
-                <ScoreBadge score={domain.finalScore} size="md" />
-              </div>
+                <p
+                  className="mt-4 text-lg font-bold font-mono"
+                  style={{ color: getScoreColor(domain.finalScore) }}
+                >
+                  {domain.finalScore}
+                </p>
 
-              <div className="mt-3 h-1.5 rounded-full bg-gray-100">
-                <div
-                  className={`h-1.5 rounded-full ${getProgressColorClass(
-                    domain.finalScore,
-                  )}`}
-                  style={{ width: `${(domain.finalScore / 5) * 100}%` }}
-                />
-              </div>
+                <div className="mt-3 h-1.5 rounded-full bg-gray-100">
+                  <div
+                    className="h-1.5 rounded-full"
+                    style={{
+                      width: `${(domain.finalScore / 5) * 100}%`,
+                      backgroundColor: getScoreColor(domain.finalScore),
+                    }}
+                  />
+                </div>
 
-              <div className="mt-3 flex items-center justify-between text-xs text-gray-400">
-                <span>{domain.findingIds.length} findings</span>
-                <span>{domain.apiCoverage}</span>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+                <div className="mt-3 flex items-center justify-between text-xs text-gray-400">
+                  <span>{domain.findingIds.length} findings</span>
+                  <span>{domain.apiCoverage}</span>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      </DemoAnchor>
 
       <section>
         <header className="mb-4">
@@ -233,7 +255,8 @@ function DashboardPage() {
         </div>
       </section>
 
-      <section>
+      <DemoAnchor placement="cross-domain-insights">
+        <section>
         <header className="mb-4">
           <h3 className="font-sans text-xl font-semibold text-[#1a2332]">
             Cross-Domain Insights
@@ -411,25 +434,30 @@ function DashboardPage() {
               </table>
             </div>
           </article>
-        </div>
-      </section>
+          </div>
+        </section>
+      </DemoAnchor>
 
       {showConsultantSummary ? (
-        <section
-          className={`mt-8 rounded-xl border border-teal-100 bg-[#f0fdfa] p-6 transition-opacity duration-300 ${
-            consultantSummaryVisible ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <h3 className="font-sans text-xl font-semibold text-[#0d9488]">
-            How a Consultant Would Help
-          </h3>
-          <p className="text-sm text-gray-500">Based on your assessment data</p>
-          <p className="mb-4 mt-3 text-sm text-gray-700">
-            17 of 22 findings would benefit from consultant depth for {company.name}
-          </p>
+        <DemoAnchor placement="consultant-engagement-summary">
+          <section
+            className={`mt-8 rounded-xl border border-teal-100 border-t border-t-teal-200 bg-[#f0fdfa] p-6 pt-6 transition-opacity duration-300 ${
+              consultantSummaryVisible ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <h3 className="font-sans text-xl font-semibold text-[#0d9488]">
+              How a Consultant Would Help
+            </h3>
+            <p className="text-sm text-gray-500">Based on your assessment data</p>
+            <p className="mb-4 mt-3 text-sm text-gray-700">
+              17 of 22 findings would benefit from consultant depth for {company.name}
+            </p>
+            <p className="mb-4 text-xl font-bold text-[#0d9488]">
+              $120,000 in combined recoverable annual revenue
+            </p>
 
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            <article className="rounded-lg border border-teal-50 bg-white p-4">
+          <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-3">
+            <article className="h-full rounded-lg border border-teal-50 bg-white p-4">
               <DollarSign size={18} className="mb-2 text-[#0d9488]" />
               <h4 className="text-sm font-semibold text-[#1a2332]">Revenue Recovery</h4>
               <p className="mt-1 text-xs text-gray-600">
@@ -437,7 +465,7 @@ function DashboardPage() {
                 utilization, realization, and collection gaps
               </p>
             </article>
-            <article className="rounded-lg border border-teal-50 bg-white p-4">
+            <article className="h-full rounded-lg border border-teal-50 bg-white p-4">
               <ShieldAlert size={18} className="mb-2 text-[#0d9488]" />
               <h4 className="text-sm font-semibold text-[#1a2332]">
                 Risk Remediation
@@ -447,7 +475,7 @@ function DashboardPage() {
                 require structured intervention
               </p>
             </article>
-            <article className="rounded-lg border border-teal-50 bg-white p-4">
+            <article className="h-full rounded-lg border border-teal-50 bg-white p-4">
               <Zap size={18} className="mb-2 text-[#0d9488]" />
               <h4 className="text-sm font-semibold text-[#1a2332]">
                 Workflow Automation
@@ -459,14 +487,15 @@ function DashboardPage() {
             </article>
           </div>
 
-          <p className="mt-4 text-sm font-medium text-[#0d9488]">
-            Recommended engagement: Guided Assessment (3–5 days)
-          </p>
-          <p className="mt-2 text-xs text-gray-400">
-            Based on your assessment data, a structured engagement would address the
-            gaps identified above with measurable outcomes.
-          </p>
-        </section>
+            <p className="mt-4 text-base font-semibold text-[#0d9488]">
+              Recommended engagement: Guided Assessment (3–5 days)
+            </p>
+            <p className="mt-2 text-xs text-gray-400">
+              Based on your assessment data, a structured engagement would address the
+              gaps identified above with measurable outcomes.
+            </p>
+          </section>
+        </DemoAnchor>
       ) : null}
     </div>
   )

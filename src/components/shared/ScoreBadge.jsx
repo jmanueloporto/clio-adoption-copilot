@@ -2,7 +2,7 @@ const SCORE_CONFIG = {
   1: { color: 'bg-red-100 text-red-700', label: 'Initial' },
   2: { color: 'bg-orange-100 text-orange-700', label: 'Developing' },
   3: { color: 'bg-amber-100 text-amber-700', label: 'Defined' },
-  4: { color: 'bg-blue-100 text-blue-700', label: 'Managed' },
+  4: { color: 'bg-green-200 text-green-700', label: 'Managed' },
   5: { color: 'bg-green-100 text-green-700', label: 'Optimizing' },
 }
 

@@ -1,15 +1,17 @@
 import { Eye, EyeOff, ShieldCheck } from 'lucide-react'
 import { useEffect } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
-import DemoGuideManager from '../demoGuide/DemoGuideManager'
+import demoGuideData from '../../data/demoGuide.json'
 import { useDemoGuide } from '../../context/DemoGuideContext'
 import { useRole } from '../../context/RoleContext'
 import company from '../../data/company.json'
+import { SectionCallout } from '../demoGuide/SectionCallout'
 
 function Layout() {
   const location = useLocation()
   const { role, toggleRole } = useRole()
-  const { isActive, toggleGuide } = useDemoGuide()
+  const { isActive, dismissedItems, dismissItem, toggleGuide } = useDemoGuide()
+  const aboutCard = (demoGuideData.callouts ?? []).find((card) => card.id === 'card-about')
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'auto' })
@@ -136,8 +138,12 @@ function Layout() {
         </div>
       </header>
       <section className="min-h-screen bg-[#f8fafc]">
+        {isActive && aboutCard && !dismissedItems.has('card-about') ? (
+          <div className="fixed right-4 top-[110px] z-40 w-64">
+            <SectionCallout data={aboutCard} onDismiss={() => dismissItem('card-about')} />
+          </div>
+        ) : null}
         <main className="mx-auto max-w-7xl px-6 py-8 md:px-8">
-          <DemoGuideManager />
           <div key={location.pathname} className="animate-[fadeIn_200ms_ease-out]">
             <Outlet />
           </div>

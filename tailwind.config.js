@@ -13,7 +13,7 @@ export default {
         'score-1': '#dc2626',
         'score-2': '#ea580c',
         'score-3': '#ca8a04',
-        'score-4': '#2563eb',
+        'score-4': '#4ade80',
         'score-5': '#059669',
         'layer2-bg': '#f0f9ff',
         'layer3-bg': '#faf5ff',

@@ -32,6 +32,7 @@ import {
   ScoreOverrideDisplay,
   StoryBeatTooltip,
 } from '../components/shared'
+import DemoAnchor from '../components/demoGuide/DemoAnchor'
 import { useFindings } from '../context/FindingsContext'
 import { useRole } from '../context/RoleContext'
 import customFindings from '../data/customFindings.json'
@@ -337,6 +338,34 @@ function ConsultantActionButtons() {
   )
 }
 
+function LayerTitle({ layerNumber, title, badgeClassName }) {
+  return (
+    <span className="flex items-center gap-3">
+      <span
+        className={`h-7 w-7 flex-shrink-0 rounded-full text-sm font-bold flex items-center justify-center ${badgeClassName}`}
+      >
+        {layerNumber}
+      </span>
+      <span>{title}</span>
+    </span>
+  )
+}
+
+function LayerSeparator({ text }) {
+  return (
+    <div className="my-8 flex flex-col items-center gap-2">
+      <div className="flex w-full items-center gap-4">
+        <div className="flex-1 border-t border-gray-300" />
+        <span className="text-center text-xs uppercase tracking-wider text-gray-500">
+          {text}
+        </span>
+        <div className="flex-1 border-t border-gray-300" />
+      </div>
+      <ChevronDown size={16} className="text-gray-400" />
+    </div>
+  )
+}
+
 function FindingDetailPage() {
   const { id } = useParams()
   const { role } = useRole()
@@ -429,65 +458,79 @@ function FindingDetailPage() {
       </header>
 
       <section className="mt-6">
-        <h3 className="font-sans text-lg font-semibold text-[#1a2332]">
-          Layer 1 — Automated Baseline
-        </h3>
-
-        {finding.isQuestionnaireOnly ? (
-          <div className="mt-4 rounded-lg bg-gray-50 p-4 text-sm italic text-gray-600">
-            This finding is derived entirely from the organizational context
-            questionnaire — no automated baseline data is available.
-          </div>
-        ) : (
-          <FindingMetrics finding={finding} />
-        )}
-
-        <h3 className="mb-4 mt-8 font-sans text-lg font-semibold text-[#1a2332]">
-          Recommendations
-        </h3>
-        <div className="space-y-3">
-          {finding.recommendations.map((recommendation, index) => (
-            <RecommendationCard
-              key={`${finding.id}-recommendation-${index + 1}`}
-              index={index + 1}
-              body={recommendation.body}
-              whyRelevant={recommendation.whyRelevant}
-              howToImplement={recommendation.howToImplement}
-            />
-          ))}
-        </div>
-
-        <div className="mt-6">
-          <button
-            type="button"
-            onClick={() => setShowConfidenceHelp((prev) => !prev)}
-            className="flex items-center gap-1 text-sm text-[#0066cc]"
+        <DemoAnchor placement="layer-sections">
+          <LayerSection
+            layer={1}
+            defaultExpanded
+            className="pt-6"
+            title={
+              <LayerTitle
+                layerNumber={1}
+                title="Layer 1 — Automated Baseline"
+                badgeClassName="bg-gray-200 text-gray-700"
+              />
+            }
           >
-            How to increase confidence →
-            {showConfidenceHelp ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-          </button>
+            {finding.isQuestionnaireOnly ? (
+              <div className="mt-4 rounded-lg bg-gray-50 p-4 text-sm italic text-gray-600">
+                This finding is derived entirely from the organizational context
+                questionnaire — no automated baseline data is available.
+              </div>
+            ) : (
+              <FindingMetrics finding={finding} />
+            )}
 
-          {showConfidenceHelp ? (
-            <div className="mt-2 rounded-lg bg-gray-50 p-4 text-sm text-gray-600">
-              Complete the organizational context questionnaire (Section{' '}
-              {finding.enrichmentSource}) to provide additional context the API
-              cannot capture.
+            <h3 className="mb-4 mt-8 font-sans text-lg font-semibold text-[#1a2332]">
+              Recommendations
+            </h3>
+            <div className="space-y-3">
+              {finding.recommendations.map((recommendation, index) => (
+                <RecommendationCard
+                  key={`${finding.id}-recommendation-${index + 1}`}
+                  index={index + 1}
+                  body={recommendation.body}
+                  whyRelevant={recommendation.whyRelevant}
+                  howToImplement={recommendation.howToImplement}
+                />
+              ))}
             </div>
-          ) : null}
-        </div>
+
+            <div className="mt-6">
+              <button
+                type="button"
+                onClick={() => setShowConfidenceHelp((prev) => !prev)}
+                className="flex items-center gap-1 text-sm text-[#0066cc]"
+              >
+                How to increase confidence →
+                {showConfidenceHelp ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+              </button>
+
+              {showConfidenceHelp ? (
+                <div className="mt-2 rounded-lg bg-gray-50 p-4 text-sm text-gray-600">
+                  Complete the organizational context questionnaire (Section{' '}
+                  {finding.enrichmentSource}) to provide additional context the API
+                  cannot capture.
+                </div>
+              ) : null}
+            </div>
+          </LayerSection>
+        </DemoAnchor>
 
         <div className="mt-8">
-          <div className="my-8 flex items-center gap-4">
-            <div className="flex-1 border-t border-gray-200" />
-            <span className="text-xs uppercase tracking-wider text-gray-400">
-              {finding.isQuestionnaireOnly
-                ? 'Organizational context assessment'
-                : 'How organizational context changes this finding'}
-            </span>
-            <div className="flex-1 border-t border-gray-200" />
-          </div>
+          <LayerSeparator text="How organizational context changes this finding" />
 
-          <LayerSection layer={2} defaultExpanded>
+          <LayerSection
+            layer={2}
+            defaultExpanded
+            className="pt-6"
+            title={
+              <LayerTitle
+                layerNumber={2}
+                title="Layer 2 — Organizational Context"
+                badgeClassName="bg-[#0066cc] text-white"
+              />
+            }
+          >
             <span className="inline-flex rounded-full bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-600">
               Source: {finding.enrichmentSource}
             </span>
@@ -500,15 +543,41 @@ function FindingDetailPage() {
               {finding.layer2?.detail}
             </p>
 
-            <ComparisonCards
-              baselineCard={finding.layer2?.baselineCard}
-              contextCard={finding.layer2?.contextCard}
-            />
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500">
+              {finding.isQuestionnaireOnly
+                ? 'Organizational context assessment'
+                : 'How context changes the interpretation'}
+            </p>
+            {!finding.isQuestionnaireOnly ? (
+              <p className="mb-4 text-xs text-gray-400">
+                Same data, different conclusions — compare the Assessment lines at
+                the bottom of each card
+              </p>
+            ) : null}
+
+            <DemoAnchor placement="comparison-cards">
+              <ComparisonCards
+                baselineCard={finding.layer2?.baselineCard}
+                contextCard={finding.layer2?.contextCard}
+              />
+            </DemoAnchor>
           </LayerSection>
 
           {shouldRenderLayer3 ? (
             <div className="mt-8">
-              <LayerSection layer={3} defaultExpanded>
+              <LayerSeparator text="What the consultant observed and concluded" />
+              <LayerSection
+                layer={3}
+                defaultExpanded
+                className="pt-6"
+                title={
+                  <LayerTitle
+                    layerNumber={3}
+                    title="Layer 3 — Advanced Analysis"
+                    badgeClassName="bg-[#7c3aed] text-white"
+                  />
+                }
+              >
                 {(layer3.annotations?.length || 0) > 0 ? (
                   <div className="space-y-3">
                     {layer3.annotations.map((annotation) => (
@@ -524,15 +593,17 @@ function FindingDetailPage() {
                 ) : null}
 
                 {layer3.override ? (
-                  <div className="mt-4">
-                    <ScoreOverrideDisplay
-                      originalScore={layer3.override.originalScore}
-                      overrideScore={layer3.override.overrideScore}
-                      justification={layer3.override.justification}
-                      consultant={layer3.override.consultant}
-                      date={layer3.override.date}
-                    />
-                  </div>
+                  <DemoAnchor placement="score-override">
+                    <div className="mt-4">
+                      <ScoreOverrideDisplay
+                        originalScore={layer3.override.originalScore}
+                        overrideScore={layer3.override.overrideScore}
+                        justification={layer3.override.justification}
+                        consultant={layer3.override.consultant}
+                        date={layer3.override.date}
+                      />
+                    </div>
+                  </DemoAnchor>
                 ) : null}
 
                 {(layer3.customFindings?.length || 0) > 0 ? (
@@ -651,13 +722,19 @@ function FindingDetailPage() {
                   </div>
                 ) : null}
 
-                {role === 'consultant' ? <ConsultantActionButtons /> : null}
+                {role === 'consultant' ? (
+                  <DemoAnchor placement="action-buttons">
+                    <ConsultantActionButtons />
+                  </DemoAnchor>
+                ) : null}
               </LayerSection>
             </div>
           ) : null}
 
           {role === 'customer' ? <div className="my-6 border-t border-teal-100" /> : null}
-          <ConsultantValueIndicator text={finding.cvi} />
+          <DemoAnchor placement="cvi-section">
+            <ConsultantValueIndicator text={finding.cvi} />
+          </DemoAnchor>
         </div>
       </section>
     </div>
